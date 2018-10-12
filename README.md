@@ -8,3 +8,5 @@ It will download all the updated nodes you will need for the project
 ##How to run
 
 Run startUpRC.sh to run the main project
+
+new line in readme
