@@ -1,6 +1,8 @@
 #!/bin/bash
 
 echo "Running Racecar"
+cd racecar_ws
 catkin_make
 source devel/setup.bash
-roslaunch ADI-ToF shubsub-test.launch
+cd src
+roslaunch shubsub main.launch
