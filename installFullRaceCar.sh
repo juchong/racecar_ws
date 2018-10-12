@@ -2,7 +2,6 @@
 
 echo "Installing Racecar"
 
-cd ~
 mkdir -p racecar_ws/src
 cd racecar_ws/src
 
