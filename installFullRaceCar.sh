@@ -19,10 +19,5 @@ git clone git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/ADI-ToF.git
 git clone git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/ADI-SLAM.git
 git clone git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/racecar.git
 git clone git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/ADI-Navigation.git
-
 cd ../..
 mv main.launch racecar_ws/src/
-# cd /home/nvidia/racecar-ws
-catkin_make
-source devel/setup.bash
-# roslaunch ADI-ToF shubsub-test.launch
