@@ -2,17 +2,39 @@
 
 Main repository for setting up our ADI Autonomous Vehicle project. Runs on ROS Kinetic, uses the Nvidia Jetson Tx2 board, and a few sensors to preform its mapping and navigation.
 
+- - -
 ### How to install and run
 
-Step 1: First clone the git repo
-Step 2: chmod execute permissions to run the install script. Depends on your machine which device your on.
-Step 3: ./installFullRaceCar.sh
-Step 4: After install is complete, run ./start.sh
+###### Note: Make sure you have git configured to gitlab before installing
 
-Note: You should only have to install once. If your install is complete, you will only need to run ./start.sh to run the script.
+1. First clone the git repository
+
+*$ git clone git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/racecar_ws.git*
+
+Step 2: Update the submodules. After cloning the repo, the node directories should be empty. Run the following, to pull the most recent version.
+
+*$ git submodule init*
+*$ git submodule update*
+
+You can checkout the individual node repos urls in the .gitmodules file.
+
+You can learn more about submodules here: https://git-scm.com/book/en/v2/Git-Tools-Submodules
+
+2. chmod execute permissions to run the start script.
+
+*$ chmod 777 ./start.sh*
+
+3. If your on a windows machine, setup a remote repo to a linux machine (in this instance the Jetson). Make sure to push all your updates.
+
+4. On your linux machine, run the start script
+
+*$ ./start.sh*
+
+###### Note: You should only have to install once. If your install is complete, you will only need to run ./start.sh to run the script.
 
 It will download all the updated nodes you will need for the project
 
+- - -
 ### Nodes
 
 The project uses ROS (Robotic Operating System) version Kinetic. Please make sure you have ROS Kinetic Full Desktop Xenial Installed before running the project.
