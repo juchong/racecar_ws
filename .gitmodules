@@ -1,0 +1,21 @@
+[submodule "racecar_ws/src/ADI-usb_cam"]
+	path = racecar_ws/src/ADI-usb_cam
+	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/ADI-usb_cam.git
+[submodule "racecar_ws/src/ADI-HLDS-lidar"]
+	path = racecar_ws/src/ADI-HLDS-lidar
+	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/ADI-HLDS-lidar.git
+[submodule "racecar_ws/src/ADI-vesc"]
+	path = racecar_ws/src/ADI-vesc
+	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/ADI-vesc.git
+[submodule "racecar_ws/src/ADI-ToF"]
+	path = racecar_ws/src/ADI-ToF
+	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/ADI-ToF.git
+[submodule "racecar_ws/src/ADI-SLAM"]
+	path = racecar_ws/src/ADI-SLAM
+	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/ADI-SLAM.git
+[submodule "racecar_ws/src/racecar"]
+	path = racecar_ws/src/racecar
+	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/racecar.git
+[submodule "racecar_ws/src/ADI-Navigation"]
+	path = racecar_ws/src/ADI-Navigation
+	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/ADI-Navigation.git
