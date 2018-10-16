@@ -16,6 +16,10 @@ Main repository for setting up our ADI Autonomous Vehicle project. Runs on ROS K
 *$ git submodule init*  
 *$ git submodule update*
 
+If you wish to update the submodules while cloning your repo use this command.
+
+*$ git clone --recurse-submodules git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/racecar_ws.git*
+
 You can checkout the individual node repos urls in the .gitmodules file.
 
 You can learn more about submodules here: https://git-scm.com/book/en/v2/Git-Tools-Submodules
