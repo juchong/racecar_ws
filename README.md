@@ -7,16 +7,7 @@ Main repository for setting up our ADI Autonomous Vehicle project. Runs on ROS K
 
 ###### Note: Make sure you have git configured to gitlab before installing
 
-**1. First clone the git repository**
-
-*$ git clone git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/racecar_ws.git*
-
-**2. Update the submodules. After cloning the repo, the node directories should be empty. Run the following, to pull the most recent version.**
-
-*$ git submodule init*  
-*$ git submodule update*
-
-If you wish to update the submodules while cloning your repo use this command.
+**1. First clone the git repository with the updated submodules**
 
 *$ git clone --recurse-submodules git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/racecar_ws.git*
 
@@ -24,13 +15,13 @@ You can checkout the individual node repos urls in the .gitmodules file.
 
 You can learn more about submodules here: https://git-scm.com/book/en/v2/Git-Tools-Submodules
 
-**3. chmod execute permissions to run the start script.**
+**2. chmod execute permissions to run the start script.**
 
 *$ chmod 777 ./start.sh*
 
-**4. If your on a windows machine, setup a remote repo to a linux machine (in this instance the Jetson). Make sure to push all your updates.**
+**3. If your on a windows machine, setup a remote repo to a linux machine (in this instance the Jetson). Make sure to push all your updates.**
 
-**5. On your linux machine, run the start script.**
+**4. On your linux machine, run the start script.**
 
 *$ ./start.sh*
 
