@@ -13,7 +13,7 @@ Main repository for setting up our ADI Autonomous Vehicle project. Runs on ROS K
 
 **2. Update the submodules. After cloning the repo, the node directories should be empty. Run the following, to pull the most recent version.**
 
-*$ git submodule init*
+*$ git submodule init*  
 *$ git submodule update*
 
 You can checkout the individual node repos urls in the .gitmodules file.
