@@ -18,17 +18,22 @@ You can learn more about submodules here: https://git-scm.com/book/en/v2/Git-Too
 **2. If your on a windows machine, setup a remote repo to a linux machine (in this instance the Jetson). Make sure to push all your updates.**
 
 <add instruction for remote>
-On Linux board:
+
+On the Linux board:
 1. cd ~
 2. mkdir <repo>
 3. cd <repo>
 4. git init
 5. git config receive.denyCurrentBranch 'warn'
 
-On windows, in git bash:
+On Windows, in git bash:
 1. cd <cloned repo>
 2. git remote add jetson ssh://nvidia@<jetson's_ip_address>:22/home/<jetson_user>/<repo>
 3. git push jetson master
+
+Then on the Linux board in the same repo:
+1. git branch
+2. git checkout master
 
 
 <add instruction for remote>
