@@ -34,6 +34,7 @@ On Windows, in git bash:
 Then on the Linux board in the same repo:
 1. git branch
 2. git checkout master
+3. git submodule update --init
 
 
 <add instruction for remote>
