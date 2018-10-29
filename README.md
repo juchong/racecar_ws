@@ -15,11 +15,13 @@ You can checkout the individual node repos urls in the .gitmodules file.
 
 You can learn more about submodules here: https://git-scm.com/book/en/v2/Git-Tools-Submodules
 
-**2. chmod execute permissions to run the start script.**
+**2. If your on a windows machine, setup a remote repo to a linux machine (in this instance the Jetson). Make sure to push all your updates.**
+
+<add instruction for remote>
+
+**3. Change your execution permissions to run the start script.**
 
 *$ chmod 777 ./start.sh*
-
-**3. If your on a windows machine, setup a remote repo to a linux machine (in this instance the Jetson). Make sure to push all your updates.**
 
 **4. On your linux machine, run the start script.**
 
