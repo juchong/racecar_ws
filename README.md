@@ -20,10 +20,14 @@ You can learn more about submodules here: https://git-scm.com/book/en/v2/Git-Too
 <add instruction for remote>
 On Linux board:
 1. cd ~
+ 
 2. mkdir <repo>
-3. cd <repo>
-4. git init
-5. git config receive.denyCurrentBranch 'warn'
+ 
+4. cd <repo>
+ 
+5. git init
+
+6. git config receive.denyCurrentBranch 'warn'
 
 On windows, in git bash:
 1. cd <cloned repo>
