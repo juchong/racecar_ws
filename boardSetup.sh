@@ -3,7 +3,6 @@ git checkout master
 cd racecar_ws/src
 cd ADI-HLDS-lidar
 git init
-./instalLaserNode.sh
 cd ..
 cd ADI-Navigation
 git init
@@ -13,7 +12,6 @@ git init
 cd ..
 cd ADI-usb_cam
 git init
-./installUSBCamNode.sh
 cd ..
 cd ADI-SLAM
 git init
