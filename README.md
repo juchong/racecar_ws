@@ -5,6 +5,10 @@ Main repository for setting up our ADI Autonomous Vehicle project. Runs on ROS K
 - - -
 ### How to install and run
 
+Make sure you have the following installed
+- git 
+- ROS Kinetic
+
 ###### Note: Make sure you have git configured to gitlab before installing.
 
 **1. First clone the git repository with the updated submodules**
