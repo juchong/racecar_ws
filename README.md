@@ -41,7 +41,8 @@ On windows
 
 **3. On your Linux board, change your execution permissions to run the project.**
 
-1. $ chmod 777 
+1. $ git submodule foreach git checkout master 
+2. $ chmod 777
 2. $ ./start.sh*
 
 ###### Note: You should only have to install once. If your install is complete, you will only need to run ./start.sh to run the script.
