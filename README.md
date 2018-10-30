@@ -1,27 +1,21 @@
 # ADI Racecar
 
-Main repository for setting up our ADI Autonomous Vehicle project. Runs on ROS Kinetic, uses the Nvidia Jetson Tx2 board, and a few sensors to preform its mapping and navigation.
+Main repository for setting up our ADI Autonomous Vehicles project. Runs on ROS Kinetic, uses the Nvidia Jetson Tx2 board, and a few sensors to preform simultaneous localization and mapping and data gathering.
 
 - - -
 ### How to install and run
 
-Make sure you have the following installed
+Make sure you have the following installed before proceding
 - git 
 - ROS Kinetic
 
 ###### Note: Make sure you have git configured to gitlab before installing.
 
-**1. First clone the git repository with the updated submodules**
+**1. First clone the git repository with its submodules (ROS Nodes)**
 
 *$ git clone --recurse-submodules git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/racecar_ws.git*
 
-You can checkout the individual node repos urls in the .gitmodules file.
-
-You can learn more about submodules here: https://git-scm.com/book/en/v2/Git-Tools-Submodules
-
-**2. If your on a windows machine, setup a remote repo to a linux machine (in this instance the Jetson). Make sure to push all your updates.**
-
-<add instruction for remote>
+**2. If your on a windows machine, setup a remote repo to Nvidia Jetson Tx2 board. Make sure to push all your updates.**
 
 On the Linux board:
 1. cd ~
@@ -45,7 +39,7 @@ On windows
 1. chmod 777 windowSetup.sh
 2. ./windowSetup.sh
 
-**3. On your Linux board, change your execution permissions to run the start script.**
+**3. On your Linux board, change your execution permissions to run the project.**
 
 1. $ chmod 777 
 2. $ ./start.sh*
