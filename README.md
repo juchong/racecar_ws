@@ -1,23 +1,21 @@
 # ADI Racecar
 
-Main repository for setting up our ADI Autonomous Vehicle project. Runs on ROS Kinetic, uses the Nvidia Jetson Tx2 board, and a few sensors to preform its mapping and navigation.
+Main repository for setting up our ADI Autonomous Vehicles project. Runs on ROS Kinetic, uses the Nvidia Jetson Tx2 board, and a few sensors to preform simultaneous localization and mapping and data gathering.
 
 - - -
 ### How to install and run
 
-###### Note: Make sure you have git configured to gitlab before installing
+Make sure you have the following installed before proceding
+- git 
+- ROS Kinetic
 
-**1. First clone the git repository with the updated submodules**
+###### Note: Make sure you have git configured to gitlab before installing.
+
+**1. First clone the git repository with its submodules (ROS Nodes)**
 
 *$ git clone --recurse-submodules git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/racecar_ws.git*
 
-You can checkout the individual node repos urls in the .gitmodules file.
-
-You can learn more about submodules here: https://git-scm.com/book/en/v2/Git-Tools-Submodules
-
-**2. If your on a windows machine, setup a remote repo to a linux machine (in this instance the Jetson). Make sure to push all your updates.**
-
-<add instruction for remote>
+**2. If your on a windows machine, setup a remote repo to Nvidia Jetson Tx2 board. Make sure to push all your updates.**
 
 On the Linux board:
 1. cd ~
@@ -34,19 +32,17 @@ On Windows, in git bash:
 Then on the Linux board in the same repo:
 1. git branch
 2. git checkout master
-3. git submodule update --init
+3. chmod 777 boardSetup.sh
+4. ./boardSetup.sh
 
+On windows
+1. chmod 777 windowSetup.sh
+2. ./windowSetup.sh
 
-<add instruction for remote>
+**3. On your Linux board, change your execution permissions to run the project.**
 
-
-**3. Change your execution permissions to run the start script.**
-
-*$ chmod 777 ./start.sh*
-
-**4. On your linux machine, run the start script.**
-
-*$ ./start.sh*
+1. $ chmod 777 
+2. $ ./start.sh*
 
 ###### Note: You should only have to install once. If your install is complete, you will only need to run ./start.sh to run the script.
 
