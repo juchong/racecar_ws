@@ -6,7 +6,7 @@ Main repository for setting up our ADI Autonomous Vehicles project. Runs on ROS 
 ### How to install and run
 
 Make sure you have the following installed before proceding
-- git 
+- git
 - ROS Kinetic
 
 ###### Note: Make sure you have git configured to gitlab before installing.
@@ -41,9 +41,11 @@ On windows
 
 **3. On your Linux board, change your execution permissions to run the project.**
 
-1. $ git submodule foreach git checkout master 
-2. $ chmod 777
-2. $ ./start.sh*
+1. $ git submodule foreach git checkout master
+2. $ cd gitInstallScripts
+3. $ ./tempForkedRepoInstall.sh
+3. $ chmod 777
+4. $ ./start.sh*
 
 ###### Note: You should only have to install once. If your install is complete, you will only need to run ./start.sh to run the script.
 
