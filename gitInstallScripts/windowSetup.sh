@@ -1,4 +1,5 @@
 #!/bin/bash
+cd ..
 echo "Enter the IP number for the board. Format <xx.xx.xxx.xx>"
 read IPnumber
 echo $IPnumber
