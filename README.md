@@ -34,19 +34,17 @@ On Windows, in git bash:
 Then on the Linux board in the same repo:
 1. git branch
 2. git checkout master
-3. git submodule update --init
+3. chmod 777 boardSetup.sh
+4. ./boardSetup.sh
 
+On windows
+1. chmod 777 windowSetup.sh
+2. ./windowSetup.sh
 
-<add instruction for remote>
+**3. On your Linux board, change your execution permissions to run the start script.**
 
-
-**3. Change your execution permissions to run the start script.**
-
-*$ chmod 777 ./start.sh*
-
-**4. On your linux machine, run the start script.**
-
-*$ ./start.sh*
+1. $ chmod 777 
+2. $ ./start.sh*
 
 ###### Note: You should only have to install once. If your install is complete, you will only need to run ./start.sh to run the script.
 
