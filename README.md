@@ -5,7 +5,7 @@ Main repository for setting up our ADI Autonomous Vehicle project. Runs on ROS K
 - - -
 ### How to install and run
 
-###### Note: Make sure you have git configured to gitlab before installing
+###### Note: Make sure you have git configured to gitlab before installing.
 
 **1. First clone the git repository with the updated submodules**
 
