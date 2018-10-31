@@ -13,11 +13,11 @@ Make sure you have the following installed and configured before proceding
 - - -
 ### How to install
 
-**1. First clone the git repository with its submodules (ROS Nodes)**
+**1. First clone the git repository with its submodules (ROS Nodes) to your windows machine**
 
 $ git clone --recurse-submodules git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/racecar_ws.git
 
-**2. If your on a windows machine, setup a remote repo to Nvidia Jetson Tx2 board. Make sure to push all your updates.**
+**2. Setup a remote repo to Nvidia Jetson Tx2 board. Make sure to push all your updates. This will setup a git repo for the main project as well as your submodules.**
 
 On the Linux board:
 1. $ cd ~
@@ -34,12 +34,14 @@ On Windows, in git bash:
 Then on the Linux board in the same repo:
 1. $ git branch
 2. $ git checkout master
-3. $ chmod 777 boardSetup.sh
-4. $ ./boardSetup.sh
+3. $ cd gitInstallScripts
+4. $ chmod 777 boardSetup.sh
+5. $ ./boardSetup.sh
 
 On windows
-1. $ chmod 777 windowSetup.sh
-2. $ ./windowSetup.sh
+1. $ cd gitInstallScripts
+2. $ chmod 777 windowSetup.sh
+3. $ ./windowSetup.sh
 
 **3. On your Linux board, change your execution permissions to run the project.**
 
