@@ -19,3 +19,6 @@
 [submodule "racecar_ws/src/ADI-Navigation"]
 	path = racecar_ws/src/ADI-Navigation
 	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/ADI-Navigation.git
+[submodule "racecar_ws/src/ADI-IMU"]
+	path = racecar_ws/src/ADI-IMU
+	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/ADI-IMU.git
