@@ -13,7 +13,7 @@ Make sure you have the following installed and configured before proceding
 - - -
 ### How to install
 
-**1. First clone the git repository with its submodules (ROS Nodes) to your local computer machine**
+**1. First clone the git repository with its submodules (ROS Nodes) to your local computer machine. Make sure you are on ADILAN network**
 
 $ git clone --recurse-submodules git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/racecar_ws.git
 
