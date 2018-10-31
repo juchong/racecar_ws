@@ -29,4 +29,3 @@
 [submodule "racecar_ws/src/ADI-IMU"]
 	path = racecar_ws/src/ADI-IMU
 	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/ADI-IMU.git
-	branch = master
