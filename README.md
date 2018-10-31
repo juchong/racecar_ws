@@ -8,7 +8,7 @@ Main repository for setting up our ADI Autonomous Vehicles project. Runs on ROS 
 Make sure you have the following installed and configured before proceding
 - Git on both machines (Both need to be configured as the same user)
 - ROS Kinetic for your board
-- Shared SHH keys between both machines 
+- Shared SHH keys between both machines
 
 - - -
 ### How to install
@@ -98,3 +98,9 @@ The project makes use of certain nodes which can be found in the /src folder.
 ##### ADI-Navigation
 
 - ROS Node for generating Map costs.
+
+- - -
+### To update submodule to latest branch:
+
+git pull --recurse-submodules
+git submodule update --remote --recursive
