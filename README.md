@@ -13,7 +13,7 @@ Make sure you have the following installed and configured before proceding
 - - -
 ### How to install
 
-**1. First clone the git repository with its submodules (ROS Nodes) to your local computer machine. Make sure you are on ADILAN network**
+**1. First clone the git repository with its submodules (ROS Nodes) to your local computer machine. Make sure you are on the ADILAN network.**
 
 $ git clone --recurse-submodules git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/racecar_ws.git
 
@@ -21,7 +21,7 @@ $ git clone --recurse-submodules git@gitlab.analog.com:ATS_Technology_Group/ROS_
 
 On the Linux board:
 1. $ cd ~
-2. $ mkdir <repo>
+2. $ mkdir <repo can be any name>
 3. $ cd <repo>
 4. $ git init
 5. $ git config receive.denyCurrentBranch 'warn'
@@ -45,11 +45,12 @@ On your local computer
 
 **3. On your Linux board, change your execution permissions to run the project.**
 
-1. $ git submodule foreach git checkout master
-2. $ cd gitInstallScripts
-3. $ ./tempForkedRepoInstall.sh
-3. $ chmod 777
-4. $ ./start.sh*
+1. $ cd ..
+2. git submodule foreach git checkout master
+3. $ cd gitInstallScripts
+4. $ ./tempForkedRepoInstall.sh
+5. $ chmod 777
+6. $ ./start.sh
 
 ###### Note: You should only have to install once. If your install is complete, you will only need to run ./start.sh to run the script.
 
