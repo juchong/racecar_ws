@@ -3,19 +3,29 @@ cd ..
 echo "Enter the IP number for the board. Format <xx.xx.xxx.xx>"
 read IPnumber
 echo $IPnumber
+echo "Enter then name of the repo on your board"
+read racecar
+echo $racecar
 cd racecar_ws/src/ADI-HLDS-lidar
-git remote add rosnode ssh://nvidia@$IPnumber/home/nvidia/racecar_ws/racecar_ws/src/ADI-HLDS-lidar
+git remote rm rosnode
+git remote add rosnode ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/ADI-HLDS-lidar
 cd ../ADI-Navigation
-git remote add rosnode ssh://nvidia@$IPnumber/home/nvidia/racecar_ws/racecar_ws/src/ADI-Navigation
+git remote rm rosnode
+git remote add rosnode ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/ADI-Navigation
 cd ../ADI-SLAM
-git remote add rosnode ssh://nvidia@$IPnumber/home/nvidia/racecar_ws/racecar_ws/src/ADI-SLAM
+git remote rm rosnode
+git remote add rosnode ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/ADI-SLAM
 cd ../ADI-ToF
-git remote add rosnode ssh://nvidia@$IPnumber/home/nvidia/racecar_ws/racecar_ws/src/ADI-ToF
+git remote rm rosnode
+git remote add rosnode ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/ADI-ToF
 cd ../ADI-usb_cam
-git remote add rosnode ssh://nvidia@$IPnumber/home/nvidia/racecar_ws/racecar_ws/src/ADI-usb_cam
+git remote rm rosnode
+git remote add rosnode ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/ADI-usb_cam
 cd ../ADI-vesc
-git remote add rosnode ssh://nvidia@$IPnumber/home/nvidia/racecar_ws/racecar_ws/src/ADI-vesc
+git remote rm rosnode
+git remote add rosnode ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/ADI-vesc
 cd ../racecar
-git remote add rosnode ssh://nvidia@$IPnumber/home/nvidia/racecar_ws/racecar_ws/src/racecar
+git remote rm rosnode
+git remote add rosnode ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/racecar
 cd ../../..
 git submodule foreach git push rosnode master
