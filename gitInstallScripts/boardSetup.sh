@@ -1,4 +1,4 @@
-cd .. 
+cd ..
 git branch
 git checkout master
 cd racecar_ws/src
@@ -18,6 +18,9 @@ cd ADI-SLAM
 git init
 cd ..
 cd ADI-vesc
+git init
+cd ..
+cd ADI-IMU
 git init
 cd ..
 cd racecar
