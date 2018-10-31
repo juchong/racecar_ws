@@ -13,7 +13,7 @@ Make sure you have the following installed and configured before proceding
 - - -
 ### How to install
 
-**1. First clone the git repository with its submodules (ROS Nodes) to your windows machine**
+**1. First clone the git repository with its submodules (ROS Nodes) to your local computer machine**
 
 $ git clone --recurse-submodules git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/racecar_ws.git
 
@@ -26,7 +26,7 @@ On the Linux board:
 4. $ git init
 5. $ git config receive.denyCurrentBranch 'warn'
 
-On Windows, in git bash:
+On your local computer, in git bash:
 1. $ cd <cloned repo>
 2. $ git remote add jetson ssh://nvidia@<jetson's_ip_address>:22/home/<jetson_user>/<repo>
 3. $ git push jetson master
@@ -38,10 +38,10 @@ Then on the Linux board in the same repo:
 4. $ chmod 777 boardSetup.sh
 5. $ ./boardSetup.sh
 
-On windows
+On your local computer
 1. $ cd gitInstallScripts
-2. $ chmod 777 windowSetup.sh
-3. $ ./windowSetup.sh
+2. $ chmod 777 computerSetup.sh
+3. $ ./computerSetup.sh
 
 **3. On your Linux board, change your execution permissions to run the project.**
 
