@@ -1,43 +1,45 @@
-# ADI Racecar
+# ADI Autonomous Vehicle Racecar
 
-Main repository for setting up our ADI Autonomous Vehicles project. Runs on ROS Kinetic, uses the Nvidia Jetson Tx2 board, and a few sensors to preform simultaneous localization and mapping and data gathering.
+Main repository for setting up our ADI Autonomous Vehicles project. Runs on ROS Kinetic, uses the Nvidia Jetson Tx2 board, and sensors to preform simultaneous localization and mapping and data gathering. See the nodes section below for additonal details on the sensors being used.
 
 - - -
-### How to install and run
+### Prerequisites
 
-Make sure you have the following installed before proceding
-- git
-- ROS Kinetic
+Make sure you have the following installed and configured before proceding
+- Git on both machines (Both need to be configured as the same user)
+- ROS Kinetic for your board
+- Shared SHH keys between both machines 
 
-###### Note: Make sure you have git configured to gitlab before installing.
+- - -
+### How to install
 
 **1. First clone the git repository with its submodules (ROS Nodes)**
 
-*$ git clone --recurse-submodules git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/racecar_ws.git*
+$ git clone --recurse-submodules git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/racecar_ws.git
 
 **2. If your on a windows machine, setup a remote repo to Nvidia Jetson Tx2 board. Make sure to push all your updates.**
 
 On the Linux board:
-1. cd ~
-2. mkdir <repo>
-3. cd <repo>
-4. git init
-5. git config receive.denyCurrentBranch 'warn'
+1. $ cd ~
+2. $ mkdir <repo>
+3. $ cd <repo>
+4. $ git init
+5. $ git config receive.denyCurrentBranch 'warn'
 
 On Windows, in git bash:
-1. cd <cloned repo>
-2. git remote add jetson ssh://nvidia@<jetson's_ip_address>:22/home/<jetson_user>/<repo>
-3. git push jetson master
+1. $ cd <cloned repo>
+2. $ git remote add jetson ssh://nvidia@<jetson's_ip_address>:22/home/<jetson_user>/<repo>
+3. $ git push jetson master
 
 Then on the Linux board in the same repo:
-1. git branch
-2. git checkout master
-3. chmod 777 boardSetup.sh
-4. ./boardSetup.sh
+1. $ git branch
+2. $ git checkout master
+3. $ chmod 777 boardSetup.sh
+4. $ ./boardSetup.sh
 
 On windows
-1. chmod 777 windowSetup.sh
-2. ./windowSetup.sh
+1. $ chmod 777 windowSetup.sh
+2. $ ./windowSetup.sh
 
 **3. On your Linux board, change your execution permissions to run the project.**
 
