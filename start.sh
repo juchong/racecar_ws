@@ -5,4 +5,4 @@ cd racecar_ws
 catkin_make
 source devel/setup.bash
 cd src
-roslaunch shubsub shubsub.launch
+roslaunch adi_tof_kinetic adi_tof_kinetic.launch
