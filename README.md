@@ -57,6 +57,12 @@ On your local computer
 It will download all the updated nodes you will need for the project
 
 - - -
+### To update submodule to latest branch:
+
+$ git submodule update --remote --merge
+
+- - -
+
 ### Nodes
 
 The project uses ROS (Robotic Operating System) version Kinetic. Please make sure you have ROS Kinetic Full Desktop Xenial Installed before running the project.
@@ -98,9 +104,3 @@ The project makes use of certain nodes which can be found in the /src folder.
 ##### adi_navigation_kinetic
 
 - ROS Node for generating Map costs.
-
-- - -
-### To update submodule to latest branch:
-
-git pull --recurse-submodules
-git submodule update --remote --recursive
