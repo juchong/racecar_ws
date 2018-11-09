@@ -11,13 +11,13 @@ read submodule
 echo $submodule
 cd racecar_ws/src/ADI-HLDS-lidar
 git remote rm $submodule
-git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_hldsLidar_kinetic
+git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_lidar_kinetic
 cd ../ADI-Navigation
 git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_navigation_kinetic
 cd ../ADI-SLAM
 git remote rm $submodule
-git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_SLAM_kinetic
+git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_slam_gmapping_kinetic
 cd ../ADI-ToF
 git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_tof_kinetic
@@ -26,7 +26,7 @@ git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_usb_cam_kinetic
 cd ../ADI-IMU
 git remote rm $submodule
-git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_IMU_kinetic
+git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_imu_kinetic
 cd ../ADI-vesc
 git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_vesc_kinetic

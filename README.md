@@ -63,21 +63,21 @@ The project uses ROS (Robotic Operating System) version Kinetic. Please make sur
 
 The project makes use of certain nodes which can be found in the /src folder.
 
-##### adi_usb_cam_kinetic 
+##### adi_usb_cam_kinetic
 
 - Runs USB Camera ROS Node that interfaces with standard USB cameras.
 - For reference, we used Microsoft LifeCam HD-3000 in our project.
 - Our repository contains a modified launch file configured to run with ADI-Racecar.
 - Check out the original forked node Kinetic version: http://wiki.ros.org/usb_cam
 
-##### adi_hldsLidar_kinetic
+##### adi_lidar_kinetic
 
 - Modified ROS Lidar node that interfaces with a 360 Laser Distance Sensor (2d scanner). Used for mapping the area for global and local cost maps in SLAM gmapping.
 - For reference, we used 'HLS-LFCD-LDS' in our project. Note that this node will only work with the 'HLS-LFCD-LDS' sensor.
 - Our repository contains modified launch files configured to run with ADI-Racecar.
 - Check out the original forked node Kinetic version: http://wiki.ros.org/hls_lfcd_lds_driver
 
-##### adi_vesc_kinetic 
+##### adi_vesc_kinetic
 
 - Runs Driver ROS Node that interfaces with the vehicle motors.
 
@@ -87,7 +87,7 @@ The project makes use of certain nodes which can be found in the /src folder.
 - For reference, we used Pico Zense model DCAM100.
 - Our repository contains a modified launch file configured to run with ADI-Racecar.
 
-##### adi_SLAM_kinetic 
+##### adi_slam_gmapping_kinetic
 
 - ROS Node for implementing SLAM gmapping
 

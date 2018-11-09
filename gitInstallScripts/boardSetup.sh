@@ -2,7 +2,7 @@ cd ..
 git branch
 git checkout master
 cd racecar_ws/src
-cd adi_hldsLidar_kinetic
+cd adi_lidar_kinetic
 git init
 cd ..
 cd adi_navigation_kinetic
@@ -14,13 +14,13 @@ cd ..
 cd adi_usb_cam_kinetic
 git init
 cd ..
-cd adi_SLAM_kinetic
+cd adi_slam_gmapping_kinetic
 git init
 cd ..
 cd adi_vesc_kinetic
 git init
 cd ..
-cd adi_IMU_kinetic
+cd adi_imu_kinetic
 git init
 cd ..
 cd racecar
