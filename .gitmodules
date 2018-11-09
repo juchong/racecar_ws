@@ -10,9 +10,6 @@
 [submodule "racecar_ws/src/adi_tof_kinetic"]
 	path = racecar_ws/src/adi_tof_kinetic
 	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/adi_tof_kinetic.git
-[submodule "racecar_ws/src/adi_imu_kinetic"]
-	path = racecar_ws/src/adi_imu_kinetic
-	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/adi_imu_kinetic.git
 [submodule "racecar_ws/src/adi_slam_gmapping_kinetic"]
 	path = racecar_ws/src/adi_slam_gmapping_kinetic
 	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/adi_slam_gmapping_kinetic.git
