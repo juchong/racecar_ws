@@ -29,3 +29,4 @@
 [submodule "racecar_ws/src/adi_IMU_kinetic"]
 	path = racecar_ws/src/adi_IMU_kinetic
 	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/adi_IMU_kinetic.git
+	branch = master
