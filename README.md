@@ -57,14 +57,17 @@ On your local computer
 It will download all the updated nodes you will need for the project
 
 - - -
+
 ### To update submodules to their latest commit on your local machine:
 
 $ git submodule update --remote --merge
 
-
 ### To update submodules on gitlab:
-git submodule sync --recursive
-git submodule update --recursive --remote
+- $ git submodule sync --recursive
+- $ git submodule update --recursive --remote
+- $ git add .
+- $ git commit -m "updated submodules"
+- $ git push -u origin master
 
 - - -
 
