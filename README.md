@@ -63,8 +63,8 @@ $ git submodule update --remote --merge
 
 
 ### To update submodules on gitlab:
-- git submodule sync --recursive
-- git submodule update --init --recursive
+git submodule sync --recursive
+git submodule update --recursive --remote
 
 - - -
 
