@@ -20,7 +20,7 @@ cd ..
 cd adi_vesc_kinetic
 git init
 cd ..
-cd adi_imu_kinetic
+cd adi_driver
 git init
 cd ..
 cd racecar
