@@ -9,25 +9,22 @@ echo $racecar
 echo "Enter a name of your remote for all the submodules"
 read submodule
 echo $submodule
-cd racecar_ws/src/ADI-HLDS-lidar
+cd racecar_ws/src/adi_lidar_kinetic
 git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_lidar_kinetic
-cd ../ADI-Navigation
-git remote rm $submodule
-git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_navigation_kinetic
-cd ../ADI-SLAM
+cd ../adi_slam_gmapping_kinetic
 git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_slam_gmapping_kinetic
-cd ../ADI-ToF
+cd ../adi_tof_kinetic
 git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_tof_kinetic
-cd ../ADI-usb_cam
+cd ../adi_usb_cam_kinetic
 git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_usb_cam_kinetic
-cd ../ADI-IMU
+cd ../adi_driver
 git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_driver
-cd ../ADI-vesc
+cd ../adi_vesc_kinetic
 git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_vesc_kinetic
 cd ../racecar
