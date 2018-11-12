@@ -16,9 +16,9 @@ cd ..
 mv usb_cam/* .
 rm -R -f usb_cam
 echo "Installing Analog Devices IMU driver"
-cd ../adi_imu_kinetic
+cd ../adi_driver
 git clone https://github.com/tork-a/adi_driver.git
-cd adi_imu_kinetic
+cd adi_driver
 rm -R launch
 cd ..
 mv adi_driver/* .
