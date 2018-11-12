@@ -109,6 +109,6 @@ The project makes use of certain nodes which can be found in the /src folder.
 
 - ROS Kinetic Node for teleop code. Controls all Teleoperations for the vehicle.
 
-##### adi_navigation_kinetic
+##### adi_driver
 
-- ROS Node for generating Map costs.
+- ROS Package for ADI Sensor's.
