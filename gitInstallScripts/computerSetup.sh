@@ -26,7 +26,7 @@ git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_usb_cam_kinetic
 cd ../ADI-IMU
 git remote rm $submodule
-git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_imu_kinetic
+git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_driver
 cd ../ADI-vesc
 git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/home/nvidia/$racecar/racecar_ws/src/adi_vesc_kinetic
