@@ -5,9 +5,6 @@ cd racecar_ws/src
 cd adi_lidar_kinetic
 git init
 cd ..
-cd adi_navigation_kinetic
-git init
-cd ..
 cd adi_tof_kinetic
 git init
 cd ..
