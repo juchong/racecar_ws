@@ -6,8 +6,8 @@ Main repository for setting up our ADI Autonomous Vehicles project. Runs on ROS 
 ### Prerequisites
 
 Make sure you have the following installed and configured before proceding
-- Git on both machines (Both need to be configured as the same user)
-- ROS Kinetic for your board
+- Git on both machines (Both need to be configured as the same user) (https://git-scm.com/downloads)
+- ROS Kinetic Desktop Full Version on Nvidia Jetson board (https://wiki.ros.org/kinetic/Installation/Ubuntu#Installation.2BAC8-Ubuntu.2BAC8-Sources.Configure_your_Ubuntu_repositories)
 - Shared SHH keys between both machines
 
 - - -
