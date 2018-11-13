@@ -16,9 +16,6 @@
 [submodule "racecar_ws/src/racecar"]
 	path = racecar_ws/src/racecar
 	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/racecar.git
-[submodule "racecar_ws/src/adi_navigation_kinetic"]
-	path = racecar_ws/src/adi_navigation_kinetic
-	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/adi_navigation_kinetic.git
-[submodule "racecar_ws/src/adi_imu_kinetic"]
-	path = racecar_ws/src/adi_imu_kinetic
-	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/adi_imu_kinetic.git
+[submodule "racecar_ws/src/adi_driver"]
+	path = racecar_ws/src/adi_driver
+	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/adi_driver.git
