@@ -21,8 +21,8 @@ $ git clone --recurse-submodules git@gitlab.analog.com:ATS_Technology_Group/ROS_
 
 On the Linux board:
 1. $ cd ~
-2. $ mkdir <repo can be any name>
-3. $ cd <repo>
+2. $ mkdir (repo can be any name)
+3. $ cd (repo just made)
 4. $ git init
 5. $ git config receive.denyCurrentBranch 'warn'
 
