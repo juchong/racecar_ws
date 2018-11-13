@@ -6,9 +6,9 @@ Main repository for setting up our ADI Autonomous Vehicles project. Runs on ROS 
 ### Prerequisites
 
 Make sure you have the following installed and configured before proceding
-- Git on both machines (Both need to be configured as the same user)
-- ROS Kinetic for your board
-- Shared SHH keys between both machines
+- Git on both machines (Both need to be configured as the same user) (https://git-scm.com/downloads)
+- ROS Kinetic Desktop Full Version on Nvidia Jetson board (https://wiki.ros.org/kinetic/Installation/Ubuntu#Installation.2BAC8-Ubuntu.2BAC8-Sources.Configure_your_Ubuntu_repositories)
+- Shared SHH keys between local machine and gitlab (https://docs.gitlab.com/ee/ssh/)
 
 - - -
 ### How to install
@@ -21,14 +21,20 @@ $ git clone --recurse-submodules git@gitlab.analog.com:ATS_Technology_Group/ROS_
 
 On the Linux board:
 1. $ cd ~
-2. $ mkdir <repo can be any name>
-3. $ cd <repo>
+2. $ mkdir (repo can be any name)
+3. $ cd (made directory)
 4. $ git init
 5. $ git config receive.denyCurrentBranch 'warn'
 
 On your local computer, in git bash:
-1. $ cd <cloned repo>
+1. $ cd (cloned repo)
+
+** Do not copy and paste, make sure you fill jetson's_ip_address before entering **
+
 2. $ git remote add jetson ssh://nvidia@<jetson's_ip_address>:22/home/<jetson_user>/<repo>
+
+** Make sure both machines are on the same network**
+
 3. $ git push jetson master
 
 Then on the Linux board in the same repo:
