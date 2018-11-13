@@ -28,6 +28,7 @@ On the Linux board:
 
 On your local computer, in git bash:
 1. $ cd (cloned repo)
+** Do not copy and paste, make sure you fill jetson's_ip_address before you enter **
 2. $ git remote add jetson ssh://nvidia@<jetson's_ip_address>:22/home/<jetson_user>/<repo>
 3. $ git push jetson master
 
