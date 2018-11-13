@@ -22,12 +22,12 @@ $ git clone --recurse-submodules git@gitlab.analog.com:ATS_Technology_Group/ROS_
 On the Linux board:
 1. $ cd ~
 2. $ mkdir (repo can be any name)
-3. $ cd (repo just made)
+3. $ cd (made directory)
 4. $ git init
 5. $ git config receive.denyCurrentBranch 'warn'
 
 On your local computer, in git bash:
-1. $ cd <cloned repo>
+1. $ cd (cloned repo)
 2. $ git remote add jetson ssh://nvidia@<jetson's_ip_address>:22/home/<jetson_user>/<repo>
 3. $ git push jetson master
 
