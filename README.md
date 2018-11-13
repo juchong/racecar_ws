@@ -69,6 +69,8 @@ $ git submodule update --remote --merge
 - $ git commit -m "updated submodules"
 - $ git push -u origin master
 
+To learn more about submodules (add, update, remove), please check out this blog. https://chrisjean.com/git-submodules-adding-using-removing-and-updating/
+
 - - -
 
 ### Nodes
