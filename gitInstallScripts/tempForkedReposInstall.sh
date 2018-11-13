@@ -1,14 +1,6 @@
 #!/bin/bash
-echo "Installing lidar driver"
-cd ../racecar_ws/src/adi_lidar_kinetic
-git clone https://github.com/ROBOTIS-GIT/hls_lfcd_lds_driver.git
-cd hls_lfcd_lds_driver
-rm -R launch
-cd ..
-mv hls_lfcd_lds_driver/* .
-rm -R -f hls_lfcd_lds_driver
 echo "Installing usb cam driver"
-cd ../adi_usb_cam_kinetic
+cd ../racecar_ws/src/adi_usb_cam_kinetic
 git clone https://github.com/ros-drivers/usb_cam.git
 cd usb_cam
 rm -R launch
