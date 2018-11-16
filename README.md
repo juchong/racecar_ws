@@ -31,7 +31,7 @@ On your local computer, in git bash:
 
 ** Do not copy and paste, make sure you fill jetson's_ip_address before entering **
 
-2. $ git remote add jetson ssh://nvidia@<jetson's_ip_address>:22/home/<jetson_user>/<repo>
+2. $ git remote add jetson ssh://nvidia@<jetson's_ip_address>:22/home/**(jetson_user)**/**(repo directory)**
 
 ** Make sure both machines are on the same network**
 
