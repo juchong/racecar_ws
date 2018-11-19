@@ -38,7 +38,7 @@ On your local computer, in git bash:
 3. $ git push jetson master
 
 Then on the Linux board in the same repo:
-1. $ git branch
+1. $ git branch (confirm that you have master branch)
 2. $ git checkout master
 3. $ cd gitInstallScripts
 4. $ chmod 777 boardSetup.sh
