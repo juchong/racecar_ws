@@ -15,5 +15,6 @@ rm -R launch
 cd ..
 mv adi_driver/* .
 rm -R -f adi_driver
+sudo apt-get install ros-kinetic-adi-driver
 echo "Install Complete"
 cd ../../..
