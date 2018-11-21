@@ -1,4 +1,4 @@
-Hi, this is a test
+Hi, this is a network test
 
 # ADI Autonomous Vehicle Racecar
 
