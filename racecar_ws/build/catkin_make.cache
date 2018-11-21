@@ -1,2 +1,0 @@
-adi_driver:adi_lidar_kinetic:adi_slam_gmapping_kinetic/gmapping:adi_slam_gmapping_kinetic/slam_gmapping:adi_tof_kinetic:adi_usb_cam_kinetic:adi_vesc_kinetic/vesc:adi_vesc_kinetic/vesc_ackermann:adi_vesc_kinetic/vesc_driver:adi_vesc_kinetic/vesc_msgs:racecar/racecar
--DCATKIN_DEVEL_PREFIX=/home/nvidia/main_ws/racecar_ws/devel -DCMAKE_INSTALL_PREFIX=/home/nvidia/main_ws/racecar_ws/install -G Unix Makefiles
