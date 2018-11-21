@@ -1,3 +1,5 @@
+Hi, this is a test
+
 # ADI Autonomous Vehicle Racecar
 
 Main repository for setting up our ADI Autonomous Vehicles project. Runs on ROS Kinetic, uses the Nvidia Jetson Tx2 board, and sensors to preform simultaneous localization and mapping and data gathering. See the nodes section below for additonal details on the sensors being used.
