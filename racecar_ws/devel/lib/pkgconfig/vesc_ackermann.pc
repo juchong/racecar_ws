@@ -1,0 +1,8 @@
+prefix=/home/nvidia/main_ws/racecar_ws/devel
+
+Name: vesc_ackermann
+Description: Description of vesc_ackermann
+Version: 0.0.1
+Cflags: -I/home/nvidia/main_ws/racecar_ws/src/adi_vesc_kinetic/vesc_ackermann/include
+Libs: -L/home/nvidia/main_ws/racecar_ws/devel/lib 
+Requires: nodelet pluginlib roscpp nav_msgs std_msgs geometry_msgs tf ackermann_msgs vesc_msgs

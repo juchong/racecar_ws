@@ -1,0 +1,8 @@
+prefix=/home/nvidia/main_ws/racecar_ws/devel
+
+Name: gmapping
+Description: Description of gmapping
+Version: 1.3.10
+Cflags: 
+Libs: -L/home/nvidia/main_ws/racecar_ws/devel/lib 
+Requires: 

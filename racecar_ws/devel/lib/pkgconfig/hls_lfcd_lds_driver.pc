@@ -1,0 +1,8 @@
+prefix=/home/nvidia/main_ws/racecar_ws/devel
+
+Name: hls_lfcd_lds_driver
+Description: Description of hls_lfcd_lds_driver
+Version: 1.0.0
+Cflags: -I/home/nvidia/main_ws/racecar_ws/src/adi_lidar_kinetic/include -I/usr/include
+Libs: -L/home/nvidia/main_ws/racecar_ws/devel/lib 
+Requires: roscpp std_msgs sensor_msgs tf geometry_msgs
