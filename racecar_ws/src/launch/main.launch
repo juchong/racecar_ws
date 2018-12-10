@@ -7,6 +7,19 @@
     
   </include>
 
+  <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+    <param name="video_device" value="/dev/video1" />
+    <param name="image_width" value="640" />
+    <param name="image_height" value="480" />
+    <param name="pixel_format" value="yuyv" />
+    <param name="camera_frame_id" value="usb_cam" />
+    <param name="io_method" value="mmap"/>
+  </node>
+  <node name="image_view" pkg="image_view" type="image_view" respawn="false" output="screen">
+    <remap from="image" to="/usb_cam/image_raw"/>
+    <param name="autosize" value="true" />
+  </node>
+
 <!-- Starting LaserScan Node -->
   <include file="$(find hls_lfcd_lds_driver)/launch/hlds_laser.launch" />
    <include file="$(find adi_driver)/launch/adis16470.launch"/>
@@ -48,5 +61,5 @@
 <node name="listener"  pkg="vesc_ackermann" type="odom_node"/>
 <node name="imulistener"  pkg="vesc_ackermann" type="imu_node"/>
 <node name="Angle"  pkg="vesc_ackermann" type="angle_node" output="screen"/>
-
+<node name="rvizMap" pkg="rviz" type="rviz" args="-d $(find launch)/main.rviz" />
 </launch>
