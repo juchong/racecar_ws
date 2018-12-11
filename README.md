@@ -1,25 +1,27 @@
-# ADI Autonomous Vehicle Racecar
+# ADI Autonomous Vehicle Project
 
-Main repository for setting up our ADI Autonomous Vehicles project. Runs on ROS Kinetic, uses the Nvidia Jetson Tx2 board, and sensors to preform simultaneous localization and mapping and data gathering. See the nodes section below for additonal details on the sensors being used.
-
-See confluence for git workflow: https://confluence.analog.com/pages/viewpage.action?pageId=65483562
-
+Racecar (Rapid Autonomous Complex-Environment Competing Ackermann-steering Robot) Workspace is the main repository for running the ADI Autonomous Vehicles project code. The vehicle model uses a NVIDIA Jetson Tx2 board computer attached to a R/C Car and various ADI sensors. 
 - - -
 ### Prerequisites
 
-Make sure you have the following installed and configured before proceding
-- Git on both machines (Both need to be configured as the same user) (https://git-scm.com/downloads)
-- ROS Kinetic Desktop Full Version on Nvidia Jetson board (https://wiki.ros.org/kinetic/Installation/Ubuntu#Installation.2BAC8-Ubuntu.2BAC8-Sources.Configure_your_Ubuntu_repositories)
+Make sure you have the following tools installed
+- Git on both your board and computer (Both need to be configured as the same user) (https://git-scm.com/downloads)
+- Git Bash terminal (MINW64 recommended) on the computer
+- ROS Kinetic Desktop Full Version on the NVIDIA board (https://wiki.ros.org/kinetic/Installation/Ubuntu#Installation.2BAC8-Ubuntu.2BAC8-Sources.Configure_your_Ubuntu_repositories)
 - Shared SHH keys between local machine and gitlab (https://docs.gitlab.com/ee/ssh/)
+
+See confluence for git workflow or additional details: https://confluence.analog.com/pages/viewpage.action?pageId=65483562
 
 - - -
 ### How to install
 
-**1. First clone the git repository with its submodules (ROS Nodes) to your local computer machine. Make sure you are on the ADILAN network.**
+**1. On your computer from Git Bash (MINGW64), clone the git repo using this command. This command will clone all ADI Sensor repos in the ROS Project Group linked to this project.**
 
 $ git clone --recurse-submodules git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/racecar_ws.git
 
-**2. Setup a remote repo to Nvidia Jetson Tx2 board. Make sure to push all your updates. This will setup a git repo for the main project as well as your submodules.**
+- Note: Make sure you are on the ADILAN network.
+
+**2. Setup a remote repo to NVIDIA Jetson Tx2 board. Make sure to push all your updates. This will setup a git repo for the main project as well as your submodules.**
 
 On the Linux board:
 1. $ cd ~
