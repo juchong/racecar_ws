@@ -47,13 +47,11 @@ Then on the Linux board in the same repo:
 1. $ git branch (confirm that you have master branch)
 2. $ git checkout master
 3. $ cd gitInstallScripts
-4. $ chmod 777 boardSetup.sh
-5. $ ./boardSetup.sh
+4. $ ./boardSetup.sh
 
 On your local computer
 1. $ cd gitInstallScripts
-2. $ chmod 777 computerSetup.sh
-3. $ ./computerSetup.sh
+2. $ ./computerSetup.sh
 
 **5. On your board, clone the forked repos and then run the project.**
 
@@ -61,8 +59,7 @@ On your local computer
 2. git submodule foreach git checkout master
 3. $ cd gitInstallScripts
 4. $ ./tempForkedRepoInstall.sh
-5. $ chmod 777
-6. $ ./start.sh
+5. $ ./start.sh
 
 ###### Note: You should only have to install once. If your install is complete, you will only need to run ./start.sh to run the script.
 
