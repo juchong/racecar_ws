@@ -35,9 +35,9 @@ On the Linux board:
 
 On your local computer, in git bash:
 1. $ cd racecar_ws
-2. $ git remote add **(remote name)** ssh://**(board_user)**@<boards's_ip_address>:22/home/**(board_user)**/**(repo directory)**
-    - Do not copy and paste, make sure you fill out the information before entering. Note that if you make a mistake in typing the wrong directory, it can be changed in the git config file. **
-    - For example: "git remote add jetson ssh://nvidia@192.0.2.255:22/home/nvidia/racecar" **
+2. $ git remote add **(remote name)** ssh://**(board_user)@<boards's_ip_address>**:22/home/**(board_user)**/**(repo directory)**
+    - Do not copy and paste, make sure you fill out the information before entering. Note that if you make a mistake in typing the wrong directory, it can be changed in the git config file.
+    - For example: ** $ git remote add jetson ssh://nvidia@192.0.2.255:22/home/nvidia/racecar **
 3. $ git push jetson master
     - Note: Make sure your board is wired to the IOT network or same network as your computer if not on ADILAN.
 
