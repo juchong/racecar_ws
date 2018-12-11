@@ -1,6 +1,6 @@
 # ADI Autonomous Vehicle Project
 
-Racecar (Rapid Autonomous Complex-Environment Competing Ackermann-steering Robot) Workspace is the main repository for running the ADI Autonomous Vehicles project code. The vehicle model uses a NVIDIA Jetson Tx2 board computer attached to a R/C Car and various ADI sensors. 
+Racecar (Rapid Autonomous Complex-Environment Competing Ackermann-steering Robot) Workspace is the main repository for running the ADI Autonomous Vehicles project code. The vehicle model uses a NVIDIA Jetson Tx2 board computer attached to a R/C Car and various ADI sensors.
 - - -
 ### Prerequisites
 
@@ -29,7 +29,7 @@ On the Linux board:
 3. $ cd racecar
 4. $ git init
 5. $ git config receive.denyCurrentBranch 'warn'
-    - This configuration is added to enable pushing to non-bare git repositories. 
+    - This configuration is added to enable pushing to non-bare git repositories.
 
 **3. Setup a link to the remote repo on the NVIDIA board from your computer. Make sure to push all your updates. This will setup a git repo for only the main project.**
 
@@ -55,16 +55,13 @@ On your local computer
 
 **5. On your board, clone the forked repos and then run the project.**
 
-1. $ cd ..
-2. git submodule foreach git checkout master
-3. $ cd gitInstallScripts
-4. $ ./tempForkedRepoInstall.sh
-5. $ ./start.sh
+1. $ cd gitInstallScripts
+2. $ ./dependencies.sh
 
-###### Note: You should only have to install once. If your install is complete, you will only need to run ./start.sh to run the script.
+**6. To run the project**
+1. $ ./start.sh
 
-If ./start script doesn't work, 
-
+If ./start script doesn't work,
 - $ cd racecar_ws/src
 - $ catkin_make
 - $ source devel/setup.bash
@@ -109,7 +106,7 @@ The project makes use of certain nodes which can be found in the /src folder.
 
 ##### adi_vesc_kinetic
 
-- Vedder Electronic Speed Controller runs Driver ROS Node that interfaces with the teleoperations and vehicle motors. 
+- Vedder Electronic Speed Controller runs Driver ROS Node that interfaces with the teleoperations and vehicle motors.
 
 ##### adi_tof_kinetic
 

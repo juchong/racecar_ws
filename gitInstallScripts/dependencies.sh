@@ -1,4 +1,5 @@
 #!/bin/bash
+git submodule foreach git checkout master
 echo "Installing usb cam driver"
 cd ../racecar_ws/src/adi_usb_cam_kinetic
 git clone https://github.com/ros-drivers/usb_cam.git
@@ -15,5 +16,7 @@ rm -R launch
 cd ..
 mv adi_driver/* .
 rm -R -f adi_driver
-echo "Install Complete"
 cd ../../..
+sudo apt-get -y install \
+    ros-kinetic-camera-info-manager ros-kinetic-image-transport
+echo "Install Complete"
