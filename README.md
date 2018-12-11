@@ -21,31 +21,29 @@ $ git clone --recurse-submodules git@gitlab.analog.com:ATS_Technology_Group/ROS_
 
 - Note: Make sure you are on the ADILAN network.
 
-**2. On your board, create a new directory for where you want to the project to be clone in.**
+**2. On your board, create a new directory for where you want to the project to be clone in. In this example we use racecar**
 
 On the Linux board:
 1. $ cd ~
-2. $ mkdir (repo can be any name)
-3. $ cd (made directory)
+2. $ mkdir racecar
+3. $ cd racecar
 4. $ git init
 5. $ git config receive.denyCurrentBranch 'warn'
     - This configuration is added to enable pushing to non-bare git repositories. 
 
-**3. Setup a remote repo to the NVIDIA board from your computer. Make sure to push all your updates. This will setup a git repo for the main project as well as your submodules.**
+**3. Setup a link to the remote repo on the NVIDIA board from your computer. Make sure to push all your updates. This will setup a git repo for only the main project.**
 
 On your local computer, in git bash:
-1. $ cd (cloned repo)
+1. $ cd racecar_ws
 
-- Do not copy and paste, make sure you fill jetson's_ip_address before entering **
-
-2. $ git remote add jetson ssh://nvidia@<jetson's_ip_address>:22/home/**(jetson_user)**/**(repo directory)**
-
-** Make sure both machines are on the same network**
+2. $ git remote add **(remote name)** ssh://**(board_user)**@<boards's_ip_address>:22/home/**(board_user)**/**(repo directory)**
+- Do not copy and paste, make sure you fill out the information before entering. Note that if you make a mistake in typing the wrong directory, it can be changed in the git config file. **
+- For example: "git remote add jetson ssh://nvidia@192.0.2.255:22/home/nvidia/racecar" **
 
 3. $ git push jetson master
+- Note: Make sure your board is wired to the IOT network or same network as your computer if not on ADILAN.
 
-
-**3. Setup a remote repo to the NVIDIA board from your computer. Make sure to push all your updates. This will setup a git repo for the main project as well as your submodules.**
+**4. Now setup remote repo links for all the ADI sensor repos from the computer to the NVIDIA board. This will setup the git repos for the sensors.**
 Then on the Linux board in the same repo:
 1. $ git branch (confirm that you have master branch)
 2. $ git checkout master
@@ -58,7 +56,7 @@ On your local computer
 2. $ chmod 777 computerSetup.sh
 3. $ ./computerSetup.sh
 
-**4. On your Linux board, change your execution permissions to run the project.**
+**5. On your board, clone the forked repos and then run the project.**
 
 1. $ cd ..
 2. git submodule foreach git checkout master
@@ -69,7 +67,12 @@ On your local computer
 
 ###### Note: You should only have to install once. If your install is complete, you will only need to run ./start.sh to run the script.
 
-It will download all the updated nodes you will need for the project
+If ./start script doesn't work, 
+
+- $ cd racecar_ws/src
+- $ catkin_make
+- $ source devel/setup.bash
+- $ roslaunch launch main.launch
 
 - - -
 
@@ -110,17 +113,16 @@ The project makes use of certain nodes which can be found in the /src folder.
 
 ##### adi_vesc_kinetic
 
-- Runs Driver ROS Node that interfaces with the vehicle motors.
+- Vedder Electronic Speed Controller runs Driver ROS Node that interfaces with the teleoperations and vehicle motors. 
 
 ##### adi_tof_kinetic
 
 - ROS Node that runs Time of Flight camera sensor.
 - For reference, we used Pico Zense model DCAM100.
-- Our repository contains a modified launch file configured to run with ADI-Racecar.
 
 ##### adi_slam_gmapping_kinetic
 
-- ROS Node for implementing SLAM gmapping
+- ROS Node for implementing SLAM gmapping.
 
 ##### racecar
 
@@ -128,4 +130,4 @@ The project makes use of certain nodes which can be found in the /src folder.
 
 ##### adi_driver
 
-- ROS Package for ADI Sensor's.
+- ROS Package for ADI IMU (inertial measurement unit).
