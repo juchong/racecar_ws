@@ -14,22 +14,16 @@ cd racecar_ws/src/adi_lidar_kinetic
 #git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/$racecar/racecar_ws/src/adi_lidar_kinetic
 cd ../adi_slam_gmapping_kinetic
-#git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/$racecar/racecar_ws/src/adi_slam_gmapping_kinetic
 cd ../adi_tof_kinetic
-#git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/$racecar/racecar_ws/src/adi_tof_kinetic
 cd ../adi_usb_cam_kinetic
-#git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/$racecar/racecar_ws/src/adi_usb_cam_kinetic
 cd ../adi_driver
-#git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/$racecar/racecar_ws/src/adi_driver
 cd ../adi_vesc_kinetic
-#git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/$racecar/racecar_ws/src/adi_vesc_kinetic
 cd ../racecar
-#git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/$racecar/racecar_ws/src/racecar
 cd ../../..
 git submodule foreach git push $submodule master
