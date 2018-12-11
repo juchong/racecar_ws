@@ -21,7 +21,7 @@ $ git clone --recurse-submodules git@gitlab.analog.com:ATS_Technology_Group/ROS_
 
 - Note: Make sure you are on the ADILAN network.
 
-**2. Setup a remote repo to NVIDIA Jetson Tx2 board. Make sure to push all your updates. This will setup a git repo for the main project as well as your submodules.**
+**2. On your board, create a new directory for where you want to the project to be clone in.**
 
 On the Linux board:
 1. $ cd ~
@@ -29,11 +29,14 @@ On the Linux board:
 3. $ cd (made directory)
 4. $ git init
 5. $ git config receive.denyCurrentBranch 'warn'
+    - This configuration is added to enable pushing to non-bare git repositories. 
+
+**3. Setup a remote repo to the NVIDIA board from your computer. Make sure to push all your updates. This will setup a git repo for the main project as well as your submodules.**
 
 On your local computer, in git bash:
 1. $ cd (cloned repo)
 
-** Do not copy and paste, make sure you fill jetson's_ip_address before entering **
+- Do not copy and paste, make sure you fill jetson's_ip_address before entering **
 
 2. $ git remote add jetson ssh://nvidia@<jetson's_ip_address>:22/home/**(jetson_user)**/**(repo directory)**
 
@@ -41,6 +44,8 @@ On your local computer, in git bash:
 
 3. $ git push jetson master
 
+
+**3. Setup a remote repo to the NVIDIA board from your computer. Make sure to push all your updates. This will setup a git repo for the main project as well as your submodules.**
 Then on the Linux board in the same repo:
 1. $ git branch (confirm that you have master branch)
 2. $ git checkout master
@@ -53,7 +58,7 @@ On your local computer
 2. $ chmod 777 computerSetup.sh
 3. $ ./computerSetup.sh
 
-**3. On your Linux board, change your execution permissions to run the project.**
+**4. On your Linux board, change your execution permissions to run the project.**
 
 1. $ cd ..
 2. git submodule foreach git checkout master
