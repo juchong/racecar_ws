@@ -42,6 +42,7 @@ On your local computer, in git bash:
     - Note: Make sure your board is wired to the IOT network or same network as your computer if not on ADILAN.
 
 **4. Now setup remote repo links for all the ADI sensor repos from the computer to the NVIDIA board. This will setup the git repos for the sensors.**
+
 Then on the Linux board in the same repo:
 1. $ git branch (confirm that you have master branch)
 2. $ git checkout master
