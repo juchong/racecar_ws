@@ -13,7 +13,6 @@ echo $submodule
 cd racecar_ws/src/adi_lidar_kinetic
 #git remote rm $submodule
 git remote add $submodule ssh://nvidia@$IPnumber/$racecar/racecar_ws/src/adi_lidar_kinetic
-#git remote rm $submodule
 cd ../adi_slam_gmapping_kinetic
 git remote add $submodule ssh://nvidia@$IPnumber/$racecar/racecar_ws/src/adi_slam_gmapping_kinetic
 cd ../adi_tof_kinetic
