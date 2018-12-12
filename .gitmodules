@@ -19,3 +19,6 @@
 [submodule "racecar_ws/src/adi_driver"]
 	path = racecar_ws/src/adi_driver
 	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/adi_driver.git
+[submodule "racecar_ws/src/zed-ros-wrapper"]
+	path = racecar_ws/src/zed-ros-wrapper
+	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/zed-ros-wrapper.git

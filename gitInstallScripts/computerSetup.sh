@@ -23,6 +23,8 @@ cd ../adi_driver
 git remote add $submodule ssh://nvidia@$IPnumber/$racecar/racecar_ws/src/adi_driver
 cd ../adi_vesc_kinetic
 git remote add $submodule ssh://nvidia@$IPnumber/$racecar/racecar_ws/src/adi_vesc_kinetic
+cd ../zed-ros-wrapper
+git remote add $submodule ssh://nvidia@$IPnumber/$racecar/racecar_ws/src/zed-ros-wrapper
 cd ../racecar
 git remote add $submodule ssh://nvidia@$IPnumber/$racecar/racecar_ws/src/racecar
 cd ../../..

@@ -20,6 +20,9 @@ cd ..
 cd adi_driver
 git init
 cd ..
+cd zed-ros-wrapper
+git init
+cd ..
 cd racecar
 git init
 cd ../../..
