@@ -8,6 +8,8 @@ rm -R launch
 cd ..
 mv usb_cam/* .
 rm -R -f usb_cam
+cd ../zed-ros-wrapper
+./ZED_SDK_JTX2_JP3.2_v2.7.1.run
 echo "Installing Analog Devices IMU driver"
 cd ../adi_driver
 git clone https://github.com/tork-a/adi_driver.git
