@@ -14,7 +14,7 @@ chmod 777 ZED_SDK_JTX2_JP3.2_v2.7.1.run
 cd cfg/
 chmod 777 Zed.cfg
 echo "Installing Analog Devices IMU driver"
-cd ../adi_driver
+cd ../../adi_driver
 git clone https://github.com/tork-a/adi_driver.git
 cd adi_driver
 rm -R launch
