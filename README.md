@@ -69,6 +69,35 @@ If ./start script doesn't work,
 
 - - -
 
+### Updating the git repository
+
+After installing, the git setup should look like this.
+
+Gitlab <--> ADI Computer <--> Nvidia Board
+
+Changes should be made only to the board. To edit the submodules, you must be at the submodules directory in order to update changes.
+
+### Updating to git from board
+On the board
+- $ git add (name of file(s) that where changed)
+- $ git commit -m "Message of what you updated"
+
+On ADI Computer
+- $ git pull (name of remote. ex: jetson) master
+- $ git push origin master
+
+
+### Updating to board from git
+On ADI Computer
+- $ git pull origin master
+- $ git push (name of remote. ex: jetson) master:update-master
+
+On the board
+- $ git checkout master
+- $ git merge update-master
+
+- - -
+
 ### To update submodules to their latest commit on your local machine:
 
 $ git submodule update --remote --merge
