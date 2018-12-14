@@ -11,7 +11,8 @@ echo "Enter a name of your remote for all the submodules"
 read submodule
 echo $submodule
 cd racecar_ws/src/adi_lidar_kinetic
-#git remote rm $submodule
+#Command to remove remote submodule on computer
+#git remote rm #submodule
 git remote add $submodule ssh://nvidia@$IPnumber/$racecar/racecar_ws/src/adi_lidar_kinetic
 echo "added lidar submodule"
 cd ../adi_slam_gmapping_kinetic
