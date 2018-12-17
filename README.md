@@ -21,13 +21,13 @@ See confluence for git workflow, video demo, and additional details: https://con
 - - -
 ### How to install
 
-**1. On your computer from Git Bash (MINGW64), clone the git repo using this command. This command will clone all ADI Sensor repos in the ROS Project Group linked to this project.**
+**1. On Git Bash (MINGW64), run this command on your ADI Computer. This Clone command will download all ADI Sensor repos used in this project.**
 
 $ git clone --recurse-submodules git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/racecar_ws.git
 
 - Note: Make sure you are on the ADILAN network.
 
-**2. On your board, create a new directory for where you want to the project to be clone in. In this example we use racecar**
+**2. On your board, create a new directory to store the code base. In this example we use racecar**
 
 On the Linux board:
 1. $ cd ~
@@ -40,12 +40,12 @@ On the Linux board:
 **3. Setup a link to the remote repo on the NVIDIA board from your computer. Make sure to push all your updates. This will setup a git repo for only the main project.**
 
 On your local computer, in git bash:
-1. $ cd racecar_ws
-2. $ git remote add **(remote name)** ssh://**(board_user)@<boards's_ip_address>**:22/home/**(board_user)**/**(repo directory)**
+1. Make sure board and computer are wired to the IOT network or same network. Cannot be ADILAN.
+2. $ cd racecar_ws
+3. $ git remote add **(remote name)** ssh://**(board_user)@<boards's_ip_address>**:22/home/**(board_user)**/**(repo directory)**
     - Do not copy and paste, make sure you fill out the information before entering. Note that if you make a mistake in typing the wrong directory, it can be changed in the git config file.
     - For example: **$ git remote add jetson ssh://nvidia@192.0.2.255:22/home/nvidia/racecar**
-3. $ git push jetson master
-    - Note: Make sure your board is wired to the IOT network or same network as your computer if not on ADILAN.
+4. $ git push jetson master
 
 **4. Now setup remote repo links for all the ADI sensor repos from the computer to the NVIDIA board. This will setup the git repos for the sensors.**
 
