@@ -5,7 +5,12 @@ Main repository for running the ADI Autonomous Vehicles project code. The vehicl
 ### Prerequisites
 
 Make sure you have the following tools installed
-- Git on both your board and computer (Both need to be configured as the same user) (https://git-scm.com/downloads)
+- Git
+    - board and computer
+    - configured for gitlab
+        -git config --global user.name "LAST NAME, FIRST NAME"
+        -git config --global user.email "FIRST NAME.LAST NAME@analog.com"
+    - (https://git-scm.com/downloads)
 - Git Bash terminal (MINW64 recommended) on the computer
 - ROS Kinetic Desktop Full Version on the NVIDIA board (https://wiki.ros.org/kinetic/Installation/Ubuntu#Installation.2BAC8-Ubuntu.2BAC8-Sources.Configure_your_Ubuntu_repositories)
 - Shared SHH keys between local machine and gitlab (https://docs.gitlab.com/ee/ssh/)
