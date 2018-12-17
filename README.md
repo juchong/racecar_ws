@@ -8,7 +8,7 @@ Make sure you have the following tools installed
 - Git
     - Installed on both board and ADI Computer
     - configured for gitlab
-        -$ git config --global user.name "LAST-NAME, FIRST-NAME"
+        -$ git config --global user.name "LAST-NAME, FIRST-NAME" 
         -$ git config --global user.email "FIRST-NAME.LAST-NAME@analog.com"
     - https://git-scm.com/downloads
     - MinTTY terminal must be installed (default)
