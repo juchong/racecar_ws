@@ -1,6 +1,6 @@
 # ADI Autonomous Vehicle Project
 
-Racecar (Rapid Autonomous Complex-Environment Competing Ackermann-steering Robot) Workspace is the main repository for running the ADI Autonomous Vehicles project code. The vehicle model uses a NVIDIA Jetson Tx2 board computer attached to a R/C Car and various ADI sensors.
+Main repository for running the ADI Autonomous Vehicles project code. The vehicle model uses a NVIDIA Jetson Tx2 board computer attached to a R/C Car and various ADI sensors.
 - - -
 ### Prerequisites
 
