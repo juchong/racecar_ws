@@ -101,6 +101,7 @@ On ADI Computer
 On the board
 - $ git checkout master
 - $ git merge update-master
+- Delete update-master branch after merge is complete
 
 - - -
 
