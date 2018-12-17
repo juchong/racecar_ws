@@ -5,7 +5,7 @@ read -r IPnumber
 echo "$IPnumber"
 echo "Enter the directory of your main repo on the board (NO / on begining and end)"
 echo "For example: home/nvidia/racecar"
-read -r racecar
+read racecar
 echo "$racecar"
 echo "Enter a name of your remote for all the submodules"
 read -r submodule
