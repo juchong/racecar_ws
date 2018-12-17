@@ -1,29 +1,30 @@
+#!/bin/bash
 cd ..
 git branch
 git checkout master
-cd racecar_ws/src
-cd adi_lidar_kinetic
+cd racecar_ws/src  || exit
+cd adi_lidar_kinetic  || exit
 git init
 cd ..
-cd adi_tof_kinetic
+cd adi_tof_kinetic  || exit
 git init
 cd ..
-cd adi_usb_cam_kinetic
+cd adi_usb_cam_kinetic  || exit
 git init
 cd ..
-cd adi_slam_gmapping_kinetic
+cd adi_slam_gmapping_kinetic  || exit
 git init
 cd ..
-cd adi_vesc_kinetic
+cd adi_vesc_kinetic  || exit
 git init
 cd ..
-cd adi_driver
+cd adi_driver  || exit
 git init
 cd ..
-cd zed-ros-wrapper
+cd zed-ros-wrapper  || exit
 git init
 cd ..
-cd racecar
+cd racecar  || exit
 git init
-cd ../../..
+cd ../../..  || exit
 git submodule foreach git config receive.denyCurrentBranch 'warn'
