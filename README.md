@@ -16,7 +16,7 @@ Make sure you have the following tools installed
 - Setup SHH keys between local machine and gitlab
     - https://gitlab.analog.com/profile/keys
 
-See confluence for git workflow or additional details: https://confluence.analog.com/pages/viewpage.action?pageId=65483562
+See confluence for git workflow, video demo, and additional details: https://confluence.analog.com/pages/viewpage.action?pageId=65483562
 
 - - -
 ### How to install
