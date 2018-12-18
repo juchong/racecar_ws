@@ -1,0 +1,22 @@
+<!-- -*- mode: XML -*- -->
+<launch>
+
+  <!--include file="$(find zed-ros-wrapper)/zed_wrapper/launch/zed.launch" /-->
+  <include file="$(find zed_wrapper)/launch/zed_camera.launch" />
+  <include file="$(find usb_cam)/launch/usb_cam-test.launch" />
+  <include file="$(find racecar)/launch/includes/racecar-v2-teleop.launch.xml">
+  
+    
+  </include>
+
+<!-- Starting LaserScan Node -->
+  <include file="$(find hls_lfcd_lds_driver)/launch/hlds_laser.launch" />
+   <include file="$(find adi_driver)/launch/adis16470.launch"/>
+
+ 
+
+<node name="listener"  pkg="vesc_ackermann" type="odom_node"/>
+<node name="imulistener"  pkg="vesc_ackermann" type="imu_node"/>
+<node name="Angle"  pkg="vesc_ackermann" type="angle_node" />
+
+</launch>
