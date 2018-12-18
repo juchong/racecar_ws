@@ -26,5 +26,5 @@ chmod 777 install.sh
 ./install.sh
 cd ../../../../..  || exit
 sudo apt-get -y install \
-    ros-kinetic-camera-info-manager ros-kinetic-image-transport
+    ros-kinetic-camera-info-manager ros-kinetic-image-transport libbullet-dev libsdl-image1.2-dev ros-kinetic-geometry2 ros-kinetic-arm-navigation-msgs
 echo "Install Complete"
