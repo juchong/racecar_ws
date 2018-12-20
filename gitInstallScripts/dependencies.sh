@@ -25,7 +25,9 @@ cd ../adi_tof_kinetic/dependencies/PicoZenseSDK_aarch64_linux  || exit
 chmod 777 install.sh
 ./install.sh
 cd ../../../../..  || exit
+echo "Lidar Permission for Sensors"
 sudo chmod a+rw /dev/ttyUSB0
+echo "USB dependencies"
 sudo apt-get -y install \
     ros-kinetic-camera-info-manager ros-kinetic-image-transport libbullet-dev libsdl-image1.2-dev ros-kinetic-geometry2 ros-kinetic-navigation
 echo "Install Complete"
