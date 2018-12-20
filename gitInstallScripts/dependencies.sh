@@ -27,7 +27,7 @@ chmod 777 install.sh
 cd ../../../../..  || exit
 echo "Lidar Permission for Sensors"
 sudo chmod a+rw /dev/ttyUSB0
-echo "USB dependencies"
+echo "USB and IMU dependencies"
 sudo apt-get -y install \
-    ros-kinetic-camera-info-manager ros-kinetic-image-transport libbullet-dev libsdl-image1.2-dev ros-kinetic-geometry2 ros-kinetic-navigation
+    ros-kinetic-camera-info-manager ros-kinetic-image-transport libbullet-dev libsdl-image1.2-dev ros-kinetic-geometry2 ros-kinetic-navigation ros-kinetic-imu-filter-madgwick ros-kinetic-roslint 
 echo "Install Complete"
