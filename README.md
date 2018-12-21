@@ -43,7 +43,7 @@ On your local computer, in git bash:
 1. Make sure board and computer are wired to the IOT network or same network. Cannot be ADILAN.
 2. $ cd racecar_ws
 3. $ git remote add **(remote name)** ssh://**(board_user)@<boards's_ip_address>**:22/home/**(board_user)**/**(repo directory)**
-    - Do not copy and paste, make sure you fill out the information before entering. Note that if you make a mistake in typing the wrong directory, it can be changed in the git config file.
+    - Do not copy and paste, make sure you fill out the information before entering. Note that if you make a mistake in typing the wrong directory, it can be changed in the git config file. Git config file is located in the racecar_ws/.git 
     - For example: **$ git remote add jetson ssh://nvidia@192.0.2.255:22/home/nvidia/racecar**
 4. $ git push jetson master
 
