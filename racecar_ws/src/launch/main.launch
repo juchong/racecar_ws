@@ -1,7 +1,6 @@
 <!-- -*- mode: XML -*- -->
 <launch>
 
-  
   <!-- Starting Remote control Node -->
   <include file="$(find racecar)/launch/includes/racecar-v2-teleop.launch.xml" />
 
@@ -10,6 +9,9 @@
 
   <!-- Starting USB Camera -->
   <include file="$(find usb_cam)/launch/usb_cam-test.launch" />
+
+  <!-- Starting Time of Flight Camera (Pico Zense) -->
+  <include file="$(find adi_tof_kinetic)/launch/tof.launch" />
 
   <!-- Starting April Tag testing for position, orientation, and identity tracking relative to the camera -->
   <!-- <include file="$(find apriltags2_ros)/launch/continuous_detection.launch" /> -->
