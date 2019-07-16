@@ -1,24 +1,24 @@
 [submodule "racecar_ws/src/adi_lidar_kinetic"]
 	path = racecar_ws/src/adi_lidar_kinetic
-	url = https://github.com/FalconWarriorr/adi_lidar_kinetic.git
+	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/adi_lidar_kinetic.git
 [submodule "racecar_ws/src/adi_usb_cam_kinetic"]
 	path = racecar_ws/src/adi_usb_cam_kinetic
-	url = https://github.com/FalconWarriorr/adi_usb_cam_kinetic.git
+	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/adi_usb_cam_kinetic.git
 [submodule "racecar_ws/src/adi_vesc_kinetic"]
 	path = racecar_ws/src/adi_vesc_kinetic
-	url = https://github.com/FalconWarriorr/adi_vesc_kinetic.git
+	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/adi_vesc_kinetic.git
 [submodule "racecar_ws/src/adi_tof_kinetic"]
 	path = racecar_ws/src/adi_tof_kinetic
-	url = https://github.com/FalconWarriorr/adi_tof_kinetic.git
+	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/adi_tof_kinetic.git
 [submodule "racecar_ws/src/adi_slam_gmapping_kinetic"]
 	path = racecar_ws/src/adi_slam_gmapping_kinetic
-	url = https://github.com/FalconWarriorr/adi_slam_gmapping_kinetic.git
+	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/adi_slam_gmapping_kinetic.git
 [submodule "racecar_ws/src/racecar"]
 	path = racecar_ws/src/racecar
-	url = https://github.com/FalconWarriorr/racecar.git
+	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/racecar.git
 [submodule "racecar_ws/src/adi_driver"]
 	path = racecar_ws/src/adi_driver
-	url = https://github.com/FalconWarriorr/adi_driver.git
+	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/adi_driver.git
 [submodule "racecar_ws/src/zed-ros-wrapper"]
 	path = racecar_ws/src/zed-ros-wrapper
-	url = https://github.com/FalconWarriorr/zed-ros-wrapper.git
+	url = git@gitlab.analog.com:ATS_Technology_Group/ROS_Projects/zed-ros-wrapper.git
