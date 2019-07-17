@@ -1,0 +1,8 @@
+prefix=/home/analog/racecar_ws/racecar_ws/devel
+
+Name: launch
+Description: Description of launch
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/analog/racecar_ws/racecar_ws/devel/lib 
+Requires: 

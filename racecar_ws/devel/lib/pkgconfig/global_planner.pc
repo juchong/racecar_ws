@@ -1,0 +1,8 @@
+prefix=/home/analog/racecar_ws/racecar_ws/devel
+
+Name: global_planner
+Description: Description of global_planner
+Version: 1.16.2
+Cflags: -I/home/analog/racecar_ws/racecar_ws/devel/include -I/home/analog/racecar_ws/racecar_ws/src/navigation/global_planner/include
+Libs: -L/home/analog/racecar_ws/racecar_ws/devel/lib -lglobal_planner
+Requires: costmap_2d dynamic_reconfigure geometry_msgs nav_core navfn nav_msgs pluginlib roscpp tf2_ros

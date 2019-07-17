@@ -1,0 +1,8 @@
+prefix=/home/analog/racecar_ws/racecar_ws/devel
+
+Name: rotate_recovery
+Description: Description of rotate_recovery
+Version: 1.16.2
+Cflags: -I/home/analog/racecar_ws/racecar_ws/src/navigation/rotate_recovery/include
+Libs: -L/home/analog/racecar_ws/racecar_ws/devel/lib -lrotate_recovery
+Requires: costmap_2d geometry_msgs nav_core pluginlib roscpp tf2 tf2_ros

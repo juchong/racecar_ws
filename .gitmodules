@@ -25,3 +25,6 @@
 [submodule "racecar_ws/src/slam_gmapping"]
 	path = racecar_ws/src/slam_gmapping
 	url = https://github.com/ros-perception/slam_gmapping.git
+[submodule "racecar_ws/openslam_gmapping"]
+	path = racecar_ws/openslam_gmapping
+	url = https://github.com/ros-perception/openslam_gmapping.git

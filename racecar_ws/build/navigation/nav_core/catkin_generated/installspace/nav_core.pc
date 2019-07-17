@@ -1,0 +1,8 @@
+prefix=/home/analog/racecar_ws/racecar_ws/install
+
+Name: nav_core
+Description: Description of nav_core
+Version: 1.16.2
+Cflags: -I/home/analog/racecar_ws/racecar_ws/install/include
+Libs: -L/home/analog/racecar_ws/racecar_ws/install/lib 
+Requires: std_msgs geometry_msgs tf2_ros costmap_2d
