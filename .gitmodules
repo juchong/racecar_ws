@@ -22,9 +22,6 @@
 [submodule "racecar_ws/src/zed-ros-wrapper"]
 	path = racecar_ws/src/zed-ros-wrapper
 	url = https://github.com/FalconWarriorr/zed-ros-wrapper.git
-[submodule "racecar_ws/racecar_ws/src/openslam_gmapping"]
-	path = racecar_ws/racecar_ws/src/openslam_gmapping
-	url = https://github.com/OpenSLAM-org/openslam_gmapping.git
 [submodule "racecar_ws/src/slam_gmapping"]
 	path = racecar_ws/src/slam_gmapping
 	url = https://github.com/ros-perception/slam_gmapping.git
