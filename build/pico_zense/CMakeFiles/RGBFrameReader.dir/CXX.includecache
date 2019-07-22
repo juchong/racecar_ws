@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ubuntu/catkin_ws/src/pico_zense/dependencies/PicoZenseSDK_aarch64_linux/Include/PicoZense_api.h
+PicoZense_define.h
+/home/ubuntu/catkin_ws/src/pico_zense/dependencies/PicoZenseSDK_aarch64_linux/Include/PicoZense_define.h
+
+/home/ubuntu/catkin_ws/src/pico_zense/dependencies/PicoZenseSDK_aarch64_linux/Include/PicoZense_define.h
+PicoZense_enums.h
+/home/ubuntu/catkin_ws/src/pico_zense/dependencies/PicoZenseSDK_aarch64_linux/Include/PicoZense_enums.h
+PicoZense_types.h
+/home/ubuntu/catkin_ws/src/pico_zense/dependencies/PicoZenseSDK_aarch64_linux/Include/PicoZense_types.h
+
+/home/ubuntu/catkin_ws/src/pico_zense/dependencies/PicoZenseSDK_aarch64_linux/Include/PicoZense_enums.h
+
+/home/ubuntu/catkin_ws/src/pico_zense/dependencies/PicoZenseSDK_aarch64_linux/Include/PicoZense_types.h
+stdint.h
+-
+PicoZense_enums.h
+/home/ubuntu/catkin_ws/src/pico_zense/dependencies/PicoZenseSDK_aarch64_linux/Include/PicoZense_enums.h
+
+/home/ubuntu/catkin_ws/src/pico_zense/samples/RGBFrameReader/RGBFrameReader.cpp
+iostream
+-
+PicoZense_api.h
+/home/ubuntu/catkin_ws/src/pico_zense/samples/RGBFrameReader/PicoZense_api.h
+

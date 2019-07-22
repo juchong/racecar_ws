@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/catkin_ws/devel
+
+Name: adi_driver
+Description: Description of adi_driver
+Version: 1.0.3
+Cflags: -I/home/ubuntu/catkin_ws/src/adi_driver/include
+Libs: -L/home/ubuntu/catkin_ws/devel/lib 
+Requires: roscpp sensor_msgs std_srvs

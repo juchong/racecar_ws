@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/catkin_ws/install
+
+Name: pico_zense
+Description: Description of pico_zense
+Version: 0.0.0
+Cflags: -I/home/ubuntu/catkin_ws/install/include
+Libs: -L/home/ubuntu/catkin_ws/install/lib 
+Requires: image_transport sensor_msgs
