@@ -1,8 +1,0 @@
-prefix=/home/ubuntu/catkin_ws/devel
-
-Name: odometry_estimation
-Description: Description of odometry_estimation
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/ubuntu/catkin_ws/devel/lib 
-Requires: roscpp tf2 tf2_ros geometry_msgs
