@@ -1,8 +1,0 @@
-prefix=/home/analog/racecar_ws/racecar_ws/devel
-
-Name: adi_driver
-Description: Description of adi_driver
-Version: 1.0.3
-Cflags: -I/home/analog/racecar_ws/racecar_ws/src/adi_driver/include
-Libs: -L/home/analog/racecar_ws/racecar_ws/devel/lib 
-Requires: roscpp sensor_msgs std_srvs
