@@ -1,8 +1,0 @@
-prefix=/home/analog/racecar_ws/racecar_ws/install
-
-Name: gmapping
-Description: Description of gmapping
-Version: 1.3.10
-Cflags: 
-Libs: -L/home/analog/racecar_ws/racecar_ws/install/lib 
-Requires: 
