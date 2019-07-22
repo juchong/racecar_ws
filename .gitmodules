@@ -16,9 +16,9 @@
 [submodule "racecar_ws/src/racecar"]
 	path = racecar_ws/src/racecar
 	url = https://github.com/FalconWarriorr/racecar.git
-[submodule "racecar_ws/src/adi_driver"]
-	path = racecar_ws/src/adi_driver
-	url = https://github.com/FalconWarriorr/adi_driver.git
+#[submodule "racecar_ws/src/adi_driver"]
+#	path = racecar_ws/src/adi_driver
+#	url = https://github.com/FalconWarriorr/adi_driver.git
 [submodule "racecar_ws/src/zed-ros-wrapper"]
 	path = racecar_ws/src/zed-ros-wrapper
 	url = https://github.com/FalconWarriorr/zed-ros-wrapper.git
