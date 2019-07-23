@@ -20,15 +20,16 @@
 // Based on the archtecture it will detect which version your using and use that arch api
 // For reference use this wiki https://sourceforge.net/p/predef/wiki/Architectures/
 
-#ifdef __aarch64__
 #include "PicoZense_api.h"
-#define MAX_PATH_SIZE 1024
 const int flag = 1;
-#endif
-#ifdef __x86_64__
-#include "../dependencies/x86_dcam100/PicoZenseSDK_Linux/Include/PicoZense_api.h"
-const int flag = 2;
-#endif
+//#ifdef __aarch64__
+//#include "PicoZense_api.h"
+//#define MAX_PATH_SIZE 1024
+//#endif
+//#ifdef __x86_64__
+//#include "../dependencies/x86_dcam100/PicoZenseSDK_Linux/Include/PicoZense_api.h"
+//const int flag = 2;
+//#endif
 
 using namespace std;
 using std::cout;
