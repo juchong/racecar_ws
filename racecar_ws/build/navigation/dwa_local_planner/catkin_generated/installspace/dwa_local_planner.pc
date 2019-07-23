@@ -1,8 +1,0 @@
-prefix=/home/niallmullane/racecar_ws/racecar_ws/install
-
-Name: dwa_local_planner
-Description: Description of dwa_local_planner
-Version: 1.16.2
-Cflags: -I/home/niallmullane/racecar_ws/racecar_ws/install/include
-Libs: -L/home/niallmullane/racecar_ws/racecar_ws/install/lib -ldwa_local_planner
-Requires: base_local_planner dynamic_reconfigure nav_msgs pluginlib sensor_msgs roscpp tf2 tf2_ros

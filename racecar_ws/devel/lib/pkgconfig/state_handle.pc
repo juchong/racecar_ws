@@ -1,8 +1,0 @@
-prefix=/home/niallmullane/racecar_ws/racecar_ws/devel
-
-Name: state_handle
-Description: Description of state_handle
-Version: 0.0.0
-Cflags: -I/home/niallmullane/racecar_ws/racecar_ws/src/state_handle/include
-Libs: -L/home/niallmullane/racecar_ws/racecar_ws/devel/lib 
-Requires: hardware_interface roscpp

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<robot name="LittleFoot">
+	<link name="imu">
+		<visual>
+		  <origin rpy="1.57 0 0" xyz="0 0 0"/>
+		  <geometry>
+			  <!--mesh filename="file://home/ubuntu/2019RobotCode/zebROS_ws/src/ros_control_boilerplate/robot_description/meshes/LittleFoot.stl"/-->
+			  <mesh filename="package://ros_control_boilerplate/robot_description/meshes/LittleFoot.stl" scale="0.01 0.01 0.01"/>
+			  <!--mesh filename="package://ros_control_boilerplate/robot_description/meshes/high_res_sphere.stl"/-->
+		  </geometry>
+		</visual>
+	</link>
+</robot>
