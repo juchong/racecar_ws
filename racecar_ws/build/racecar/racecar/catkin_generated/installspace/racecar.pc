@@ -1,0 +1,8 @@
+prefix=/home/niallmullane/racecar_ws/racecar_ws/install
+
+Name: racecar
+Description: Description of racecar
+Version: 0.0.1
+Cflags: 
+Libs: -L/home/niallmullane/racecar_ws/racecar_ws/install/lib 
+Requires: tf tf2_ros urg_node joy joy_teleop laser_scan_matcher rosbag rostopic rviz gmapping hector_mapping robot_pose_ekf

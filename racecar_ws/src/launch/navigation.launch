@@ -1,0 +1,35 @@
+<!-- -*- mode: XML -*- -->
+<launch>
+
+<arg name="with_rviz" default="true"/>
+<arg name="with_plot" default="true"/>
+<!--arg name="map_file" default="$(find maps)/mymap2.yaml.yaml" /-->
+
+<!--node name="map_server"  pkg="map_server" type="map_server" args="$(find maps)/mymap2.yaml.yaml" /-->
+
+
+<!--Starting teleop node-->
+  <include file="$(find racecar)/launch/includes/racecar-v2-teleop.launch.xml" />
+
+<!-- Starting LaserScan Node -->
+  <include file="$(find hls_lfcd_lds_driver)/launch/hlds_laser.launch" />
+
+<!-- Starting IMU Node -->
+   <include file="$(find adi_driver)/launch/adis16470.launch"/>
+
+<!-- Starting Move_base Node -->
+  <include file="$(find move_base)/launch/move_base.launch" />
+
+<!--Node to convert twist msgs to ackermann msgs-->
+<node name="cmd_vel_demo"  pkg="vesc_ackermann" type="cmdvel.py"/>
+
+<node if="$(arg with_rviz)"
+	name="rviz" pkg="rviz" type="rviz" args="-d $(find launch)/navigation.rviz" />
+
+<node if="$(arg with_plot)"
+         name="rqt_graph"  pkg="rqt_graph" type="rqt_graph"  />
+
+</launch>
+
+
+

@@ -1,0 +1,11 @@
+# to run naviagation
+roslaunch launch navigation.launch 
+
+# in seperate terminak
+rosrun map_server map_server racecar_ws/src/maps/mymap2.yaml.yaml
+
+#to create map run gmapping node
+./start 
+
+# to save map named first 
+rosrun map_server map_saver -f first
