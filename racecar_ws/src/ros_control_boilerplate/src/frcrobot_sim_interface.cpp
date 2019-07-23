@@ -426,24 +426,13 @@ FRCRobotSimInterface::~FRCRobotSimInterface()
     has_cube = cube.has_cube;
 }*/
 
-void FRCRobotSimInterface::match_data_callback(const frc_msgs::MatchSpecificData &match_data) {
-	std::lock_guard<std::mutex> l(match_data_mutex_);
-	match_data_.setMatchTimeRemaining(match_data.matchTimeRemaining);
-	match_data_.setGameSpecificData(match_data.gameSpecificData);
-	match_data_.setEventName(match_data.eventName);
-	match_data_.setAllianceColor(match_data.allianceColor);
-	match_data_.setMatchType(match_data.matchType);
-	match_data_.setDriverStationLocation(match_data.driverStationLocation);
-	match_data_.setMatchNumber(match_data.matchNumber);
-	match_data_.setReplayNumber(match_data.replayNumber);
-	match_data_.setEnabled(match_data.Enabled);
-	match_data_.setDisabled(match_data.Disabled);
-	match_data_.setAutonomous(match_data.Autonomous);
-	match_data_.setDSAttached(match_data.DSAttached);
-	match_data_.setFMSAttached(match_data.FMSAttached);
-	match_data_.setOperatorControl(match_data.OperatorControl);
-	match_data_.setTest(match_data.Test);
-	match_data_.setBatteryVoltage(match_data.BatteryVoltage);
+void FRCRobotSimInterface::enable_callback(const std_msgs::Bool &enable_msg) {
+    if(enable_msg.data) {
+        robot_enabled = true;
+    }
+    else {
+        robot_enabled false;
+    }
 }
 
 std::vector<ros_control_boilerplate::DummyJoint> FRCRobotSimInterface::getDummyJoints(void)
@@ -472,17 +461,16 @@ void FRCRobotSimInterface::init(void)
 
 	// Do base class init. This loads common interface info
 	// used by both the real and sim interfaces
-	ROS_WARN("Passes");
 	FRCRobotInterface::init();
-	ROS_WARN("Passes");
 
 	// TODO : make this depend on joystick joints being defined
 	if (run_hal_robot_)
 		sim_joy_thread_ = std::thread(std::bind(&TeleopJointsKeyboard::keyboardLoop, &teleop_joy_));
-    //cube_state_sub_ = nh_.subscribe("/frcrobot/cube_state_sim", 1, &FRCRobotSimInterface::cube_state_callback, this);
-    match_data_sub_ = nh_.subscribe("/frcrobot_rio/match_data", 1, &FRCRobotSimInterface::match_data_callback, this);
 
-	linebreak_sensor_srv_ = nh_.advertiseService("linebreak_service_set",&FRCRobotSimInterface::evaluateDigitalInput, this);
+    //Topic that enables the robot
+    enable_sub_ = nh_.subscribe("/ADI_robot/enable", 1, &FRCRobotSimInterface::enable_callback, this);
+
+	digital_input_srv_ = nh_.advertiseService("digital_input_service_set",&FRCRobotSimInterface::setDigitalInput, this);
 
 	ROS_WARN("fails here?1");
 	// Loop through the list of joint names
@@ -583,7 +571,6 @@ void FRCRobotSimInterface::read(ros::Duration &/*elapsed_time*/)
 	// display it here for debugging
 
 	//printState();
-	// This is only used to test the stuff in hw_interface?
 	if (!robot_code_ready_)
 	{
 		// Code is ready when all robot_ready_signals are set to non-zero values
@@ -597,8 +584,10 @@ void FRCRobotSimInterface::read(ros::Duration &/*elapsed_time*/)
 	}
     ros::spinOnce();
 }
-bool FRCRobotSimInterface::evaluateDigitalInput(ros_control_boilerplate::LineBreakSensors::Request &req,
-							ros_control_boilerplate::LineBreakSensors::Response &/*res*/)
+
+//Sets the jth digital input to the provided value
+bool FRCRobotSimInterface::setDigitalInput(ros_control_boilerplate::SetDigitalInput::Request &req,
+							ros_control_boilerplate::SetDigitalInput::Response &/*res*/)
 {
 	if (req.j < digital_input_names_.size())
 	{
@@ -621,13 +610,6 @@ void FRCRobotSimInterface::write(ros::Duration &elapsed_time)
 #endif
 	// Was the robot enabled last time write was run?
 	static bool last_robot_enabled = false;
-
-	// Is match data reporting the robot enabled now?
-	bool robot_enabled = false;
-	{
-		std::lock_guard<std::mutex> l(match_data_mutex_);
-		robot_enabled = match_data_.isEnabled();
-	}
 
 	for (std::size_t joint_id = 0; joint_id < num_can_talon_srxs_; ++joint_id)
 	{

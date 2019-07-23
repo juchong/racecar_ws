@@ -49,6 +49,7 @@
 
 #include <ros_control_boilerplate/SetDigitalInput.h>
 #include  <sensor_msgs/Joy.h>
+#include <std_msgs/Bool.h>
 
 
 namespace frcrobot_control
@@ -97,7 +98,11 @@ class FRCRobotSimInterface : public ros_control_boilerplate::FRCRobotInterface
 		std::atomic<bool> intake_low;
 		std::atomic<bool> has_cube;
 
-		bool evaluateDigitalInput(ros_control_boilerplate::LineBreakSensors::Request &req, ros_control_boilerplate::LineBreakSensors::Response &res);
+        ros::Subscriber enable_sub_;
+        std::atomic<bool> robot_enabled;
+
+        void enable_callback(const std_msgs::Bool &enable_msg);
+		bool setDigitalInput(ros_control_boilerplate::LineBreakSensors::Request &req, ros_control_boilerplate::LineBreakSensors::Response &res);
 
         //Service to set a digital input value
 		ros::ServiceServer digital_input_srv;
