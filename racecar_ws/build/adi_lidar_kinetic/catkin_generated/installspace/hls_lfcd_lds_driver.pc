@@ -1,0 +1,8 @@
+prefix=/home/niallmullane/racecar_ws/racecar_ws/install
+
+Name: hls_lfcd_lds_driver
+Description: Description of hls_lfcd_lds_driver
+Version: 1.0.0
+Cflags: -I/home/niallmullane/racecar_ws/racecar_ws/install/include -I/usr/include
+Libs: -L/home/niallmullane/racecar_ws/racecar_ws/install/lib 
+Requires: roscpp std_msgs sensor_msgs tf geometry_msgs

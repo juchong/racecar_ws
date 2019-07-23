@@ -1,0 +1,8 @@
+prefix=/home/niallmullane/racecar_ws/racecar_ws/install
+
+Name: talon_interface
+Description: Description of talon_interface
+Version: 0.0.0
+Cflags: -I/home/niallmullane/racecar_ws/racecar_ws/install/include
+Libs: -L/home/niallmullane/racecar_ws/racecar_ws/install/lib 
+Requires: hardware_interface state_handle roscpp

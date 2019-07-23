@@ -1,0 +1,8 @@
+prefix=/home/niallmullane/racecar_ws/racecar_ws/install
+
+Name: frc_msgs
+Description: Description of frc_msgs
+Version: 0.0.0
+Cflags: -I/home/niallmullane/racecar_ws/racecar_ws/install/include
+Libs: -L/home/niallmullane/racecar_ws/racecar_ws/install/lib 
+Requires: message_generation message_runtime roscpp std_msgs

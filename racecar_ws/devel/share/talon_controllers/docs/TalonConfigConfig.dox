@@ -1,0 +1,88 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~pid_config" : \b [int] Choose between two different PID config values min: 0, default: 0, max: 1
+- \b "~p0" : \b [double] Proportional constant 0 min: 0.0, default: 0.0, max: 100.0
+- \b "~i0" : \b [double] Integral constant 0 min: 0.0, default: 0.0, max: 100.0
+- \b "~d0" : \b [double] Derivative constant 0 min: 0.0, default: 0.0, max: 100.0
+- \b "~f0" : \b [double] Feed forward constant 0 min: 0.0, default: 0.0, max: 100.0
+- \b "~izone0" : \b [double] Limits integral error to certain range 0 min: 0.0, default: 0.0, max: 100000.0
+- \b "~allowable_closed_loop_error0" : \b [double] Max difference between setpoint and current value 0 min: 0.0, default: 0.0, max: 10000.0
+- \b "~max_integral_accumulator0" : \b [double] Max integral accumulator 0 min: 0.0, default: 0.0, max: 100000.0
+- \b "~closed_loop_peak_output0" : \b [double] Peak output for PID slot 0 min: 0.0, default: 1.0, max: 1.0
+- \b "~closed_loop_period0" : \b [int] PID loop period for slot 0 min: 0, default: 20, max: 1000
+- \b "~p1" : \b [double] Proportional constant 1 min: 0.0, default: 0.0, max: 100.0
+- \b "~i1" : \b [double] Integral constant 1 min: 0.0, default: 0.0, max: 100.0
+- \b "~d1" : \b [double] Derivative constant 1 min: 0.0, default: 0.0, max: 100.0
+- \b "~f1" : \b [double] Feed forward constant 1 min: 0.0, default: 0.0, max: 100.0
+- \b "~izone1" : \b [double] Limits integral error to certain range 1 min: 0.0, default: 0.0, max: 100000.0
+- \b "~allowable_closed_loop_error1" : \b [double] Max difference between setpoint and current value 1 min: 0.0, default: 0.0, max: 10000.0
+- \b "~max_integral_accumulator1" : \b [double] Max integral accumulator 1 min: 0.0, default: 0.0, max: 100000.0
+- \b "~closed_loop_peak_output1" : \b [double] Peak output for PID slot 1 min: 0.0, default: 1.0, max: 1.0
+- \b "~closed_loop_period1" : \b [int] PID loop period for slot 1 min: 0, default: 20, max: 1000
+- \b "~demand1_type" : \b [int] Demand1 Type Setting min: 0, default: 0, max: 2
+- \b "~demand1_value" : \b [double] Demand1 Value Setting min: -1.0, default: 1.0, max: 1.0
+- \b "~aux_pid_polarity" : \b [bool] Invert output of aux PID loop min: False, default: False, max: True
+- \b "~invert_output" : \b [bool] Invert output of talon min: False, default: False, max: True
+- \b "~sensor_phase" : \b [bool] Inverts value of sensor (encoder) min: False, default: False, max: True
+- \b "~encoder_ticks_per_rotation" : \b [int] Dependent on encoder type min: 0, default: 4096, max: 10000
+- \b "~feedback_type" : \b [int] Different types of encoders (determines units) min: 0, default: 0, max: 12
+- \b "~closed_loop_ramp" : \b [double] Ramp rate to prevent instantaneous changes in output min: 0.0, default: 0.0, max: 100.0
+- \b "~open_loop_ramp" : \b [double] Ramp rate to present intantaneous changes in output min: 0.0, default: 0.0, max: 100.0
+- \b "~peak_output_forward" : \b [double] Max output voltage min: 0.0, default: 0.0, max: 1.0
+- \b "~peak_output_reverse" : \b [double] Max output voltage in opposite direction min: -1.0, default: 0.0, max: 0.0
+- \b "~nominal_output_forward" : \b [double] Min output voltage min: 0.0, default: 0.0, max: 1.0
+- \b "~nominal_output_reverse" : \b [double] Min output voltage in opposite direction min: -1.0, default: 0.0, max: 0.0
+- \b "~neutral_deadband" : \b [double] Joystick dead range min: 0.0, default: 0.0, max: 100.0
+- \b "~voltage_compensation_saturation" : \b [double] Ideal voltage value used for voltage compensation min: 0.0, default: 12.5, max: 100.0
+- \b "~voltage_measurement_filter" : \b [int] The number of values taken into voltage average min: 0, default: 32, max: 100
+- \b "~voltage_compensation_enable" : \b [bool] Enable or disable voltage compensation min: False, default: False, max: True
+- \b "~velocity_measurement_period" : \b [int] How often to report velocity data from sensors min: 0, default: 100, max: 100
+- \b "~velocity_measurement_window" : \b [int] The number of values taken into velocity average min: 0, default: 64, max: 256
+- \b "~softlimit_forward_threshold" : \b [double] Top threshold to disable talons outside certain range min: 0.0, default: 0.0, max: 100.0
+- \b "~softlimit_forward_enable" : \b [bool] Enable or disable top soft limit threshold min: False, default: False, max: True
+- \b "~softlimit_reverse_threshold" : \b [double] Bottom threshold to disable talons outside range min: 0.0, default: 0.0, max: 100.0
+- \b "~softlimit_reverse_enable" : \b [bool] Enable or disable bottom soft limit threshold min: False, default: False, max: True
+- \b "~softlimits_override_enable" : \b [bool] Override previous soft limit settings and disable min: False, default: False, max: True
+- \b "~current_limit_peak_amps" : \b [int] Current amperage limit min: 0, default: 0, max: 300
+- \b "~current_limit_peak_msec" : \b [int] Configure peak current limit to threshold min: 0, default: 0, max: 20000
+- \b "~current_limit_continuous_amps" : \b [int] Configure peak current duration to allowable min: 0, default: 0, max: 300
+- \b "~current_limit_enable" : \b [bool] Enable or disable current limiting min: False, default: False, max: True
+- \b "~motion_cruise_velocity" : \b [double] Max velocity of talon while trying to move to target min: 0.0, default: 0.0, max: 100000.0
+- \b "~motion_acceleration" : \b [double] Max acceleration of talon while trying to move min: 0.0, default: 0.0, max: 100000.0
+- \b "~motion_s_curve_strength" : \b [int] Amount of smoothing of motion magic curve min: 0, default: 0, max: 8
+- \b "~status_1_general_period" : \b [int] Status frame period 1 min: 0, default: 10, max: 255
+- \b "~status_2_feedback0_period" : \b [int] Status frame period 2 min: 0, default: 20, max: 255
+- \b "~status_3_quadrature_period" : \b [int] Status frame period 3 min: 0, default: 160, max: 255
+- \b "~status_4_aintempvbat_period" : \b [int] Status frame period 4 min: 0, default: 160, max: 255
+- \b "~status_6_misc_period" : \b [int] Status frame period 6 min: 0, default: 0, max: 255
+- \b "~status_7_commstatus_period" : \b [int] Status frame period 7 min: 0, default: 0, max: 255
+- \b "~status_8_pulsewidth_period" : \b [int] Status frame period 8 min: 0, default: 160, max: 255
+- \b "~status_9_motprofbuffer_period" : \b [int] Status frame period 9 min: 0, default: 50, max: 255
+- \b "~status_10_motionmagic_period" : \b [int] Status frame period 10 min: 0, default: 160, max: 255
+- \b "~status_11_uartgadgeteer_period" : \b [int] Status frame period 11 min: 0, default: 250, max: 255
+- \b "~status_12_feedback1_period" : \b [int] Status frame period 12 min: 0, default: 250, max: 255
+- \b "~status_13_base_pidf0_period" : \b [int] Status frame period 13 min: 0, default: 160, max: 255
+- \b "~status_14_turn_pidf1_period" : \b [int] Status frame period 14 min: 0, default: 250, max: 255
+- \b "~status_15_firmwareapistatus_period" : \b [int] Status frame period 15 min: 0, default: 160, max: 255
+- \b "~motion_profile_trajectory_period" : \b [int] Base period added to each trajectory duration min: 0, default: 0, max: 2000
+- \b "~control_3_general_period" : \b [int] Control frame period 3 min: 0, default: 10, max: 255
+- \b "~control_4_advanced_period" : \b [int] Control frame period 4 min: 0, default: 0, max: 255
+- \b "~control_5_feedbackoutputoverride_period" : \b [int] Control frame period 5 min: 0, default: 0, max: 255
+- \b "~control_6_motprofaddtrajpoint_period" : \b [int] Control frame period 6 min: 0, default: 0, max: 255
+- \b "~neutral_mode" : \b [int] Mode of operation during neutral output min: 0, default: 0, max: 4
+- \b "~feedback_coefficient" : \b [double] Selected feedback sensor feedback coefficient min: -100000.0, default: 1.0, max: 100000.0
+- \b "~limit_switch_local_forward_source" : \b [int] Which forward limit switch is being used min: 0, default: 0, max: 5
+- \b "~limit_switch_local_forward_normal" : \b [int] Normally open, closed, or disabled min: 0, default: 0, max: 4
+- \b "~limit_switch_local_reverse_source" : \b [int] Which reverse limit switch is being used min: 0, default: 0, max: 5
+- \b "~limit_switch_local_reverse_normal" : \b [int] Normally open, closed, or disabled min: 0, default: 0, max: 4
+- \b "~limit_switch_remote_forward_source" : \b [int] Which remote forward limit switch is being used min: 0, default: 0, max: 4
+- \b "~limit_switch_remote_forward_normal" : \b [int] Normally open, closed, or disabled min: 0, default: 0, max: 4
+- \b "~limit_switch_remote_reverse_source" : \b [int] Which remote reverse limit switch is being used min: 0, default: 0, max: 4
+- \b "~limit_switch_remote_reverse_normal" : \b [int] Normally open, closed, or disabled min: 0, default: 0, max: 4
+- \b "~conversion_factor" : \b [double] Arbitrary factor for scaling encoder values - use for transmissions or similar min: 0.0, default: 1.0, max: 100.0
+- \b "~custom_profile_hz" : \b [double] hz of profiling loop min: 0.0, default: 20.0, max: 100.0
+- \b "~custom_profile_run" : \b [bool] run the profile with below slot min: False, default: False, max: True
+- \b "~custom_profile_slot" : \b [int] if profile is run this slot will be used min: 0, default: 0, max: 3
+

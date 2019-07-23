@@ -1,0 +1,8 @@
+prefix=/home/niallmullane/racecar_ws/racecar_ws/install
+
+Name: talon_controllers
+Description: Description of talon_controllers
+Version: 0.1.0
+Cflags: -I/home/niallmullane/racecar_ws/racecar_ws/install/include
+Libs: -L/home/niallmullane/racecar_ws/racecar_ws/install/lib 
+Requires: control_msgs controller_interface message_runtime realtime_tools talon_interface urdf dynamic_reconfigure
