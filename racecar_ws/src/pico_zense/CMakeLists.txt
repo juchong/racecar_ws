@@ -16,9 +16,19 @@ find_package(catkin REQUIRED COMPONENTS
   tf
 )
 
+
+option(USE_ARM "Using ARM" OFF)
+
 #set(PICO_LIBS ${PROJECT_SOURCE_DIR}/dependencies/PicoZenseSDK_aarch64_linux/Lib/libpicozense_api.so)
-set(PICO_DIR ${PROJECT_SOURCE_DIR}/dependencies/PicoZenseSDK_aarch64_linux/)
-set(OpenCV_DIR ${PROJECT_SOURCE_DIR}/dependencies/PicoZenseSDK_aarch64_linux/Thirdparty/opencv-3.4.1)
+if(USE_ARM)
+    set(PICO_DIR ${PROJECT_SOURCE_DIR}/dependencies/PicoZenseSDK_aarch64_linux/)
+    set(OpenCV_DIR ${PROJECT_SOURCE_DIR}/dependencies/PicoZenseSDK_aarch64_linux/Thirdparty/opencv-3.4.1)
+else()
+    set(PICO_DIR ${PROJECT_SOURCE_DIR}/dependencies/PicoZenseSDK_Ubuntu16.04_DCAM710/)
+    set(OpenCV_DIR ${PROJECT_SOURCE_DIR}/dependencies/PicoZenseSDK_Ubuntu16.04_DCAM710/Thirdparty/opencv-3.4.1)
+endif(USE_ARM)
+unset(USE_ARM CACHE)
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -109,7 +119,7 @@ set(OpenCV_DIR ${PROJECT_SOURCE_DIR}/dependencies/PicoZenseSDK_aarch64_linux/Thi
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-  INCLUDE_DIRS include ${OpenCV_DIR}/include
+  INCLUDE_DIRS ${OpenCV_DIR}/include ${PICO_DIR}/Include
 #  LIBRARIES pico_zense
   CATKIN_DEPENDS image_transport sensor_msgs
 #  DEPENDS system_lib
