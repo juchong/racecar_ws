@@ -23,15 +23,15 @@ find_package(catkin REQUIRED COMPONENTS
   frc_interfaces
 )
 
-add_message_files (
-  FILES
-)
+#add_message_files (
+#  FILES
+#)
 
 
 add_service_files (
   FILES
   set_limit_switch.srv
-  LineBreakSensors.srv
+  SetDigitalInput.srv
 )
 
 generate_messages(

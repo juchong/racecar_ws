@@ -457,8 +457,6 @@ bool FRCRobotSimInterface::setlimit(ros_control_boilerplate::set_limit_switch::R
 {
 	for (std::size_t joint_id = 0; joint_id < num_can_talon_srxs_; ++joint_id)
 	{
-		if (!can_talon_srx_local_hardwares_[joint_id])
-			continue;
         auto &ts = talon_state_[joint_id];
         if(ts.getCANID() == req.target_joint_id) {
             ts.setForwardLimitSwitch(req.forward);
@@ -501,46 +499,26 @@ void FRCRobotSimInterface::init(void)
 	{
 		ROS_INFO_STREAM_NAMED("frcrobot_sim_interface",
 							  "Loading joint " << i << "=" << can_talon_srx_names_[i] <<
-							  (can_talon_srx_local_updates_[i] ? " local" : " remote") << " update, " <<
-							  (can_talon_srx_local_hardwares_[i] ? "local" : "remote") << " hardware " <<
 							  " as CAN id " << can_talon_srx_can_ids_[i]);
 
-		ROS_WARN_STREAM("fails here? 56789: " << i);
 		// Loop through the list of joint names
 
-		ROS_WARN("post and stuff");
 	}
-		ROS_WARN_STREAM("fails here? ~");
-	// TODO : assert nidec_brushles_names_.size() == nidec_brushles_xxx_channels_.size()
-	for (size_t i = 0; i < nidec_brushless_names_.size(); i++)
-		ROS_INFO_STREAM_NAMED("frcrobot_sim_interface",
-							  "Loading joint " << i << "=" << nidec_brushless_names_[i] <<
-							  (nidec_brushless_local_updates_[i] ? " local" : " remote") << " update, " <<
-							  (nidec_brushless_local_hardwares_[i] ? "local" : "remote") << " hardware " <<
-							  " as PWM channel " << nidec_brushless_pwm_channels_[i] <<
-							  " / DIO channel " << nidec_brushless_dio_channels_[i] <<
-							  " invert " << nidec_brushless_inverts_[i]);
-
 	for (size_t i = 0; i < num_digital_inputs_; i++)
 		ROS_INFO_STREAM_NAMED("frcrobot_sim_interface",
 							  "Loading joint " << i << "=" << digital_input_names_[i] <<
-							  " local = " << digital_input_locals_[i] <<
 							  " as Digital Input " << digital_input_dio_channels_[i] <<
 							  " invert " << digital_input_inverts_[i]);
 
 	for (size_t i = 0; i < num_digital_outputs_; i++)
 		ROS_INFO_STREAM_NAMED("frcrobot_sim_interface",
 							  "Loading joint " << i << "=" << digital_output_names_[i] <<
-							  (digital_output_local_updates_[i] ? " local" : " remote") << " update, " <<
-							  (digital_output_local_hardwares_[i] ? "local" : "remote") << " hardware " <<
 							  " as Digital Output " << digital_output_dio_channels_[i] <<
 							  " invert " << digital_output_inverts_[i]);
 
 	for (size_t i = 0; i < num_pwm_; i++)
 		ROS_INFO_STREAM_NAMED("frcrobot_sim_interface",
 							  "Loading joint " << i << "=" << pwm_names_[i] <<
-							  (pwm_local_updates_[i] ? " local" : " remote") << " update, " <<
-							  (pwm_local_hardwares_[i] ? "local" : "remote") << " hardware " <<
 							  " as PWM " << pwm_pwm_channels_[i] <<
 							  " invert " << pwm_inverts_[i]);
 
@@ -548,48 +526,38 @@ void FRCRobotSimInterface::init(void)
 	for (size_t i = 0; i < num_solenoids_; i++)
 		ROS_INFO_STREAM_NAMED("frcrobot_sim_interface",
 							  "Loading joint " << i << "=" << solenoid_names_[i] <<
-							  (solenoid_local_updates_[i] ? " local" : " remote") << " update, " <<
-							  (solenoid_local_hardwares_[i] ? "local" : "remote") << " hardware " <<
 							  " as Solenoid " << solenoid_ids_[i]);
 
 	for (size_t i = 0; i < num_double_solenoids_; i++)
 		ROS_INFO_STREAM_NAMED("frcrobot_sim_interface",
 							  "Loading joint " << i << "=" << double_solenoid_names_[i] <<
-							  (double_solenoid_local_updates_[i] ? " local" : " remote") << " update, " <<
-							  (double_solenoid_local_hardwares_[i] ? "local" : "remote") << " hardware " <<
 							  " as Double Solenoid  forward " << double_solenoid_forward_ids_[i] <<
 							  " reverse " << double_solenoid_reverse_ids_[i]);
 
+    //TODO rename for ADI IMU
 	for(size_t i = 0; i < num_navX_; i++)
 		ROS_INFO_STREAM_NAMED("frcrobot_sim_interface",
 							  "Loading joint " << i << "=" << navX_names_[i] <<
-							  " local = " << navX_locals_[i] <<
 							  " as navX id" << navX_ids_[i]);
 
 	for (size_t i = 0; i < num_analog_inputs_; i++)
 		ROS_INFO_STREAM_NAMED("frcrobot_sim_interface",
 							  "Loading joint " << i << "=" << analog_input_names_[i] <<
-							  " local = " << analog_input_locals_[i] <<
 							  " as Analog Input " << analog_input_analog_channels_[i]);
 
 	for (size_t i = 0; i < num_compressors_; i++)
 		ROS_INFO_STREAM_NAMED("frcrobot_sim_interface",
 							  "Loading joint " << i << "=" << compressor_names_[i] <<
-							  (compressor_local_updates_[i] ? " local" : " remote") << " update, " <<
-							  (compressor_local_hardwares_[i] ? "local" : "remote") << " hardware " <<
 							  " as Compressor with pcm " << compressor_pcm_ids_[i]);
 
 	for (size_t i = 0; i < num_rumbles_; i++)
 		ROS_INFO_STREAM_NAMED("frcrobot_sim_interface",
 							  "Loading joint " << i << "=" << rumble_names_[i] <<
-							  (rumble_local_updates_[i] ? " local" : " remote") << " update, " <<
-							  (rumble_local_hardwares_[i] ? "local" : "remote") << " hardware " <<
 							  " as Rumble with port" << rumble_ports_[i]);
 
 	for (size_t i = 0; i < num_pdps_; i++)
 		ROS_INFO_STREAM_NAMED("frcrobot_sim_interface",
 							  "Loading joint " << i << "=" << pdp_names_[i] <<
-							  " local = " << pdp_locals_[i] <<
 							  " as PDP");
 
 	for(size_t i = 0; i < num_dummy_joints_; i++)
@@ -603,32 +571,12 @@ void FRCRobotSimInterface::read(ros::Duration &/*elapsed_time*/)
 {
 	for (std::size_t joint_id = 0; joint_id < num_can_talon_srxs_; ++joint_id)
 	{
-		if (!can_talon_srx_local_hardwares_[joint_id])
-			continue;
         auto &ts = talon_state_[joint_id];
-        if(ts.getCANID() == 51) {
-            if(clamp) {
-                ts.setForwardLimitSwitch(true);
-            }
-            else {
-                ts.setForwardLimitSwitch(false);
-            }
-        }
     }
 	for (size_t i = 0; i < num_digital_inputs_; i++)
 	{
-		//State should really be a bool - but we're stuck using
-		//ROS control code which thinks everything to and from
-		//hardware are doubles
-		if(digital_input_names_[i] == "intake_line_break_high") {
-			digital_input_state_[i] = (intake_high) ? 1 : 0;
-		}
-		if(digital_input_names_[i] == "intake_line_break_low") {
-			digital_input_state_[i] = (intake_low) ? 1 : 0;
-		}
-		if(digital_input_names_[i] == "intake_line_break") {
-			digital_input_state_[i] = (has_cube) ? 1 : 0;
-		}
+        //Code to simulate digital inputs
+        // ex. set joints to information from subscriber
 	}
 
     // Simulated state is updated in write, so just
