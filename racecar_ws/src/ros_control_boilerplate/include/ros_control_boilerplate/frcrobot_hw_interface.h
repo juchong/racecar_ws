@@ -47,8 +47,6 @@
 #include <realtime_tools/realtime_publisher.h>
 
 #include <frc_interfaces/robot_controller_interface.h>
-#include "ros_control_boilerplate/AutoMode.h"
-#include "frc_msgs/MatchSpecificData.h"
 #include <std_msgs/Float64.h>
 #include <sensor_msgs/Joy.h>
 
@@ -207,6 +205,7 @@ class FRCRobotHWInterface : public ros_control_boilerplate::FRCRobotInterface
 		virtual std::vector<ros_control_boilerplate::DummyJoint> getDummyJoints(void) override;
 
 	private:
+        //TODO where is this used
 		void process_motion_profile_buffer_thread(double hz);
 
 		/* Get conversion factor for position, velocity, and closed-loop stuff */
@@ -252,12 +251,12 @@ class FRCRobotHWInterface : public ros_control_boilerplate::FRCRobotInterface
 		std::vector<std::thread> talon_read_threads_;
 		void talon_read_thread(std::shared_ptr<ctre::phoenix::motorcontrol::can::TalonSRX> talon, std::shared_ptr<hardware_interface::TalonHWState> state, std::shared_ptr<std::mutex> mutex, Tracer tracer);
 
-		std::vector<std::shared_ptr<frc::NidecBrushless>> nidec_brushlesses_;
 		std::vector<std::shared_ptr<frc::DigitalInput>> digital_inputs_;
 		std::vector<std::shared_ptr<frc::DigitalOutput>> digital_outputs_;
 		std::vector<std::shared_ptr<frc::PWM>> PWMs_;
 		std::vector<HAL_SolenoidHandle> solenoids_;
 		std::vector<DoubleSolenoidHandle> double_solenoids_;
+        //TODO change this for ADI IMU
 		std::vector<std::shared_ptr<AHRS>> navXs_;
 		std::vector<std::shared_ptr<frc::AnalogInput>> analog_inputs_;
 
@@ -270,6 +269,7 @@ class FRCRobotHWInterface : public ros_control_boilerplate::FRCRobotInterface
 		std::thread motion_profile_thread_;
 		std::vector<std::shared_ptr<std::mutex>> motion_profile_mutexes_;
 
+        //TODO make sure this will work with different PDP
 		std::vector<std::shared_ptr<std::mutex>> pdp_read_thread_mutexes_;
 		std::vector<std::shared_ptr<hardware_interface::PDPHWState>> pdp_read_thread_state_;
 		void pdp_read_thread(int32_t pdp, std::shared_ptr<hardware_interface::PDPHWState> state, std::shared_ptr<std::mutex> mutex, Tracer tracer);
@@ -278,8 +278,8 @@ class FRCRobotHWInterface : public ros_control_boilerplate::FRCRobotInterface
 
 		std::vector<std::shared_ptr<Joystick>> joysticks_;
 		std::vector<std::unique_ptr<realtime_tools::RealtimePublisher<sensor_msgs::Joy>>> realtime_pub_joysticks_;
-
-		std::unique_ptr<ROSIterativeRobot> robot_;
+        //TODO deleted
+		//std::unique_ptr<ROSIterativeRobot> robot_;
 
 		std::vector<Tracer> talon_thread_tracers_;
 		std::vector<Tracer> pdp_thread_tracers_;

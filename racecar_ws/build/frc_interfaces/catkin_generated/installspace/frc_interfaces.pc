@@ -1,8 +1,0 @@
-prefix=/home/niallmullane/racecar_ws/racecar_ws/install
-
-Name: frc_interfaces
-Description: Description of frc_interfaces
-Version: 0.0.0
-Cflags: -I/home/niallmullane/racecar_ws/racecar_ws/install/include
-Libs: -L/home/niallmullane/racecar_ws/racecar_ws/install/lib 
-Requires: state_handle roscpp

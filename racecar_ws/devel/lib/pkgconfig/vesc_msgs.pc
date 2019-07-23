@@ -1,8 +1,0 @@
-prefix=/home/niallmullane/racecar_ws/racecar_ws/devel
-
-Name: vesc_msgs
-Description: Description of vesc_msgs
-Version: 0.0.1
-Cflags: -I/home/niallmullane/racecar_ws/racecar_ws/devel/include
-Libs: -L/home/niallmullane/racecar_ws/racecar_ws/devel/lib 
-Requires: std_msgs message_runtime

@@ -1,8 +1,0 @@
-prefix=/home/niallmullane/racecar_ws/racecar_ws/devel
-
-Name: ros_control_boilerplate
-Description: Description of ros_control_boilerplate
-Version: 0.4.1
-Cflags: -I/home/niallmullane/racecar_ws/racecar_ws/devel/include -I/home/niallmullane/racecar_ws/racecar_ws/src/ros_control_boilerplate/include
-Libs: -L/home/niallmullane/racecar_ws/racecar_ws/devel/lib 
-Requires: hardware_interface controller_manager control_msgs trajectory_msgs actionlib urdf std_msgs frc_msgs frc_interfaces sensor_msgs rosparam_shortcuts talon_interface message_runtime

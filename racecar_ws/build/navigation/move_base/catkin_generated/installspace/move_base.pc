@@ -1,8 +1,0 @@
-prefix=/home/niallmullane/racecar_ws/racecar_ws/install
-
-Name: move_base
-Description: Description of move_base
-Version: 1.16.2
-Cflags: -I/home/niallmullane/racecar_ws/racecar_ws/install/include
-Libs: -L/home/niallmullane/racecar_ws/racecar_ws/install/lib 
-Requires: dynamic_reconfigure geometry_msgs move_base_msgs nav_msgs roscpp

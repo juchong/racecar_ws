@@ -53,7 +53,6 @@
 #include "frc_interfaces/pcm_state_interface.h"
 #include "frc_interfaces/remote_joint_interface.h"
 #include "frc_interfaces/robot_controller_interface.h"
-#include "frc_interfaces/match_data_interface.h"
 #include "frc_interfaces/pdp_state_interface.h"
 
 namespace ros_control_boilerplate
