@@ -93,8 +93,6 @@ For a more detailed simulation example, see sim_hw_interface.cpp
 
 #include <ros_control_boilerplate/set_limit_switch.h>
 
-ros::ServiceServer service;
-
 namespace frcrobot_control
 {
 
@@ -349,7 +347,6 @@ void TeleopJointsKeyboard::keyboardLoop()
 					//quit(0);
 					break;
 				case KEYCODE_CARROT:
-					ROS_WARN("It's a carrot");
 					dirty = true;
 					break;
 				default:
@@ -419,13 +416,6 @@ FRCRobotSimInterface::~FRCRobotSimInterface()
     sim_joy_thread_.join();
 }
 
-/*void FRCRobotSimInterface::cube_state_callback(const frc_msgs::CubeState &cube) {
-    clamp = cube.clamp;
-    intake_high = cube.intake_high;
-    intake_low = cube.intake_low;
-    has_cube = cube.has_cube;
-}*/
-
 void FRCRobotSimInterface::enable_callback(const std_msgs::Bool &enable_msg) {
     if(enable_msg.data) {
         robot_enabled = true;
@@ -438,7 +428,7 @@ void FRCRobotSimInterface::enable_callback(const std_msgs::Bool &enable_msg) {
 std::vector<ros_control_boilerplate::DummyJoint> FRCRobotSimInterface::getDummyJoints(void)
 {
 	std::vector<ros_control_boilerplate::DummyJoint> dummy_joints;
-	dummy_joints.push_back(Dumify(navX_zero_));
+	dummy_joints.push_back(Dumify(imu_zero_));
 	return dummy_joints;
 }
 
@@ -455,9 +445,24 @@ bool FRCRobotSimInterface::setlimit(ros_control_boilerplate::set_limit_switch::R
 	return true;
 }
 
+//Sets the jth digital input to the provided value
+bool FRCRobotSimInterface::setDigitalInput(ros_control_boilerplate::SetDigitalInput::Request &req,
+							ros_control_boilerplate::SetDigitalInput::Response &/*res*/)
+{
+	if (req.j < digital_input_names_.size() && req.j >= 0)
+	{
+		digital_input_state_[req.j] = req.value ? 1 : 0;
+		ROS_INFO_STREAM("req.j set to" << (int)req.value);
+	}
+	else
+	{
+		ROS_INFO_STREAM("Invalid value for req.j");
+	}
+	return true;
+}
+
 void FRCRobotSimInterface::init(void)
 {
-	service = nh_.advertiseService("set_limit_switch",&FRCRobotSimInterface::setlimit,this);
 
 	// Do base class init. This loads common interface info
 	// used by both the real and sim interfaces
@@ -470,9 +475,9 @@ void FRCRobotSimInterface::init(void)
     //Topic that enables the robot
     enable_sub_ = nh_.subscribe("/ADI_robot/enable", 1, &FRCRobotSimInterface::enable_callback, this);
 
-	digital_input_srv_ = nh_.advertiseService("digital_input_service_set",&FRCRobotSimInterface::setDigitalInput, this);
+	set_digital_input_service_ = nh_.advertiseService("digital_input_service_set",&FRCRobotSimInterface::setDigitalInput, this);
+	set_limit_switch_service_ = nh_.advertiseService("set_limit_switch",&FRCRobotSimInterface::setlimit,this);
 
-	ROS_WARN("fails here?1");
 	// Loop through the list of joint names
 	// specified as params for the hardware_interface.
 	// For each of them, create a Talon object. This
@@ -510,7 +515,6 @@ void FRCRobotSimInterface::init(void)
 							  " as PWM " << pwm_pwm_channels_[i] <<
 							  " invert " << pwm_inverts_[i]);
 
-	ROS_WARN("fails here?5");
 	for (size_t i = 0; i < num_solenoids_; i++)
 		ROS_INFO_STREAM_NAMED("frcrobot_sim_interface",
 							  "Loading joint " << i << "=" << solenoid_names_[i] <<
@@ -523,7 +527,7 @@ void FRCRobotSimInterface::init(void)
 							  " reverse " << double_solenoid_reverse_ids_[i]);
 
     //TODO rename for ADI IMU
-	for(size_t i = 0; i < num_navX_; i++)
+	for(size_t i = 0; i < num_imu_; i++)
 		ROS_INFO_STREAM_NAMED("frcrobot_sim_interface",
 							  "Loading joint " << i << "=" << navX_names_[i] <<
 							  " as navX id" << navX_ids_[i]);
@@ -585,21 +589,6 @@ void FRCRobotSimInterface::read(ros::Duration &/*elapsed_time*/)
     ros::spinOnce();
 }
 
-//Sets the jth digital input to the provided value
-bool FRCRobotSimInterface::setDigitalInput(ros_control_boilerplate::SetDigitalInput::Request &req,
-							ros_control_boilerplate::SetDigitalInput::Response &/*res*/)
-{
-	if (req.j < digital_input_names_.size())
-	{
-		digital_input_state_[req.j] = req.value ? 1 : 0;
-		ROS_INFO_STREAM("req.j set to" << (int)req.value);
-	}
-	else
-	{
-		ROS_INFO_STREAM("req.j not set to" << (int)req.value);
-	}
-	return true;
-}
 
 void FRCRobotSimInterface::write(ros::Duration &elapsed_time)
 {
@@ -611,15 +600,20 @@ void FRCRobotSimInterface::write(ros::Duration &elapsed_time)
 	// Was the robot enabled last time write was run?
 	static bool last_robot_enabled = false;
 
+    //Loop through talons
 	for (std::size_t joint_id = 0; joint_id < num_can_talon_srxs_; ++joint_id)
 	{
-		if (!can_talon_srx_local_hardwares_[joint_id])
-			continue;
-
+        //Call to check if talon is running a custom profile and
+        //handles sending points to the talon
 		custom_profile_write(joint_id);
 
 		auto &ts = talon_state_[joint_id];
 		auto &tc = talon_command_[joint_id];
+
+        /*********************************
+        Update simulated state of hardware
+        *********************************/
+
 
 		// If commanded mode changes, copy it over
 		// to current state
@@ -633,6 +627,11 @@ void FRCRobotSimInterface::write(ros::Duration &elapsed_time)
 				ts.setTalonMode(new_mode);
 				ROS_INFO_STREAM("Set joint " << joint_id << "=" << can_talon_srx_names_[joint_id] <<" mode " << (int)new_mode);
 			}
+
+            //DemandType is enumerator with 
+            //neutral/no-change
+            //Set target of aux-pid loop to the demand value
+            //Arbitrary feed forward add demand value to the closed-loop output
 			hardware_interface::DemandType demand1_type_internal;
 			double demand1_value;
 			if (tc.demand1Changed(demand1_type_internal, demand1_value))
@@ -651,15 +650,13 @@ void FRCRobotSimInterface::write(ros::Duration &elapsed_time)
 			ts.setSetpoint(tc.get());
 			ts.setDemand1Type(tc.getDemand1Type());
 			ts.setDemand1Value(tc.getDemand1Value());
-			if (last_robot_enabled)
-			{
-				// On the switch from robot enabled to robot disabled, set Talons to ControlMode::Disabled
-				// call resetMode() to queue up a change back to the correct mode / setpoint
-				// when the robot switches from disabled back to enabled
-				tc.resetMode();
-				ts.setTalonMode(hardware_interface::TalonMode_Disabled);
-				ROS_INFO_STREAM("Robot disabled - called Set(Disabled) on " << joint_id << "=" << can_talon_srx_names_[joint_id]);
-			}
+
+            // On the switch from robot enabled to robot disabled, set Talons to ControlMode::Disabled
+            // call resetMode() to queue up a change back to the correct mode / setpoint
+            // when the robot switches from disabled back to enabled
+            tc.resetMode();
+            ts.setTalonMode(hardware_interface::TalonMode_Disabled);
+            ROS_INFO_STREAM("Robot disabled - called Set(Disabled) on " << joint_id << "=" << can_talon_srx_names_[joint_id]);
 		}
 
 		bool close_loop_mode = false;
@@ -901,6 +898,7 @@ void FRCRobotSimInterface::write(ros::Duration &elapsed_time)
 				ROS_INFO_STREAM("Added " << trajectory_points.size() << " points to joint " << joint_id << "=" << can_talon_srx_names_[joint_id] <<" motion profile trajectories");
 		}
 
+        //TODO implement CTRE sim
 		hardware_interface::TalonMode simulate_mode = ts.getTalonMode();
 		if (simulate_mode == hardware_interface::TalonMode_Position)
 		{
@@ -968,15 +966,9 @@ void FRCRobotSimInterface::write(ros::Duration &elapsed_time)
 	}
 	last_robot_enabled = robot_enabled;
 
-	for (std::size_t joint_id = 0; joint_id < num_nidec_brushlesses_; ++joint_id)
-	{
-		// Assume instant acceleration for now
-		const double vel = brushless_command_[joint_id];
-		brushless_vel_[joint_id] = vel;
-	}
 	for (size_t i = 0; i < num_digital_outputs_; i++)
 	{
-		bool converted_command = (digital_output_command_[i] > 0) ^ (digital_output_inverts_[i] && digital_output_local_updates_[i]);
+		bool converted_command = (digital_output_command_[i] > 0) ^ (digital_output_inverts_[i]);
 		if (converted_command != digital_output_state_[i])
 		{
 			digital_output_state_[i] = converted_command;
@@ -987,7 +979,7 @@ void FRCRobotSimInterface::write(ros::Duration &elapsed_time)
 	}
 	for (size_t i = 0; i < num_pwm_; i++)
 	{
-		const int setpoint = pwm_command_[i] * ((pwm_inverts_[i] & pwm_local_updates_[i]) ? -1 : 1);
+		const int setpoint = pwm_command_[i] * ((pwm_inverts_[i]) ? -1 : 1);
 		if (pwm_state_[i] != setpoint)
 		{
 			pwm_state_[i] = setpoint;
@@ -1048,11 +1040,9 @@ void FRCRobotSimInterface::write(ros::Duration &elapsed_time)
 		}
 	}
 
+    //TODO what is the point of this
 	for (size_t i = 0; i < num_dummy_joints_; i++)
 	{
-		if (!dummy_joint_locals_[i])
-			continue;
-		//s << dummy_joint_command_[i] << " ";
 		dummy_joint_effort_[i] = 0;
 		//if (dummy_joint_names_[i].substr(2, std::string::npos) == "_angle")
 		{

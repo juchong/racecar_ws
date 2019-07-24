@@ -44,35 +44,35 @@
 namespace ros_control_boilerplate
 {
 
-void FRCRobotInterface::readJointLocalParams(XmlRpc::XmlRpcValue joint_params,
-											 const bool local,
-											 const bool saw_local_keyword,
-											 bool &local_update,
-											 bool &local_hardware)
-{
-	local_update = local;
-	if (joint_params.hasMember("local_update"))
-	{
-		if (saw_local_keyword)
-			throw std::runtime_error("local can't be combined with local_update");
-		XmlRpc::XmlRpcValue &xml_joint_local_update = joint_params["local_update"];
-		if (!xml_joint_local_update.valid() ||
-			xml_joint_local_update.getType() != XmlRpc::XmlRpcValue::TypeBoolean)
-			throw std::runtime_error("An invalid joint local_update was specified (expecting a boolean).");
-		local_update = xml_joint_local_update;
-	}
-	local_hardware = local;
-	if (joint_params.hasMember("local_hardware"))
-	{
-		if (saw_local_keyword)
-			throw std::runtime_error("local can't be combined with local_hardware");
-		XmlRpc::XmlRpcValue &xml_joint_local_hardware = joint_params["local_hardware"];
-		if (!xml_joint_local_hardware.valid() ||
-			xml_joint_local_hardware.getType() != XmlRpc::XmlRpcValue::TypeBoolean)
-			throw std::runtime_error("An invalid joint local_hardware was specified (expecting a boolean).");
-		local_hardware = xml_joint_local_hardware;
-	}
-}
+//void FRCRobotInterface::readJointLocalParams(XmlRpc::XmlRpcValue joint_params,
+//											 const bool local,
+//											 const bool saw_local_keyword,
+//											 bool &local_update,
+//											 bool &local_hardware)
+//{
+//	local_update = local;
+//	if (joint_params.hasMember("local_update"))
+//	{
+//		if (saw_local_keyword)
+//			throw std::runtime_error("local can't be combined with local_update");
+//		XmlRpc::XmlRpcValue &xml_joint_local_update = joint_params["local_update"];
+//		if (!xml_joint_local_update.valid() ||
+//			xml_joint_local_update.getType() != XmlRpc::XmlRpcValue::TypeBoolean)
+//			throw std::runtime_error("An invalid joint local_update was specified (expecting a boolean).");
+//		local_update = xml_joint_local_update;
+//	}
+//	local_hardware = local;
+//	if (joint_params.hasMember("local_hardware"))
+//	{
+//		if (saw_local_keyword)
+//			throw std::runtime_error("local can't be combined with local_hardware");
+//		XmlRpc::XmlRpcValue &xml_joint_local_hardware = joint_params["local_hardware"];
+//		if (!xml_joint_local_hardware.valid() ||
+//			xml_joint_local_hardware.getType() != XmlRpc::XmlRpcValue::TypeBoolean)
+//			throw std::runtime_error("An invalid joint local_hardware was specified (expecting a boolean).");
+//		local_hardware = xml_joint_local_hardware;
+//	}
+//}
 
 FRCRobotInterface::FRCRobotInterface(ros::NodeHandle &nh, urdf::Model *urdf_model) :
 	  name_("generic_hw_interface")
@@ -861,7 +861,7 @@ void FRCRobotInterface::init()
 		if (!rumble_local_updates_[i])
 			joint_remote_interface_.registerHandle(rh);
 	}
-
+    //TODO generalize IMU definition
 	// Differentiate between navX and IMU here
 	// We might want more than 1 type of IMU
 	// at some point - eventually allow this by making IMU
