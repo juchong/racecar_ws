@@ -421,7 +421,7 @@ void FRCRobotSimInterface::enable_callback(const std_msgs::Bool &enable_msg) {
         robot_enabled = true;
     }
     else {
-        robot_enabled false;
+        robot_enabled = false;
     }
 }
 
@@ -529,8 +529,8 @@ void FRCRobotSimInterface::init(void)
     //TODO rename for ADI IMU
 	for(size_t i = 0; i < num_imu_; i++)
 		ROS_INFO_STREAM_NAMED("frcrobot_sim_interface",
-							  "Loading joint " << i << "=" << navX_names_[i] <<
-							  " as navX id" << navX_ids_[i]);
+							  "Loading joint " << i << "=" << imu_names_[i] <<
+							  " as imu id" << imu_ids_[i]);
 
 	for (size_t i = 0; i < num_analog_inputs_; i++)
 		ROS_INFO_STREAM_NAMED("frcrobot_sim_interface",

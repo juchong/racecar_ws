@@ -39,10 +39,12 @@
 
 #pragma once
 #include <thread>
+#include <atomic>
 
 // ROS
 #include <ros/ros.h>
 #include <urdf/model.h>
+#include <std_msgs/Bool.h>
 
 // ROS Controls
 #include <controller_manager/controller_manager.h>
@@ -53,6 +55,7 @@
 #include "frc_interfaces/pcm_state_interface.h"
 #include "frc_interfaces/robot_controller_interface.h"
 #include "frc_interfaces/pdp_state_interface.h"
+#include <hardware_interface/imu_sensor_interface.h>
 
 namespace ros_control_boilerplate
 {
@@ -158,6 +161,10 @@ class FRCRobotInterface : public hardware_interface::RobotHW
 		// Startup and shutdown of the internal node inside a roscpp program
 		ros::NodeHandle nh_;
 
+        //Subscriber 
+        ros::Subscriber enable_sub_;
+        std::atomic<bool> robot_enabled;
+
 		// Hardware interfaces
 		hardware_interface::JointStateInterface       joint_state_interface_;
 		hardware_interface::TalonStateInterface       talon_state_interface_;
@@ -174,8 +181,10 @@ class FRCRobotInterface : public hardware_interface::RobotHW
 
 		hardware_interface::RobotControllerStateInterface robot_controller_state_interface_;
 
-		//void custom_profile_write(int joint_id);
-		//void custom_profile_set_talon(hardware_interface::TalonMode mode, double setpoint, double fTerm, int joint_id, int pidSlot, bool zeroPos);
+        std::vector<CustomProfileState> custom_profile_state_;
+
+		void custom_profile_write(int joint_id);
+		void custom_profile_set_talon(hardware_interface::TalonMode mode, double setpoint, double fTerm, int joint_id, int pidSlot, bool zeroPos);
 
 		//void readJointLocalParams(XmlRpc::XmlRpcValue joint_params,
 		//						  const bool local,
@@ -227,9 +236,9 @@ class FRCRobotInterface : public hardware_interface::RobotHW
 		std::vector<int>         rumble_ports_;
 		std::size_t              num_rumbles_;
 
-		std::vector<std::string> adi_imu_names_;
-		std::vector<std::string> adi_imu_frame_ids_;
-		std::vector<int>         adi_imu_ids_;
+		std::vector<std::string> imu_names_;
+		std::vector<std::string> imu_frame_ids_;
+		std::vector<int>         imu_ids_;
 
 		std::size_t              num_imu_;
 
@@ -264,7 +273,7 @@ class FRCRobotInterface : public hardware_interface::RobotHW
 		std::vector<double> solenoid_state_;
 		std::vector<double> double_solenoid_state_;
 		std::vector<double> rumble_state_; //No actual data
-		std::vector<double> adi_imu_state_;
+		std::vector<double> imu_state_;
 		std::vector<double> compressor_state_;
 		std::vector<hardware_interface::PDPHWState> pdp_state_;
 		std::vector<hardware_interface::PCMState> pcm_state_;
@@ -288,7 +297,7 @@ class FRCRobotInterface : public hardware_interface::RobotHW
 		std::vector<double> solenoid_command_;
 		std::vector<double> double_solenoid_command_;
 		std::vector<double> rumble_command_;
-        std::vector<double> offset_adi_imu_;
+        std::vector<double> offset_imu_;
 		std::vector<double> compressor_command_;
 
 		std::vector<double> dummy_joint_position_;

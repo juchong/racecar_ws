@@ -138,11 +138,19 @@ namespace frcrobot_control
 const int pidIdx = 0; //0 for primary closed-loop, 1 for cascaded closed-loop
 const int timeoutMs = 0; //If nonzero, function will wait for config success and report an error if it times out. If zero, no blocking or checking is performed
 
+void FRCRobotHWInterface::enable_callback(const std_msgs::Bool &enable_msg) {
+    if(enable_msg.data) {
+        robot_enabled = true;
+    }
+    else {
+        robot_enabled = false;
+    }
+}
+
+
 // Constructor. Pass appropriate params to base class constructor,
-// initialze robot_ pointer to NULL
 FRCRobotHWInterface::FRCRobotHWInterface(ros::NodeHandle &nh, urdf::Model *urdf_model)
 	: ros_control_boilerplate::FRCRobotInterface(nh, urdf_model)
-	, robot_(nullptr)
 	, read_tracer_(nh_.getNamespace() + "::read()")
 {
 }
@@ -194,7 +202,6 @@ void FRCRobotHWInterface::init(void)
 		// Make sure to initialize WPIlib code before creating
 		// a CAN Talon object to avoid NIFPGA: Resource not initialized
 		// errors? See https://www.chiefdelphi.com/forums/showpost.php?p=1640943&postcount=3
-		robot_.reset(new ROSIterativeRobot());
 	}
 	else
 	{
@@ -208,6 +215,10 @@ void FRCRobotHWInterface::init(void)
 
 		ctre::phoenix::platform::can::SetCANInterface(can_interface_.c_str());
 	}
+
+    //Topic that enables the robot
+    enable_sub_ = nh_.subscribe("/ADI_robot/enable", 1, &FRCRobotHWInterface::enable_callback, this);
+
 
 	for (size_t i = 0; i < num_can_talon_srxs_; i++)
 	{
@@ -940,7 +951,6 @@ void FRCRobotHWInterface::read(ros::Duration &/*elapsed_time*/)
 						robot_ready_signals_.cend(),
 						[](double d) { return d != 0.0;} ))
 		{
-			robot_->StartCompetition();
 			robot_code_ready_ = true;
 		}
 	}
@@ -948,7 +958,6 @@ void FRCRobotHWInterface::read(ros::Duration &/*elapsed_time*/)
 	if (robot_code_ready_)
 	{
 		read_tracer_.start_unique("OneIteration");
-		robot_->OneIteration();
 
 		read_tracer_.start_unique("joysticks");
 		// Update joystick state as often as possible
@@ -1038,71 +1047,7 @@ void FRCRobotHWInterface::read(ros::Duration &/*elapsed_time*/)
 			}
 		}
 
-		read_tracer_.start_unique("match data");
-		int32_t status = 0;
-		match_data_.setMatchTimeRemaining(HAL_GetMatchTime(&status));
-		HAL_MatchInfo info;
-		HAL_GetMatchInfo(&info);
-
-		match_data_.setGameSpecificData(std::string(reinterpret_cast<char*>(info.gameSpecificMessage),
-                     info.gameSpecificMessageSize));
-		match_data_.setEventName(info.eventName);
-
-		status = 0;
-		auto allianceStationID = HAL_GetAllianceStation(&status);
-		DriverStation::Alliance color;
-		switch (allianceStationID) {
-			case HAL_AllianceStationID_kRed1:
-			case HAL_AllianceStationID_kRed2:
-			case HAL_AllianceStationID_kRed3:
-				color = DriverStation::kRed;
-				break;
-			case HAL_AllianceStationID_kBlue1:
-			case HAL_AllianceStationID_kBlue2:
-			case HAL_AllianceStationID_kBlue3:
-				color = DriverStation::kBlue;
-				break;
-			default:
-				color = DriverStation::kInvalid;
-		}
-		match_data_.setAllianceColor(color);
-
-		match_data_.setMatchType(static_cast<DriverStation::MatchType>(info.matchType));
-
-		int station_location;
-		switch (allianceStationID) {
-			case HAL_AllianceStationID_kRed1:
-			case HAL_AllianceStationID_kBlue1:
-				station_location = 1;
-				break;
-			case HAL_AllianceStationID_kRed2:
-			case HAL_AllianceStationID_kBlue2:
-				station_location = 2;
-				break;
-			case HAL_AllianceStationID_kRed3:
-			case HAL_AllianceStationID_kBlue3:
-				station_location = 3;
-				break;
-			default:
-				station_location = 0;
-		}
-		match_data_.setDriverStationLocation(station_location);
-
-		match_data_.setMatchNumber(info.matchNumber);
-		match_data_.setReplayNumber(info.replayNumber);
-
-		HAL_ControlWord controlWord;
-		HAL_GetControlWord(&controlWord);
-		match_data_.setEnabled(controlWord.enabled && controlWord.dsAttached);
-		match_data_.setDisabled(!(controlWord.enabled && controlWord.dsAttached));
-		match_data_.setAutonomous(controlWord.autonomous);
-		match_data_.setOperatorControl(!(controlWord.autonomous || controlWord.test));
-		match_data_.setTest(controlWord.test);
-		match_data_.setDSAttached(controlWord.dsAttached);
-		match_data_.setFMSAttached(controlWord.fmsAttached);
-		status = 0;
-		match_data_.setBatteryVoltage(HAL_GetVinVoltage(&status));
-
+		//TODO is this applicable to ADI
 		read_tracer_.start_unique("robot controller data");
 		status = 0;
 		robot_controller_state_.SetFPGAVersion(HAL_GetFPGAVersion(&status));
@@ -2127,7 +2072,7 @@ void FRCRobotHWInterface::write(ros::Duration &elapsed_time)
 		}
 
 		// Set new motor setpoint if either the mode or the setpoint has been changed
-		if (match_data_.isEnabled())
+		if (robot_enabled)
 		{
 			double command;
 			hardware_interface::TalonMode in_mode;
@@ -2212,7 +2157,7 @@ void FRCRobotHWInterface::write(ros::Duration &elapsed_time)
 		}
 	}
 
-	last_robot_enabled = match_data_.isEnabled();
+	last_robot_enabled = robot_enabled;
 
 	for (size_t i = 0; i < num_nidec_brushlesses_; i++)
 	{

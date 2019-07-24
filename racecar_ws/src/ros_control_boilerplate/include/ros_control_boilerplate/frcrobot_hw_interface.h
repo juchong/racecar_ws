@@ -205,6 +205,8 @@ class FRCRobotHWInterface : public ros_control_boilerplate::FRCRobotInterface
 		virtual std::vector<ros_control_boilerplate::DummyJoint> getDummyJoints(void) override;
 
 	private:
+        void enable_callback(const std_msgs::Bool &enable_msg);
+
         //TODO where is this used
 		void process_motion_profile_buffer_thread(double hz);
 
@@ -278,8 +280,6 @@ class FRCRobotHWInterface : public ros_control_boilerplate::FRCRobotInterface
 
 		std::vector<std::shared_ptr<Joystick>> joysticks_;
 		std::vector<std::unique_ptr<realtime_tools::RealtimePublisher<sensor_msgs::Joy>>> realtime_pub_joysticks_;
-        //TODO deleted
-		//std::unique_ptr<ROSIterativeRobot> robot_;
 
 		std::vector<Tracer> talon_thread_tracers_;
 		std::vector<Tracer> pdp_thread_tracers_;

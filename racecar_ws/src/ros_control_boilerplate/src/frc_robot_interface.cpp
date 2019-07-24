@@ -307,36 +307,36 @@ FRCRobotInterface::FRCRobotInterface(ros::NodeHandle &nh, urdf::Model *urdf_mode
 			rumble_names_.push_back(joint_name);
 			rumble_ports_.push_back(rumble_port);
 		}
-		else if (joint_type == "navX")
+		else if (joint_type == "imu")
 		{
 			// TODO : id might instead be a string - MXP, USB, etc
-			// telling where the navX is attached?
+			// telling where the imu is attached?
 			const bool has_id = joint_params.hasMember("id");
-			int navX_id = 0;
+			int imu_id = 0;
             if (!has_id)
-                throw std::runtime_error("A navX id was not specified for joint " + joint_name);
-            XmlRpc::XmlRpcValue &xml_navX_id = joint_params["id"];
-            if (!xml_navX_id.valid() ||
-                    xml_navX_id.getType() != XmlRpc::XmlRpcValue::TypeInt)
+                throw std::runtime_error("A imu id was not specified for joint " + joint_name);
+            XmlRpc::XmlRpcValue &xml_imu_id = joint_params["id"];
+            if (!xml_imu_id.valid() ||
+                    xml_imu_id.getType() != XmlRpc::XmlRpcValue::TypeInt)
                 throw std::runtime_error("An invalid joint id was specified (expecting an int) for joint " + joint_name);
-            navX_id = xml_navX_id;
-            auto it = std::find(navX_ids_.cbegin(), navX_ids_.cend(), navX_id);
-            if (it != navX_ids_.cend())
-                throw std::runtime_error("A duplicate navX_id was specified for joint " + joint_name);
+            imu_id = xml_imu_id;
+            auto it = std::find(imu_ids_.cbegin(), imu_ids_.cend(), imu_id);
+            if (it != imu_ids_.cend())
+                throw std::runtime_error("A duplicate imu_id was specified for joint " + joint_name);
 
 			const bool has_frame_id = joint_params.hasMember("id");
 			std::string frame_id;
             if (!has_frame_id)
-                throw std::runtime_error("A navX frame_id was not specified for joint " + joint_name);
+                throw std::runtime_error("A imu frame_id was not specified for joint " + joint_name);
             XmlRpc::XmlRpcValue &xml_joint_frame_id= joint_params["frame_id"];
             if (!xml_joint_frame_id.valid() ||
                     xml_joint_frame_id.getType() != XmlRpc::XmlRpcValue::TypeString)
-                throw std::runtime_error("An invalid navX frame_id was specified (expecting a string) for joint " + joint_name);
+                throw std::runtime_error("An invalid imu frame_id was specified (expecting a string) for joint " + joint_name);
             frame_id = std::string(xml_joint_frame_id);
 
-			navX_names_.push_back(joint_name);
-			navX_frame_ids_.push_back(frame_id);
-			navX_ids_.push_back(navX_id);
+			imu_names_.push_back(joint_name);
+			imu_frame_ids_.push_back(frame_id);
+			imu_ids_.push_back(imu_id);
 		}
 		else if (joint_type == "analog_input")
 		{
@@ -592,27 +592,27 @@ void FRCRobotInterface::init()
 	// We might want more than 1 type of IMU
 	// at some point - eventually allow this by making IMU
 	// data sized to hold results from all IMU
-	// hardware rather than just navX size
-	num_navX_ = navX_names_.size();
-	imu_orientations_.resize(num_navX_);
-	imu_orientation_covariances_.resize(num_navX_);
-	imu_angular_velocities_.resize(num_navX_);
-	imu_angular_velocity_covariances_.resize(num_navX_);
-	imu_linear_accelerations_.resize(num_navX_);
-	imu_linear_acceleration_covariances_.resize(num_navX_);
-	navX_state_.resize(num_navX_);
-	offset_navX_.resize(num_navX_);
+	// hardware rather than just imu size
+	num_imu_ = imu_names_.size();
+	imu_orientations_.resize(num_imu_);
+	imu_orientation_covariances_.resize(num_imu_);
+	imu_angular_velocities_.resize(num_imu_);
+	imu_angular_velocity_covariances_.resize(num_imu_);
+	imu_linear_accelerations_.resize(num_imu_);
+	imu_linear_acceleration_covariances_.resize(num_imu_);
+	imu_state_.resize(num_imu_);
+	offset_imu_.resize(num_imu_);
 
-	for (size_t i = 0; i < num_navX_; i++)
+	for (size_t i = 0; i < num_imu_; i++)
 	{
-		ROS_INFO_STREAM_NAMED(name_, "FRCRobotInterface: Registering navX interface for : " << navX_names_[i] << " at id " << navX_ids_[i]);
+		ROS_INFO_STREAM_NAMED(name_, "FRCRobotInterface: Registering imu interface for : " << imu_names_[i] << " at id " << imu_ids_[i]);
 
 		// Create state interface for the given IMU
 		// and point it to the data stored in the
 		// corresponding imu arrays
 		hardware_interface::ImuSensorHandle::Data imu_data;
-		imu_data.name = navX_names_[i];
-		imu_data.frame_id = navX_frame_ids_[i];
+		imu_data.name = imu_names_[i];
+		imu_data.frame_id = imu_frame_ids_[i];
 		for (size_t j = 0; j < 3; j++)
 		{
 			imu_orientations_[i][j] = 0;
@@ -632,10 +632,10 @@ void FRCRobotInterface::init()
 
 		// Set up a command interface to set an
 		// offset for reported heading
-		hardware_interface::JointStateHandle nxsh(navX_names_[i], &navX_state_[i], &navX_state_[i], &navX_state_[i]);
+		hardware_interface::JointStateHandle nxsh(imu_names_[i], &imu_state_[i], &imu_state_[i], &imu_state_[i]);
 		joint_state_interface_.registerHandle(nxsh);
 
-		offset_navX_[i] = 0;
+		offset_imu_[i] = 0;
 	}
 
 	num_analog_inputs_ = analog_input_names_.size();
@@ -736,10 +736,10 @@ void FRCRobotInterface::init()
 		joint_position_interface_.registerHandle(dch);
 		joint_velocity_interface_.registerHandle(dch);
 	}
+    //TODO do we need anything here
 	if (run_hal_robot_)
 	{
-		hardware_interface::MatchStateHandle msh("match_name", &match_data_);
-		match_state_interface_.registerHandle(msh);
+        ROS_INFO("run_hal_robot");
 	}
 	else
 	{
@@ -771,7 +771,6 @@ void FRCRobotInterface::init()
 	registerInterface(&pdp_state_interface_);
 	registerInterface(&pcm_state_interface_);
 	registerInterface(&robot_controller_state_interface_);
-	registerInterface(&match_state_interface_);
 
 
 	ROS_INFO_STREAM_NAMED(name_, "FRCRobotInterface Ready.");
