@@ -168,7 +168,6 @@ class FRCRobotInterface : public hardware_interface::RobotHW
 		hardware_interface::PositionJointInterface joint_position_interface_;
 		hardware_interface::VelocityJointInterface joint_velocity_interface_;
 		hardware_interface::EffortJointInterface   joint_effort_interface_;
-		hardware_interface::RemoteJointInterface   joint_remote_interface_;
 		hardware_interface::TalonCommandInterface  talon_command_interface_;
 
 		hardware_interface::ImuSensorInterface imu_interface_;
