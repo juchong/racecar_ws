@@ -97,7 +97,7 @@ class FRCRobotSimInterface : public ros_control_boilerplate::FRCRobotInterface
 		ros::ServiceServer set_digital_input_service_;
 		ros::ServiceServer set_limit_switch_service_;
 
-        void enable_callback(const std_msgs:Bool &enable_msg);
+        void enable_callback(const std_msgs::Bool &enable_msg);
 
         //IMU offset value
 		double imu_zero_;

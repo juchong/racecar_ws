@@ -243,7 +243,7 @@ class FRCRobotHWInterface : public ros_control_boilerplate::FRCRobotInterface
 		bool safeTalonCall(ctre::phoenix::ErrorCode error_code,
 				const std::string &talon_method_name);
 
-		double navX_zero_;
+		double imu_zero_;
 
 		std::vector<std::shared_ptr<ctre::phoenix::motorcontrol::can::TalonSRX>> can_talons_;
 
@@ -260,6 +260,7 @@ class FRCRobotHWInterface : public ros_control_boilerplate::FRCRobotInterface
 		std::vector<DoubleSolenoidHandle> double_solenoids_;
         //TODO change this for ADI IMU
 		std::vector<std::shared_ptr<AHRS>> navXs_;
+
 		std::vector<std::shared_ptr<frc::AnalogInput>> analog_inputs_;
 
 		std::vector<std::shared_ptr<std::mutex>> pcm_read_thread_mutexes_;
