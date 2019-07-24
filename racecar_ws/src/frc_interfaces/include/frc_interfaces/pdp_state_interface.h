@@ -57,7 +57,6 @@ class PDPHWState
 };
 
 typedef StateHandle<const PDPHWState> PDPStateHandle;
-typedef StateHandle<PDPHWState> PDPWritableStateHandle;
 
 class PDPStateInterface: public HardwareResourceManager<PDPStateHandle> {};
 }

@@ -51,7 +51,6 @@
 #include <talon_interface/talon_command_interface.h>
 #include "frc_interfaces/robot_controller_interface.h"
 #include "frc_interfaces/pcm_state_interface.h"
-#include "frc_interfaces/remote_joint_interface.h"
 #include "frc_interfaces/robot_controller_interface.h"
 #include "frc_interfaces/pdp_state_interface.h"
 
@@ -233,7 +232,7 @@ class FRCRobotInterface : public hardware_interface::RobotHW
 		std::vector<std::string> adi_imu_frame_ids_;
 		std::vector<int>         adi_imu_ids_;
 
-		std::size_t              num_navX_;
+		std::size_t              num_imu_;
 
 		std::vector<std::string> analog_input_names_;
 		std::vector<int>         analog_input_analog_channels_;

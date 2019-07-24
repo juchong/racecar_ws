@@ -1334,7 +1334,6 @@ class TalonHWState
 // hardware resources on the robot.  Since state is
 // read-only, allow multiple controllers to register it.
 typedef StateHandle<const TalonHWState> TalonStateHandle;
-typedef StateHandle<TalonHWState> TalonWritableStateHandle;
 class TalonStateInterface : public HardwareResourceManager<TalonStateHandle> {};
 
 }
