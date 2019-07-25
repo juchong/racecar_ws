@@ -3,13 +3,13 @@
 <launch>
 
   <arg name="hw_or_sim" default="hw" />
-  <rosparam file="$(find ros_control_boilerplate)/config/2018_main_frcrobot.yaml" command="load"/>
+  <rosparam file="$(find ros_control_boilerplate)/config/diff_drive.yaml" command="load"/>
   <!-- Starting ros control node -->
   <node name="ADI_racecar_hardware_interface" pkg="ros_control_boilerplate" type="frcrobot_$(arg hw_or_sim)_main" output="screen" />
   
   <!-- Load controller manager -->
   <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false"
-  	    output="screen" args="spawn imu_sensor_controller" /> 
+  	    output="screen" args="spawn imu_sensor_controller talon_state_controller diff_drive_controller"/> 
   	    <!--output="screen" args="spawn imu_sensor_controller joint_state_controller joint_state_listener_controller talon_state_controller pdp_state_controller robot_code_ready_controller" /--> 
   <!-- Starting Remote control Node -->
   <include file="$(find racecar)/launch/includes/racecar-v2-teleop.launch.xml" />

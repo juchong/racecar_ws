@@ -211,6 +211,7 @@ void FRCRobotHWInterface::init(void)
 		hal::init::InitializeSolenoid();
 
 		ctre::phoenix::platform::can::SetCANInterface(can_interface_.c_str());
+        ROS_WARN("Set can interface");
 	}
 
     //Topic that enables the robot
@@ -246,6 +247,7 @@ void FRCRobotHWInterface::init(void)
                                       talon_read_state_mutexes_[i],
                                       talon_thread_tracers_[i]));
 	}
+    ROS_WARN("initialized talons");
 
 	for (size_t i = 0; i < num_digital_inputs_; i++)
 	{
@@ -349,6 +351,7 @@ void FRCRobotHWInterface::init(void)
         //TODO ADI IMU add type to imu joint to determine how we instantiate them
         //navXs_.push_back(std::make_shared<AHRS>(SPI::Port::kMXP));
         adis16495s_.push_back(std::make_shared<Adis16495>());
+        ROS_WARN("Initialized imus");
         
         //TODO move this into different thread to make it non blocking
         while(adis16495s_[i]->openPort(imu_devices_[i]) < 0) {
@@ -356,13 +359,13 @@ void FRCRobotHWInterface::init(void)
             ROS_WARN("Keep trying to open the device in 1 second period...");
             sleep(1);
         }
+        ROS_WARN("below stupid loop");
 		// This is a guess so TODO : get better estimates
 		imu_orientation_covariances_[i] = {0.0015, 0.0, 0.0, 0.0, 0.0015, 0.0, 0.0, 0.0, 0.0015};
 		imu_angular_velocity_covariances_[i] = {0.0015, 0.0, 0.0, 0.0, 0.0015, 0.0, 0.0, 0.0, 0.0015};
 		imu_linear_acceleration_covariances_[i] ={0.0015, 0.0, 0.0, 0.0, 0.0015, 0.0, 0.0, 0.0, 0.0015};
-		break; // TODO : only support 1 for now - if we need more, need to define
-		       // the interface in config files somehow
 	}
+    ROS_WARN("Initialized imus");
 	for (size_t i = 0; i < num_analog_inputs_; i++)
 	{
 		ROS_INFO_STREAM_NAMED("frcrobot_hw_interface",
@@ -383,6 +386,7 @@ void FRCRobotHWInterface::init(void)
         if (need_new_hal_ain)
             analog_inputs_.push_back(std::make_shared<frc::AnalogInput>(analog_input_analog_channels_[i]));
 	}
+    ROS_WARN("top bottom of init");
 	for (size_t i = 0; i < num_compressors_; i++)
 	{
 		ROS_INFO_STREAM_NAMED("frcrobot_hw_interface",
@@ -422,6 +426,7 @@ void FRCRobotHWInterface::init(void)
 							  "Loading joint " << i << "=" << rumble_names_[i] <<
 							  " as Rumble with port" << rumble_ports_[i]);
 
+    ROS_WARN("middle bottom of init");
 	for (size_t i = 0; i < num_pdps_; i++)
 	{
 		ROS_INFO_STREAM_NAMED("frcrobot_hw_interface",
@@ -470,6 +475,7 @@ void FRCRobotHWInterface::init(void)
 
 	imu_zero_ = -10000;
 
+    ROS_WARN("bottom of init");
 	ROS_INFO_NAMED("frcrobot_hw_interface", "FRCRobotHWInterface Ready.");
 }
 

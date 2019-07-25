@@ -9,11 +9,14 @@ generic_hw_control_loop:
 # For future expansion, change hw_id to specify one
 # of several types of HW interface : CAN_id, PWM_id, DIO_id, AIO_id, etc.
 hardware_interface:
+   run_hal_robot: false
+   can_interface: "can0"
    joints:
        - {name: left_drive,     type: can_talon_srx, can_id: 1}
        - {name: left_follower,  type: can_talon_srx, can_id: 2}
        - {name: right_drive,    type: can_talon_srx, can_id: 3}
        - {name: right_follower, type: can_talon_srx, can_id: 4}
+       - {name: adis16495, type: imu, frame_id: imu, id: 1, device: "/dev/ttyACM2"}
 
    # Add more data for each joint here - intitial mode, encoder type
    #    PIDF settings, limit switch settings, etc
@@ -86,3 +89,8 @@ right_follower_controller:
     joint: right_follower
     follow_joint: right_drive
     invert_output: True # Same as right drive
+
+imu_sensor_controller:
+   type:         imu_sensor_controller/ImuSensorController
+   publish_rate: 50
+

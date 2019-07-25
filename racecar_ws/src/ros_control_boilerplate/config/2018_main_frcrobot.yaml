@@ -1,7 +1,7 @@
 # ros_control_boilerplate Settings -----------------------
 # Settings for ros_control control loop
 generic_hw_control_loop:
-  loop_hz: 23
+  loop_hz: 50
   cycle_time_error_threshold: 0.01
 
 # Settings for ros_control hardware interface
@@ -10,6 +10,8 @@ generic_hw_control_loop:
 # of several types of HW interface : CAN_id, PWM_id, DIO_id, AIO_id, etc.
 hardware_interface:
    joints:
+       - {name: left_wheel, type: can_talon_srx, can_id: 41}
+       - {name: right_wheel, type: can_talon_srx, can_id: 42}
        #- {name: lift, type: can_talon_srx, can_id: 41}
        #- {name: lift_follower1, type: can_talon_srx, can_id: 42}
        #- {name: lift_follower2, type: can_talon_srx, can_id: 43}
