@@ -1,11 +1,21 @@
+<?xml version="1.0"?>
 <!-- -*- mode: XML -*- -->
 <launch>
 
+  <arg name="hw_or_sim" default="hw" />
+  <rosparam file="$(find ros_control_boilerplate)/config/2018_main_frcrobot.yaml" command="load"/>
+  <!-- Starting ros control node -->
+  <node name="ADI_racecar_hardware_interface" pkg="ros_control_boilerplate" type="frcrobot_$(arg hw_or_sim)_main" output="screen" />
+  
+  <!-- Load controller manager -->
+  <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false"
+  	    output="screen" args="spawn imu_sensor_controller" /> 
+  	    <!--output="screen" args="spawn imu_sensor_controller joint_state_controller joint_state_listener_controller talon_state_controller pdp_state_controller robot_code_ready_controller" /--> 
   <!-- Starting Remote control Node -->
   <include file="$(find racecar)/launch/includes/racecar-v2-teleop.launch.xml" />
 
   <!-- Starting Zed Camera -->
-  <include file="$(find zed_wrapper)/launch/zed_camera.launch" />
+  <!--include file="$(find zed_wrapper)/launch/zed_camera.launch" /-->
 
   <!-- Starting USB Camera -->
   <include file="$(find usb_cam)/launch/usb_cam.launch" />
@@ -20,7 +30,7 @@
   <include file="$(find hls_lfcd_lds_driver)/launch/hlds_laser.launch" />
 
   <!-- Starting ADI Inertial measurement unit Node -->
-  <include file="$(find adi_driver)/launch/adis16470.launch"/>
+  <!--include file="$(find adi_driver)/launch/adis16470.launch"/-->
 
   <!-- Starting Gmapping Node with paramters -->
  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" >

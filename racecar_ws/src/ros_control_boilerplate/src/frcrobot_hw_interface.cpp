@@ -342,14 +342,20 @@ void FRCRobotHWInterface::init(void)
 	//RIGHT NOW THIS WILL ONLY WORK IF THERE IS ONLY ONE NAVX INSTANTIATED
 	for(size_t i = 0; i < num_imu_; i++)
 	{
-		ROS_INFO_STREAM_NAMED("frcrobot_hw_interface",
+		ROS_WARN_STREAM_NAMED("frcrobot_hw_interface",
 				"Loading joint " << i << "=" << imu_names_[i] <<
 				" as imu id " << imu_ids_[i]);
-		//TODO: fix how we use ids
 
         //TODO ADI IMU add type to imu joint to determine how we instantiate them
-        navXs_.push_back(std::make_shared<AHRS>(SPI::Port::kMXP));
-
+        //navXs_.push_back(std::make_shared<AHRS>(SPI::Port::kMXP));
+        adis16495s_.push_back(std::make_shared<Adis16495>());
+        
+        //TODO move this into different thread to make it non blocking
+        while(adis16495s_[i]->openPort(imu_devices_[i]) < 0) {
+            ROS_ERROR("Failed to open device %s", imu_devices_[i].c_str());
+            ROS_WARN("Keep trying to open the device in 1 second period...");
+            sleep(1);
+        }
 		// This is a guess so TODO : get better estimates
 		imu_orientation_covariances_[i] = {0.0015, 0.0, 0.0, 0.0, 0.0015, 0.0, 0.0, 0.0, 0.0015};
 		imu_angular_velocity_covariances_[i] = {0.0015, 0.0, 0.0, 0.0, 0.0015, 0.0, 0.0, 0.0, 0.0015};
@@ -1061,6 +1067,31 @@ void FRCRobotHWInterface::read(ros::Duration &/*elapsed_time*/)
 	//navX read here
 	for (size_t i = 0; i < num_imu_; i++)
 	{
+
+		if(adis16495s_[i]->update() != 0) {
+			ROS_ERROR("Could not update imu device %s", imu_devices_[i].c_str());
+			continue;
+		}
+
+		// Linear acceleration 
+		imu_linear_accelerations_[i][0] = adis16495s_[i]->accl[0];
+		imu_linear_accelerations_[i][1] = adis16495s_[i]->accl[1];
+		imu_linear_accelerations_[i][2] = adis16495s_[i]->accl[2];
+
+		// Angular velocity
+		imu_angular_velocities_[i][0] = adis16495s_[i]->gyro[0];
+		imu_angular_velocities_[i][1] = adis16495s_[i]->gyro[1];
+		imu_angular_velocities_[i][2] = adis16495s_[i]->gyro[2];
+
+		// Orientation (not provided)
+		imu_orientations_[i][3] = 0;
+		imu_orientations_[i][0] = 0;
+		imu_orientations_[i][1] = 0;
+		imu_orientations_[i][2] = 1;
+
+
+
+        imu_state_[i] = offset_imu_[i];
         // TODO : double check we're reading
         // the correct data
 
@@ -1074,39 +1105,39 @@ void FRCRobotHWInterface::read(ros::Duration &/*elapsed_time*/)
         //navXs_[i]->IsConnected();
         //navXs_[i]->GetLastSensorTimestamp();
         //
-        imu_linear_accelerations_[i][0] = navXs_[i]->GetWorldLinearAccelX();
-        imu_linear_accelerations_[i][1] = navXs_[i]->GetWorldLinearAccelY();
-        imu_linear_accelerations_[i][2] = navXs_[i]->GetWorldLinearAccelZ();
+        //imu_linear_accelerations_[i][0] = navXs_[i]->GetWorldLinearAccelX();
+        //imu_linear_accelerations_[i][1] = navXs_[i]->GetWorldLinearAccelY();
+        //imu_linear_accelerations_[i][2] = navXs_[i]->GetWorldLinearAccelZ();
 
         //navXs_[i]->IsMoving();
         //navXs_[i]->IsRotating();
         //navXs_[i]->IsMagneticDisturbance();
         //navXs_[i]->IsMagnetometerCalibrated();
         //
-        tf2::Quaternion tempQ;
-        if(i == 0)
-        {
-            if(imu_zero_ != -10000)
-                offset_imu_[i] = imu_zero_ - navXs_[i]->GetFusedHeading() / 360. * 2. * M_PI;
-        }
-        tempQ.setRPY(navXs_[i]->GetRoll() / -360 * 2 * M_PI, navXs_[i]->GetPitch() / -360 * 2 * M_PI, navXs_[i]->GetFusedHeading() / 360 * 2 * M_PI + offset_imu_[i]  );
+        //tf2::Quaternion tempQ;
+        //if(i == 0)
+        //{
+        //    if(imu_zero_ != -10000)
+        //        offset_imu_[i] = imu_zero_ - navXs_[i]->GetFusedHeading() / 360. * 2. * M_PI;
+        //}
+        //tempQ.setRPY(navXs_[i]->GetRoll() / -360 * 2 * M_PI, navXs_[i]->GetPitch() / -360 * 2 * M_PI, navXs_[i]->GetFusedHeading() / 360 * 2 * M_PI + offset_imu_[i]  );
 
-        imu_orientations_[i][3] = tempQ.w();
-        imu_orientations_[i][0] = tempQ.x();
-        imu_orientations_[i][1] = tempQ.y();
-        imu_orientations_[i][2] = tempQ.z();
+        //imu_orientations_[i][3] = tempQ.w();
+        //imu_orientations_[i][0] = tempQ.x();
+        //imu_orientations_[i][1] = tempQ.y();
+        //imu_orientations_[i][2] = tempQ.z();
 
-        imu_angular_velocities_[i][0] = navXs_[i]->GetVelocityX();
-        imu_angular_velocities_[i][1] = navXs_[i]->GetVelocityY();
-        imu_angular_velocities_[i][2] = navXs_[i]->GetVelocityZ();
+        //imu_angular_velocities_[i][0] = navXs_[i]->GetVelocityX();
+        //imu_angular_velocities_[i][1] = navXs_[i]->GetVelocityY();
+        //imu_angular_velocities_[i][2] = navXs_[i]->GetVelocityZ();
 
-        //navXs_[i]->GetDisplacementX();
-        //navXs_[i]->GetDisplacementY();
-        //navXs_[i]->GetDisplacementZ();
-        //navXs_[i]->GetAngle(); //continous
-        //TODO: add setter functions
+        ////navXs_[i]->GetDisplacementX();
+        ////navXs_[i]->GetDisplacementY();
+        ////navXs_[i]->GetDisplacementZ();
+        ////navXs_[i]->GetAngle(); //continous
+        ////TODO: add setter functions
 
-        imu_state_[i] = offset_imu_[i];
+        //imu_state_[i] = offset_imu_[i];
 	}
 
 	read_tracer_.start_unique("compressors");

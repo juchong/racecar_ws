@@ -239,6 +239,7 @@ class FRCRobotInterface : public hardware_interface::RobotHW
 		std::vector<std::string> imu_names_;
 		std::vector<std::string> imu_frame_ids_;
 		std::vector<int>         imu_ids_;
+		std::vector<std::string> imu_devices_;
 
 		std::size_t              num_imu_;
 

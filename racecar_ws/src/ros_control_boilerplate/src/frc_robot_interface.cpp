@@ -334,9 +334,20 @@ FRCRobotInterface::FRCRobotInterface(ros::NodeHandle &nh, urdf::Model *urdf_mode
                 throw std::runtime_error("An invalid imu frame_id was specified (expecting a string) for joint " + joint_name);
             frame_id = std::string(xml_joint_frame_id);
 
+			const bool has_device = joint_params.hasMember("device");
+			std::string device;
+            if (!has_device)
+                throw std::runtime_error("A imu device was not specified for joint " + joint_name);
+            XmlRpc::XmlRpcValue &xml_joint_device= joint_params["device"];
+            if (!xml_joint_device.valid() ||
+                    xml_joint_device.getType() != XmlRpc::XmlRpcValue::TypeString)
+                throw std::runtime_error("An invalid imu device was specified (expecting a string) for joint " + joint_name);
+            device = std::string(xml_joint_device);
+
 			imu_names_.push_back(joint_name);
 			imu_frame_ids_.push_back(frame_id);
 			imu_ids_.push_back(imu_id);
+            imu_devices_.push_back(device);
 		}
 		else if (joint_type == "analog_input")
 		{

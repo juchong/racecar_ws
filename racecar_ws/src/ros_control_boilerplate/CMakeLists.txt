@@ -21,6 +21,7 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
   frc_msgs
   frc_interfaces
+  adi_driver
 )
 
 #add_message_files (
@@ -60,6 +61,7 @@ catkin_package(
 	std_msgs
 	frc_msgs
 	frc_interfaces
+    adi_driver
 	sensor_msgs
 	rosparam_shortcuts
 	talon_interface
@@ -350,6 +352,7 @@ target_link_libraries(frcrobot_hw_main
 	${catkin_LIBRARIES}
 	${PLATFORM_SPECIFIC_LIBS}
 	${CTRE_USER_LIBS}
+    adis16495_node
 )
 
 ## Add cmake target dependencies of the executable

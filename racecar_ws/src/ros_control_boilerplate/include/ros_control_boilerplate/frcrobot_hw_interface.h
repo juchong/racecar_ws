@@ -68,6 +68,9 @@
 #include <hal/DriverStation.h>
 #include <hal/FRCUsageReporting.h>
 
+#include "adi_driver/adis16495.h"
+
+
 #include <AHRS.h>
 
 #include <frc_interfaces/robot_controller_interface.h>
@@ -259,7 +262,8 @@ class FRCRobotHWInterface : public ros_control_boilerplate::FRCRobotInterface
 		std::vector<HAL_SolenoidHandle> solenoids_;
 		std::vector<DoubleSolenoidHandle> double_solenoids_;
         //TODO change this for ADI IMU
-		std::vector<std::shared_ptr<AHRS>> navXs_;
+		//std::vector<std::shared_ptr<AHRS>> navXs_;
+		std::vector<std::shared_ptr<Adis16495>> adis16495s_;
 
 		std::vector<std::shared_ptr<frc::AnalogInput>> analog_inputs_;
 
