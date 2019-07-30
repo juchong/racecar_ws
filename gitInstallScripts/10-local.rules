@@ -1,0 +1,2 @@
+ACTION=="add", ATTRS{idVendor}=="2d40", ATTRS{idProduct}=="0101", SYMLINK+="PICO710", MODE="0777"
+ACTION=="add", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", SYMLINK+="IMU", MODE="0777"
