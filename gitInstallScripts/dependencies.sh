@@ -32,14 +32,15 @@ cd ..
 mv adi_driver/* .
 rm -R -f adi_driver
 
-SDK="PicoZenseSDK_aarch64_linux"
-#SDK="PicoZenseSDK_Ubuntu16.04_DCAM710"
-cd ../adi_tof_kinetic/dependencies/$SDK  || exit
-chmod 777 install.sh
-./install.sh
+
+### This step only exists to copy the udev rules which is being done in a global jetson setup script
+# SDK="PicoZenseSDK_aarch64_linux"
+# #SDK="PicoZenseSDK_Ubuntu16.04_DCAM710"
+# cd ../adi_tof_kinetic/dependencies/${SDK}  || exit
+# chmod 777 install.sh
+# ./install.sh
 
 
-cd ../../../../..  || exit
 echo "Lidar Permission for Sensors"
 sudo chmod a+rw /dev/ttyUSB0
 

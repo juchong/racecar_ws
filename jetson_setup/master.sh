@@ -5,3 +5,6 @@
 
 #Maximize compute speed
 sudo /usr/bin/jetson_clocks
+
+#Launch ROS code
+roslaunch main.launch
