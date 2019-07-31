@@ -7,10 +7,11 @@
   <arg name="run_camera" default="false"/>
   <arg name="hw_or_sim" default="hw" />
 
-  <rosparam file="$(find ros_control_boilerplate)/config/diff_drive.yaml" command="load"/>
 
 
   <group ns="ros_control" >
+      <rosparam file="$(find ros_control_boilerplate)/config/diff_drive.yaml" command="load"/>
+      
       <!-- Starting ros control node -->
       <node name="ADI_racecar_hardware_interface" pkg="ros_control_boilerplate" type="frcrobot_$(arg hw_or_sim)_main" output="screen" />
       
@@ -32,19 +33,19 @@
   <!--include file="$(find zed_wrapper)/launch/zed_camera.launch" /-->
 
   <!-- Starting USB Camera -->
-  <include file="$(find usb_cam)/launch/usb_cam.launch" />
+  <!--include file="$(find usb_cam)/launch/usb_cam.launch" /-->
 
   <!-- Starting Time of Flight Camera (Pico Zense) -->
-  <!--<include file="$(find adi_tof_kinetic)/launch/tof.launch" />-->
+  <include file="$(find adi_tof_kinetic)/launch/PicoZenseDCAM710.launch" />
 
   <!-- Starting April Tag testing for position, orientation, and identity tracking relative to the camera -->
   <!-- <include file="$(find apriltags2_ros)/launch/continuous_detection.launch" /> -->
 
   <!-- Starting LaserScan Node -->
-  <include file="$(find hls_lfcd_lds_driver)/launch/hlds_laser.launch" />
+  <!--include file="$(find hls_lfcd_lds_driver)/launch/hlds_laser.launch" /-->
 
   <!-- Starting ADI Inertial measurement unit Node -->
-  <!--include file="$(find adi_driver)/launch/adis16470.launch"/-->
+  <include file="$(find adi_driver)/launch/adis16470.launch"/>
 
   <!-- Starting Gmapping Node with paramters -->
  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" >
