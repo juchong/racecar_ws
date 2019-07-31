@@ -174,8 +174,6 @@ FRCRobotHWInterface::~FRCRobotHWInterface()
 
 	for (size_t i = 0; i < num_compressors_; i++)
 		pcm_thread_[i].join();
-	for (size_t i = 0; i < num_pdps_; i++)
-		pdp_thread_[i].join();
 }
 
 // TODO : Think some more on how this will work.  Previous idea of making them
@@ -426,39 +424,6 @@ void FRCRobotHWInterface::init(void)
 		ROS_INFO_STREAM_NAMED("frcrobot_hw_interface",
 							  "Loading joint " << i << "=" << rumble_names_[i] <<
 							  " as Rumble with port" << rumble_ports_[i]);
-
-    ROS_WARN("middle bottom of init");
-	for (size_t i = 0; i < num_pdps_; i++)
-	{
-		ROS_INFO_STREAM_NAMED("frcrobot_hw_interface",
-							  "Loading joint " << i << "=" << pdp_names_[i] <<
-							  " as PDP");
-
-        if (!HAL_CheckPDPModule(pdp_modules_[i]))
-        {
-            ROS_ERROR("Invalid PDP module number");
-            pdps_.push_back(HAL_kInvalidHandle);
-        }
-        else
-        {
-            int32_t status = 0;
-            pdps_.push_back(HAL_InitializePDP(pdp_modules_[i], &status));
-            pdp_read_thread_state_.push_back(std::make_shared<hardware_interface::PDPHWState>());
-            if (pdps_[i] == HAL_kInvalidHandle)
-            {
-                ROS_ERROR_STREAM("Could not initialize PDP module, status = " << status);
-            }
-            else
-            {
-                pdp_read_thread_mutexes_.push_back(std::make_shared<std::mutex>());
-                pdp_thread_tracers_.push_back("PDP " + pdp_names_[i] + " " + nh_.getNamespace());
-                pdp_thread_.push_back(std::thread(&FRCRobotHWInterface::pdp_read_thread, this,
-                                      pdps_[i], pdp_read_thread_state_[i], pdp_read_thread_mutexes_[i],
-                                      pdp_thread_tracers_[i]));
-                HAL_Report(HALUsageReporting::kResourceType_PDP, pdp_modules_[i]);
-            }
-        }
-	}
 
 	for (size_t i = 0; i < num_joysticks_; i++)
 	{
@@ -730,56 +695,6 @@ void FRCRobotHWInterface::talon_read_thread(std::shared_ptr<ctre::phoenix::motor
 		tracer.stop();
 		ROS_INFO_STREAM_THROTTLE(60, tracer.report());
 		rate.sleep();
-	}
-}
-
-// The PDP reads happen in their own thread. This thread
-// loops at 20Hz to match the update rate of PDP CAN
-// status messages.  Each iteration, data read from the
-// PDP is copied to a state buffer shared with the main read
-// thread.
-void FRCRobotHWInterface::pdp_read_thread(int32_t pdp,
-		std::shared_ptr<hardware_interface::PDPHWState> state,
-		std::shared_ptr<std::mutex> mutex,
-		Tracer tracer)
-{
-	ros::Duration(2).sleep(); // Sleep for a few seconds to let CAN start up
-	ros::Rate r(20); // TODO : Tune me?
-	int32_t status = 0;
-	HAL_ClearPDPStickyFaults(pdp, &status);
-	HAL_ResetPDPTotalEnergy(pdp, &status);
-	if (status)
-		ROS_ERROR_STREAM("pdp_read_thread error clearing sticky faults : status = " << status);
-	while (ros::ok())
-	{
-		tracer.start("main loop");
-
-		//read info from the PDP hardware
-		status = 0;
-		hardware_interface::PDPHWState pdp_state;
-		pdp_state.setVoltage(HAL_GetPDPVoltage(pdp, &status));
-		pdp_state.setTemperature(HAL_GetPDPTemperature(pdp, &status));
-		pdp_state.setTotalCurrent(HAL_GetPDPTotalCurrent(pdp, &status));
-		pdp_state.setTotalPower(HAL_GetPDPTotalPower(pdp, &status));
-		pdp_state.setTotalEnergy(HAL_GetPDPTotalEnergy(pdp, &status));
-		for (int channel = 0; channel <= 15; channel++)
-		{
-			pdp_state.setCurrent(HAL_GetPDPChannelCurrent(pdp, channel, &status), channel);
-		}
-		if (status)
-			ROS_ERROR_STREAM("pdp_read_thread error : status = " << status << ":" << HAL_GetErrorMessage(status));
-
-		{
-			// Copy to state shared with read() thread
-			// Put this in a separate scope so lock_guard is released
-			// as soon as the state is finished copying
-			std::lock_guard<std::mutex> l(*mutex);
-			*state = pdp_state;
-		}
-
-		tracer.stop();
-		ROS_INFO_STREAM_THROTTLE(60, tracer.report());
-		r.sleep();
 	}
 }
 
@@ -1154,12 +1069,6 @@ void FRCRobotHWInterface::read(ros::Duration &/*elapsed_time*/)
         pcm_state_[i] = *pcm_read_thread_state_[i];
 	}
 
-	read_tracer_.start_unique("pdps");
-	for (size_t i = 0; i < num_pdps_; i++)
-	{
-        std::lock_guard<std::mutex> l(*pdp_read_thread_mutexes_[i]);
-        pdp_state_[i] = *pdp_read_thread_state_[i];
-	}
 	read_tracer_.stop();
 	ROS_INFO_STREAM_THROTTLE(60, read_tracer_.report());
 }

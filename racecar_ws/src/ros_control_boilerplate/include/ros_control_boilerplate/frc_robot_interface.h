@@ -54,7 +54,6 @@
 #include "frc_interfaces/robot_controller_interface.h"
 #include "frc_interfaces/pcm_state_interface.h"
 #include "frc_interfaces/robot_controller_interface.h"
-#include "frc_interfaces/pdp_state_interface.h"
 #include <hardware_interface/imu_sensor_interface.h>
 
 namespace ros_control_boilerplate
@@ -168,7 +167,6 @@ class FRCRobotInterface : public hardware_interface::RobotHW
 		// Hardware interfaces
 		hardware_interface::JointStateInterface       joint_state_interface_;
 		hardware_interface::TalonStateInterface       talon_state_interface_;
-		hardware_interface::PDPStateInterface	      pdp_state_interface_;
 		hardware_interface::PCMStateInterface	      pcm_state_interface_;
 
 		hardware_interface::JointCommandInterface  joint_command_interface_;
@@ -228,9 +226,6 @@ class FRCRobotInterface : public hardware_interface::RobotHW
 		std::vector<int>         compressor_pcm_ids_;
 		std::size_t              num_compressors_;
 
-		std::vector<std::string> pdp_names_;
-		std::vector<int32_t>     pdp_modules_;
-		std::size_t              num_pdps_;
 
 		std::vector<std::string> rumble_names_;
 		std::vector<int>         rumble_ports_;
@@ -276,7 +271,6 @@ class FRCRobotInterface : public hardware_interface::RobotHW
 		std::vector<double> rumble_state_; //No actual data
 		std::vector<double> imu_state_;
 		std::vector<double> compressor_state_;
-		std::vector<hardware_interface::PDPHWState> pdp_state_;
 		std::vector<hardware_interface::PCMState> pcm_state_;
 		hardware_interface::RobotControllerState robot_controller_state_;
 

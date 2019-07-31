@@ -408,24 +408,6 @@ FRCRobotInterface::FRCRobotInterface(ros::NodeHandle &nh, urdf::Model *urdf_mode
 			compressor_names_.push_back(joint_name);
 			compressor_pcm_ids_.push_back(compressor_pcm_id);
 		}
-		else if (joint_type == "pdp")
-		{
-			int32_t pdp_module = 0;
-			if (joint_params.hasMember("module"))
-			{
-				XmlRpc::XmlRpcValue &xml_pdp_module = joint_params["module"];
-				if (!xml_pdp_module.valid() ||
-					 xml_pdp_module.getType() != XmlRpc::XmlRpcValue::TypeInt)
-					throw std::runtime_error("An invalid PDP joint module id was specified (expecting an int) for joint " + joint_name);
-				pdp_module = xml_pdp_module;
-				auto it = std::find(pdp_modules_.cbegin(), pdp_modules_.cend(), pdp_module);
-				if (it != pdp_modules_.cend())
-					throw std::runtime_error("A duplicate PDP module was specified for joint " + joint_name);
-			}
-
-			pdp_names_.push_back(joint_name);
-			pdp_modules_.push_back(pdp_module);
-		}
 		else if (joint_type == "dummy")
 		{
 			dummy_joint_names_.push_back(joint_name);
@@ -683,16 +665,6 @@ void FRCRobotInterface::init()
 		pcm_state_interface_.registerHandle(pcmsh);
 	}
 
-	num_pdps_ = pdp_names_.size();
-	pdp_state_.resize(num_pdps_);
-	for (size_t i = 0; i < num_pdps_; i++)
-	{
-		ROS_INFO_STREAM_NAMED(name_, "FRCRobotInterface: Registering interface for PDP : " << pdp_names_[i]);
-
-		hardware_interface::PDPStateHandle csh(pdp_names_[i], &pdp_state_[i]);
-		pdp_state_interface_.registerHandle(csh);
-	}
-
 	num_dummy_joints_ = dummy_joint_names_.size();
 	dummy_joint_position_.resize(num_dummy_joints_);
 	dummy_joint_velocity_.resize(num_dummy_joints_);
@@ -779,7 +751,6 @@ void FRCRobotInterface::init()
 	registerInterface(&joint_velocity_interface_);
 	registerInterface(&joint_effort_interface_); // empty for now
 	registerInterface(&imu_interface_);
-	registerInterface(&pdp_state_interface_);
 	registerInterface(&pcm_state_interface_);
 	registerInterface(&robot_controller_state_interface_);
 

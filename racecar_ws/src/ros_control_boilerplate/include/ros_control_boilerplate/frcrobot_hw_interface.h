@@ -277,17 +277,11 @@ class FRCRobotHWInterface : public ros_control_boilerplate::FRCRobotInterface
 		std::vector<std::shared_ptr<std::mutex>> motion_profile_mutexes_;
 
         //TODO make sure this will work with different PDP
-		std::vector<std::shared_ptr<std::mutex>> pdp_read_thread_mutexes_;
-		std::vector<std::shared_ptr<hardware_interface::PDPHWState>> pdp_read_thread_state_;
-		void pdp_read_thread(int32_t pdp, std::shared_ptr<hardware_interface::PDPHWState> state, std::shared_ptr<std::mutex> mutex, Tracer tracer);
-		std::vector<std::thread> pdp_thread_;
-		std::vector<int32_t> pdps_;
 
 		std::vector<std::shared_ptr<Joystick>> joysticks_;
 		std::vector<std::unique_ptr<realtime_tools::RealtimePublisher<sensor_msgs::Joy>>> realtime_pub_joysticks_;
 
 		std::vector<Tracer> talon_thread_tracers_;
-		std::vector<Tracer> pdp_thread_tracers_;
 		std::vector<Tracer> pcm_thread_tracers_;
 		Tracer read_tracer_;
 
