@@ -117,7 +117,7 @@ set (FRCROBOT_HW_MAIN_SRCS
 	src/generic_hw_control_loop.cpp
 )
 
-set (WPI_SYSROOT $ENV{HOME}/frc2019/roborio/arm-frc2019-linux-gnueabi)
+set (WPI_SYSROOT $ENV{HOME}/racecar_ws/arm-frc2019-linux-gnueabi)
 include_directories(
 	${catkin_INCLUDE_DIRS}
 	${WPI_SYSROOT}/include/wpilib
