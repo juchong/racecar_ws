@@ -10,10 +10,10 @@ generic_hw_control_loop:
 # of several types of HW interface : CAN_id, PWM_id, DIO_id, AIO_id, etc.
 hardware_interface:
    joints:
-         - {name: elevator_left_master, type: can_talon_srx, can_id: 22}
-         - {name: elevator_left_follower, type: can_talon_srx, can_id: 12}
-         - {name: elevator_right_top, type: can_talon_srx, can_id: 24}
-         - {name: elevator_right_bottom, type: can_talon_srx, can_id: 14}
+         - {name: percent_output_talon, type: can_talon_srx, can_id: 1}
+         - {name: motion_magic_talon, type: can_talon_srx, can_id: 2}
+         - {name: velocity_talon, type: can_talon_srx, can_id: 3}
+         - {name: position_talon, type: can_talon_srx, can_id: 4}
 
 # Create controllers for each joint
 #
@@ -43,14 +43,9 @@ joint_state_controller:
    type:         joint_state_controller/JointStateController
    publish_rate: 20
 
-
-pdp_state_controller:
-   type:         pdp_state_controller/PDPStateController
-   publish_rate: 50
-
-elevator_master_percent_output_controller:
+percent_output_talon_controller:
     type: talon_controllers/TalonPercentOutputController
-    joint: elevator_master
+    joint: percent_output_talon
     feedback_type: CTRE_MagEncoder_Absolute
     close_loop_values:
         - {p: 0.0, i: 0.000, d: 00.0, f: 0.00, i_zone: 000}
@@ -64,11 +59,11 @@ elevator_master_percent_output_controller:
     motion_acceleration: 000
     voltage_compensation_enable: true
     
-elevator_master_controller:
+velocity_talon_controller:
     type: talon_controllers/TalonVelocityCloseLoopController    
     close_loop_values:
         - {p: 0.0, i: 0.00, d: 0.0, f: 0.0, i_zone: 000}
-    joint: bl_drive
+    joint: velocity_talon
     feedback_type: CTRE_MagEncoder_Relative
     sensor_phase: true
  
