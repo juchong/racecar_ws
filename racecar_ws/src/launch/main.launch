@@ -43,7 +43,15 @@
   <!--include file="$(find hls_lfcd_lds_driver)/launch/hlds_laser.launch" /-->
 
   <!-- Starting ADI Inertial measurement unit Node -->
-  <include file="$(find adi_driver)/launch/adis16495.launch"/>
+  <!--include file="$(find adi_driver)/launch/adis16495.launch"/-->
+
+  <!-- Starting imu filter node -->
+  <node name="imu_filter" pkg="imu_filter_madgwick" type="imu_filter_node">
+    <param name="use_mag" value="false"/>
+    <param name="fixed_frame" value="base_link_stabilized"/>
+    <param name="publish_tf" value="True"/>
+    <remap from="imu/data_raw" to="/ros_control/adis16495" />
+  </node>
 
   <!-- Starting Gmapping Node with paramters -->
 
