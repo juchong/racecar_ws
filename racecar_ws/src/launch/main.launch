@@ -7,8 +7,6 @@
   <arg name="run_camera" default="false"/>
   <arg name="hw_or_sim" default="hw" />
 
-
-
   <group ns="ros_control" >
       <rosparam file="$(find ros_control_boilerplate)/config/diff_drive.yaml" command="load"/>
       
@@ -45,9 +43,11 @@
   <!--include file="$(find hls_lfcd_lds_driver)/launch/hlds_laser.launch" /-->
 
   <!-- Starting ADI Inertial measurement unit Node -->
-  <include file="$(find adi_driver)/launch/adis16470.launch"/>
+  <include file="$(find adi_driver)/launch/adis16495.launch"/>
 
   <!-- Starting Gmapping Node with paramters -->
+
+  <!-- 
  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" >
       <param name="maxUrange" value="3.0"/>
       <param name="minimumScore" value="50"/>
@@ -80,18 +80,18 @@
       <param name="lasamplerange" value="0.005"/>
       <param name="lasamplestep" value="0.005"/>
       <param name="delta" value="0.05"/>
-</node>
+</node-->
 
   <!-- Starting Odometry VESC Node -->
-  <node name="listener"  pkg="vesc_ackermann" type="odom_node"/>
+  <!--node name="listener"  pkg="vesc_ackermann" type="odom_node"/-->
   
   <!-- Starting IMU VESC Node -->
-  <node name="imulistener"  pkg="vesc_ackermann" type="imu_node"/>
+  <!--node name="imulistener"  pkg="vesc_ackermann" type="imu_node"/-->
   
   <!-- Starting Angle VESC Node -->
-  <node name="Angle"  pkg="vesc_ackermann" type="angle_node" output="screen"/>
+  <!--node name="Angle"  pkg="vesc_ackermann" type="angle_node" output="screen"/-->
   
   <!-- Starting RVIZ configuration for SLAM demo -->
-  <node name="rvizMap" pkg="rviz" type="rviz" args="-d $(find launch)/main.rviz" />
+  <!--node name="rvizMap" pkg="rviz" type="rviz" args="-d $(find launch)/main.rviz" /-->
 
 </launch>

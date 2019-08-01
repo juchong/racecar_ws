@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Download this file and run sudo dpkg -i on it
+#http://launchpadlibrarian.net/233197537/libpng12-0_1.2.54-1ubuntu1_arm64.deb
+
 git submodule foreach git checkout master
 
 #Clones usb cam driver from external github repository and overrides everything
@@ -46,5 +49,5 @@ sudo chmod a+rw /dev/ttyUSB0
 
 echo "USB and IMU dependencies"
 sudo apt-get -y install \
-    ros-melodic-urdf-geometry-parser ros-melodic-four-wheel-steering-msgs ros-melodic-imu-sensor-controller ros-melodic-camera-info-manager ros-melodic-image-transport libbullet-dev libsdl-image1.2-dev ros-melodic-geometry2 ros-melodic-navigation ros-melodic-imu-filter-madgwick ros-melodic-roslint ros-melodic-joy ros-melodic-teleop-twist-joy ros-melodic-teleop-twist-keyboard ros-melodic-laser-proc ros-melodic-rgbd-launch ros-melodic-depthimage-to-laserscan ros-melodic-rosserial-arduino ros-melodic-rosserial-python ros-melodic-rosserial-server ros-melodic-rosserial-client ros-melodic-rosserial-msgs ros-melodic-amcl ros-melodic-map-server ros-melodic-move-base ros-melodic-urdf ros-melodic-xacro ros-melodic-compressed-image-transport ros-melodic-rqt-image-view ros-melodic-navigation ros-melodic-interactive-markers ros-melodic-ackermann-msgs ros-melodic-serial
+    ros-melodic-four-wheel-steering-msgs ros-melodic-urdf-geometry-parser sudo apt-get install ros-melodic-rosparam-shortcuts ros-melodic-urdf-geometry-parser ros-melodic-four-wheel-steering-msgs ros-melodic-imu-sensor-controller ros-melodic-camera-info-manager ros-melodic-image-transport libbullet-dev libsdl-image1.2-dev ros-melodic-geometry2 ros-melodic-navigation ros-melodic-imu-filter-madgwick ros-melodic-roslint ros-melodic-joy ros-melodic-teleop-twist-joy ros-melodic-teleop-twist-keyboard ros-melodic-laser-proc ros-melodic-rgbd-launch ros-melodic-depthimage-to-laserscan ros-melodic-rosserial-arduino ros-melodic-rosserial-python ros-melodic-rosserial-server ros-melodic-rosserial-client ros-melodic-rosserial-msgs ros-melodic-amcl ros-melodic-map-server ros-melodic-move-base ros-melodic-urdf ros-melodic-xacro ros-melodic-compressed-image-transport ros-melodic-rqt-image-view ros-melodic-navigation ros-melodic-interactive-markers ros-melodic-ackermann-msgs ros-melodic-serial
 echo "Install Complete"

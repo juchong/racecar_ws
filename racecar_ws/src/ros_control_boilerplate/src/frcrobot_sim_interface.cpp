@@ -547,11 +547,6 @@ void FRCRobotSimInterface::init(void)
 							  "Loading joint " << i << "=" << rumble_names_[i] <<
 							  " as Rumble with port" << rumble_ports_[i]);
 
-	for (size_t i = 0; i < num_pdps_; i++)
-		ROS_INFO_STREAM_NAMED("frcrobot_sim_interface",
-							  "Loading joint " << i << "=" << pdp_names_[i] <<
-							  " as PDP");
-
 	for(size_t i = 0; i < num_dummy_joints_; i++)
 		ROS_INFO_STREAM_NAMED("frcrobot_sim_interface",
 							  "Loading dummy joint " << i << "=" << dummy_joint_names_[i]);
