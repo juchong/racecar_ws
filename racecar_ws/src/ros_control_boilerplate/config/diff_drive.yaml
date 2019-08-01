@@ -61,8 +61,8 @@ diff_drive_controller:
     pose_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
     twist_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
     # fix me
-    wheel_separation: .7112
-    wheel_radius: 0.0762
+    wheel_separation: .3683
+    wheel_radius: 0.0508
 
     cmd_vel_timeout: 0.5 # we test this separately, give plenty for the other tests
     left_drive_joint:
