@@ -340,7 +340,7 @@ void FRCRobotHWInterface::init(void)
         }
 	}
 
-	//RIGHT NOW THIS WILL ONLY WORK IF THERE IS ONLY ONE NAVX INSTANTIATED
+	//RIGHT NOW THIS WILL ONLY WORK IF THERE IS ONLY ONE IMU INSTANTIATED
 	for(size_t i = 0; i < num_imu_; i++)
 	{
 		ROS_WARN_STREAM_NAMED("frcrobot_hw_interface",

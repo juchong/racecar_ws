@@ -6,6 +6,7 @@
   <arg name="imu_model" default="adis16495" doc="imu sensor types [adis16470, adis16495]" />
   <arg name="run_camera" default="false"/>
   <arg name="hw_or_sim" default="hw" />
+  <arg name="with_rviz" default="false" />
 
   <group ns="ros_control" >
       <rosparam file="$(find ros_control_boilerplate)/config/diff_drive.yaml" command="load"/>
@@ -20,7 +21,7 @@
       <!-- Starting Remote control Node -->
   </group>
 
-  <group ns="$(arg racecar_version)">
+  <group ns="racecar">
     <include file="$(find racecar)/launch/racecar-v2/racecar-v2-teleop.launch.xml">
       <arg name="racecar_version" value="$(arg racecar_version)" />
       <arg name="imu_model" value="$(arg imu_model)" />
@@ -40,7 +41,11 @@
   <!-- <include file="$(find apriltags2_ros)/launch/continuous_detection.launch" /> -->
 
   <!-- Starting LaserScan Node -->
-  <!--include file="$(find hls_lfcd_lds_driver)/launch/hlds_laser.launch" /-->
+  <include file="$(find rplidar_ros)/launch/rplidar.launch" >
+    <arg name="name"  value="rplidar" />
+    <arg name="serial_port"  value="/dev/ttyUSB0"/>
+    <arg name="frame_id"  value="laser"/>
+  </include>
 
   <!-- Starting ADI Inertial measurement unit Node -->
   <!--include file="$(find adi_driver)/launch/adis16495.launch"/-->
@@ -53,6 +58,21 @@
     <remap from="imu/data_raw" to="/ros_control/adis16495" />
   </node>
 
+
+  <!-- launch rviz and static transforms -->
+  <node if="$(arg with_rviz)"
+        name="rviz" pkg="rviz" type="rviz" args=" -d imu.rviz"/>
+
+  <node if="$(arg with_rviz)"
+        name="imu_base_link" pkg="tf" type="static_transform_publisher" args="0 0.1 0.1 0 0 0 /base_link /imu 100" />
+  
+  <node if="$(arg with_rviz)"
+        name="pico_base_link" pkg="tf" type="static_transform_publisher" args="0 0 0.3 0 0 0 /base_link /pico 100">
+  </node>
+
+  <node if="$(arg with_rviz)"
+        name="lidar_base_link" pkg="tf" type="static_transform_publisher" args="0 0 0.5 0 0 0 /base_link /laser 100">
+  </node>
   <!-- Starting Gmapping Node with paramters -->
 
   <!-- 
