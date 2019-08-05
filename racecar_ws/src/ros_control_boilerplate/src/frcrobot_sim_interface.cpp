@@ -417,6 +417,7 @@ FRCRobotSimInterface::~FRCRobotSimInterface()
 }
 
 void FRCRobotSimInterface::enable_callback(const std_msgs::Bool &enable_msg) {
+    last_enable_message = ros::Time::now().toSec();
     if(enable_msg.data) {
         robot_enabled = true;
     }
@@ -615,7 +616,7 @@ void FRCRobotSimInterface::write(ros::Duration &elapsed_time)
 		hardware_interface::TalonMode new_mode = tc.getMode();
 
 		// Only set mode to requested one when robot is enabled
-		if (robot_enabled)
+		if (robot_enabled && ros::Time::now().toSec() - last_robot_enabled < 0.25)
 		{
 			if (tc.modeChanged(new_mode))
 			{

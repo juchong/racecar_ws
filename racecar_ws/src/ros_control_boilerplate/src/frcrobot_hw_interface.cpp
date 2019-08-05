@@ -141,7 +141,7 @@ namespace frcrobot_control
 
 	//Function for enabling and disabling the robot
 	void FRCRobotHWInterface::enable_callback(const std_msgs::Bool &enable_msg) {
-		last_enable_message = ros:Time::now().toSec();
+		last_enable_message = ros::Time::now().toSec();
 		if(enable_msg.data) {
 			robot_enabled = true;
 		}
