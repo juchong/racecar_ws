@@ -1494,8 +1494,6 @@ class TalonControllerInterface
 				talon->setD(params.d_[i], i);
 				talon->setF(params.f_[i], i);
 				talon->setIZ(params.izone_[i], i);
-				// TODO : I'm worried about these. We need
-				// better default values than 0.0
 				talon->setAllowableClosedloopError(params.allowable_closed_loop_error_[i], i);
 				talon->setMaxIntegralAccumulator(params.max_integral_accumulator_[i], i);
 				talon->setClosedLoopPeakOutput(params.closed_loop_peak_output_[i], i);

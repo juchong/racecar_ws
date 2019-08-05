@@ -163,6 +163,7 @@ class FRCRobotInterface : public hardware_interface::RobotHW
         //Subscriber 
         ros::Subscriber enable_sub_;
         std::atomic<bool> robot_enabled;
+	std::atomic<int> last_enable_message;
 
 		// Hardware interfaces
 		hardware_interface::JointStateInterface       joint_state_interface_;
