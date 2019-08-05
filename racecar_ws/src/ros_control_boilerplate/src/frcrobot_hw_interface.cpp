@@ -77,14 +77,14 @@
 #include "ros_control_boilerplate/tracer.h"
 
 //HAL / wpilib includes
-#include <HALInitializer.h>
-#include <networktables/NetworkTable.h>
-#include <hal/CAN.h>
-#include <hal/Compressor.h>
-#include <hal/PDP.h>
-#include <hal/Power.h>
-#include <hal/Solenoid.h>
-#include <frc/Joystick.h>
+//#include <HALInitializer.h>
+//#include <networktables/NetworkTable.h>
+//#include <hal/CAN.h>
+//#include <hal/Compressor.h>
+//#include <hal/PDP.h>
+//#include <hal/Power.h>
+//#include <hal/Solenoid.h>
+//#include <frc/Joystick.h>
 
 #include <ctre/phoenix/motorcontrol/SensorCollection.h>
 #include <ctre/phoenix/platform/Platform.h>

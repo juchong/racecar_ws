@@ -198,8 +198,6 @@ if (NOT "${ARM_PREFIX}" STREQUAL "arm-frc2019-linux-gnueabi")
 	)
 
 	set (FRCROBOT_HW_MAIN_SRCS ${FRCROBOT_HW_MAIN_SRCS} 
-		src/dummy_wpilib_common.cpp
-		src/dummy_wpilib_hw.cpp
 		${ALLWPILIB}/hal/src/main/native/athena/Compressor.cpp
 		${ALLWPILIB}/hal/src/main/native/athena/CANAPI.cpp
 		${ALLWPILIB}/hal/src/main/native/athena/HALInitializer.cpp
@@ -230,8 +228,6 @@ file(GLOB
 		src/frcrobot_hw_interface.cpp
 		src/frc_robot_interface.cpp
 		src/generic_hw_control_loop.cpp
-		src/dummy_wpilib_common.cpp
-		src/dummy_wpilib_phoenixsim.cpp
 		${ALLWPILIB}/hal/src/main/native/cpp/cpp/fpga_clock.cpp
 		${ALLWPILIB}/hal/src/main/native/cpp/handles/HandlesInternal.cpp
 		${ALLWPILIB}/hal/src/main/native/sim/AnalogAccumulator.cpp

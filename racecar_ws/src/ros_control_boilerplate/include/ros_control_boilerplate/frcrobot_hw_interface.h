@@ -51,27 +51,25 @@
 #include <sensor_msgs/Joy.h>
 
 #include <ctre/phoenix/motorcontrol/can/TalonSRX.h>
-#include <frc/IterativeRobotBase.h>
-#include <frc/AnalogInput.h>
-#include <frc/DriverStation.h>
-#include <frc/NidecBrushless.h>
-#include <frc/DigitalInput.h>
-#include <frc/DigitalOutput.h>
-#include <frc/PWMSpeedController.h>
-#include <frc/Solenoid.h>
-#include <frc/DoubleSolenoid.h>
-#include <frc/Compressor.h>
-#include <frc/Joystick.h>
-#include <frc/livewindow/LiveWindow.h>
-#include <frc/smartdashboard/SmartDashboard.h>
-#include <hal/HALBase.h>
-#include <hal/DriverStation.h>
-#include <hal/FRCUsageReporting.h>
+//#include <frc/AnalogInput.h>
+//#include <frc/DriverStation.h>
+//#include <frc/DigitalInput.h>
+//#include <frc/DigitalOutput.h>
+//#include <frc/PWMSpeedController.h>
+//#include <frc/Solenoid.h>
+//#include <frc/DoubleSolenoid.h>
+//#include <frc/Compressor.h>
+//#include <frc/Joystick.h>
+//#include <frc/livewindow/LiveWindow.h>
+//#include <frc/smartdashboard/SmartDashboard.h>
+//#include <hal/HALBase.h>
+//#include <hal/DriverStation.h>
+//#include <hal/FRCUsageReporting.h>
 
 #include "adi_driver/adis16495.h"
 
 
-#include <AHRS.h>
+//#include <AHRS.h>
 
 #include <frc_interfaces/robot_controller_interface.h>
 
