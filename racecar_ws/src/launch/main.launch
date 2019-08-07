@@ -8,7 +8,7 @@
   <arg name="hw_or_sim" default="hw" />
   <arg name="with_rviz" default="false" />
 
-  <param if="$(arg with_rviz)" name="robot_description" command="$(find xacro)/xacro '$(find launch)/robot.urdf'" />
+  <include file="$(find launch)/robot_model.launch" />
 
   <group ns="ros_control" >
       <!--rosparam file="$(find ros_control_boilerplate)/config/diff_drive.yaml" command="load"/-->
@@ -64,14 +64,6 @@
   <!-- launch rviz and static transforms -->
   <node if="$(arg with_rviz)"
         name="rviz" pkg="rviz" type="rviz" args=" -d imu.rviz"/>
-
-  <node name="imu_base_link" pkg="tf" type="static_transform_publisher" args="0 0.1 0.1 0 0 0 /base_link /imu 100" />
-  
-  <node name="pico_base_link" pkg="tf" type="static_transform_publisher" args="0 0 0.3 0 0 0 /base_link /pico 100">
-  </node>
-
-  <node name="lidar_base_link" pkg="tf" type="static_transform_publisher" args="0 0 0.5 0 0 0 /base_link /laser 100">
-  </node>
   <!-- Starting Gmapping Node with paramters -->
 
   <!-- 
