@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<robot name="robot">
+
+  <material name="white">
+    <color rgba="0.9 0.9 0.9 1.0"/>
+  </material>
+
+  <material name="black">
+    <color rgba="0.1 0.1 0.1 1.0"/>
+  </material>
+
+  <material name="green">
+    <color rgba="0.01 0.8 0.01 1.0"/>
+  </material>
+
+  <material name="metal">
+    <color rgba="0.4 0.4 0.4 0.9"/>
+  </material>
+
+  <link name="base_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.05318125"/>
+      <geometry>
+        <box size="0.45085 0.4191 0.1063625"/>
+      </geometry>
+      <material name="metal"/>
+    </visual>
+  </link>
+
+  <link name="imu">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.079375 0.0587375 0.002"/>
+      </geometry>
+      <material name="green"/>
+    </visual>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 -0.006 0.006"/>
+      <geometry>
+        <box size="0.015 0.011 0.012"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0.01 0.006"/>
+      <geometry>
+        <box size="0.020 0.004 0.012"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <joint name="base_to_imu" type="fixed" >
+    <parent link="base_link"/>
+    <child link="imu"/>
+    <origin xyz="-0.0079375 -0.02936875 0.1063625" rpy="0 0 3.14" />
+  </joint>
+
+  <link name="laser">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.02778125" length="0.0206375"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.015 0 -0.027409375"/>
+      <geometry>
+        <box size="0.0889 0.06985 0.03418125"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <joint name="base_to_laser" type="fixed" >
+    <parent link="base_link"/>
+    <child link="laser"/>
+    <origin xyz="0.028575 0.08255 0.1508625" rpy="0 0 0" />
+  </joint>
+
+  <link name="pico">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.022225 0.092075 0.03175"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <joint name="base_to_pico" type="fixed" >
+    <parent link="base_link"/>
+    <child link="pico"/>
+    <origin xyz="0.0873125 0 0.1222375" rpy="0 0 0" />
+  </joint>
+</robot>
+
