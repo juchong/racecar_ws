@@ -12,10 +12,10 @@ hardware_interface:
    run_hal_robot: false
    can_interface: "can0"
    joints:
-       - {name: left_drive,     type: can_talon_srx, can_id: 2}
-       - {name: left_follower,  type: can_talon_srx, can_id: 3}
-       - {name: right_drive,    type: can_talon_srx, can_id: 1}
-       - {name: right_follower, type: can_talon_srx, can_id: 4}
+       #- {name: left_drive,     type: can_talon_srx, can_id: 1}
+       #- {name: left_follower,  type: can_talon_srx, can_id: 2}
+       #- {name: right_drive,    type: can_talon_srx, can_id: 3}
+       #- {name: right_follower, type: can_talon_srx, can_id: 4}
        #- {name: adis16495, type: imu, frame_id: base_link, id: 1, device: "/dev/ADIS16XXX_BRD"}
 
    # Add more data for each joint here - intitial mode, encoder type

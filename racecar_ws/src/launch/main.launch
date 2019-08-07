@@ -8,25 +8,27 @@
   <arg name="hw_or_sim" default="hw" />
   <arg name="with_rviz" default="false" />
 
+  <param if="$(arg with_rviz)" name="robot_description" command="$(find xacro)/xacro '$(find launch)/robot.urdf'" />
+
   <group ns="ros_control" >
-      <rosparam file="$(find ros_control_boilerplate)/config/diff_drive.yaml" command="load"/>
+      <!--rosparam file="$(find ros_control_boilerplate)/config/diff_drive.yaml" command="load"/-->
       
       <!-- Starting ros control node -->
-      <node name="ADI_racecar_hardware_interface" pkg="ros_control_boilerplate" type="frcrobot_$(arg hw_or_sim)_main" output="screen" />
+      <!--node name="ADI_racecar_hardware_interface" pkg="ros_control_boilerplate" type="frcrobot_$(arg hw_or_sim)_main" output="screen" /-->
       
       <!-- Load controller manager -->
-      <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false"
-            output="screen" args="spawn imu_sensor_controller talon_state_controller diff_drive_controller"/> 
+      <!--node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false"
+            output="screen" args="spawn talon_state_controller diff_drive_controller"/--> 
             <!--output="screen" args="spawn imu_sensor_controller joint_state_controller joint_state_listener_controller talon_state_controller pdp_state_controller robot_code_ready_controller" /--> 
       <!-- Starting Remote control Node -->
   </group>
 
   <group ns="racecar">
-    <include file="$(find racecar)/launch/racecar-v2/racecar-v2-teleop.launch.xml">
+    <!--include file="$(find racecar)/launch/racecar-v2/racecar-v2-teleop.launch.xml">
       <arg name="racecar_version" value="$(arg racecar_version)" />
       <arg name="imu_model" value="$(arg imu_model)" />
       <arg name="run_camera" value="$(arg run_camera)" />
-    </include>
+    </include-->
   </group>
   <!-- Starting Zed Camera -->
   <!--include file="$(find zed_wrapper)/launch/zed_camera.launch" /-->
@@ -43,7 +45,7 @@
   <!-- Starting LaserScan Node -->
   <include file="$(find rplidar_ros)/launch/rplidar.launch" >
     <arg name="name"  value="rplidar" />
-    <arg name="serial_port"  value="/dev/ttyUSB0"/>
+    <arg name="serial_port"  value="/dev/lidar"/>
     <arg name="frame_id"  value="laser"/>
   </include>
 
@@ -63,15 +65,12 @@
   <node if="$(arg with_rviz)"
         name="rviz" pkg="rviz" type="rviz" args=" -d imu.rviz"/>
 
-  <node if="$(arg with_rviz)"
-        name="imu_base_link" pkg="tf" type="static_transform_publisher" args="0 0.1 0.1 0 0 0 /base_link /imu 100" />
+  <node name="imu_base_link" pkg="tf" type="static_transform_publisher" args="0 0.1 0.1 0 0 0 /base_link /imu 100" />
   
-  <node if="$(arg with_rviz)"
-        name="pico_base_link" pkg="tf" type="static_transform_publisher" args="0 0 0.3 0 0 0 /base_link /pico 100">
+  <node name="pico_base_link" pkg="tf" type="static_transform_publisher" args="0 0 0.3 0 0 0 /base_link /pico 100">
   </node>
 
-  <node if="$(arg with_rviz)"
-        name="lidar_base_link" pkg="tf" type="static_transform_publisher" args="0 0 0.5 0 0 0 /base_link /laser 100">
+  <node name="lidar_base_link" pkg="tf" type="static_transform_publisher" args="0 0 0.5 0 0 0 /base_link /laser 100">
   </node>
   <!-- Starting Gmapping Node with paramters -->
 
