@@ -47,7 +47,6 @@ int main(int argc, char **argv)
 	ros::init(argc, argv, "frcrobot_hw_interface");
 	ros::NodeHandle nh;
 
-    ROS_WARN("HJERE 1");
 	// NOTE: We run the ROS loop in a separate thread as external calls such
 	// as service callbacks to load controllers can block the (main) control loop
 	ros::AsyncSpinner spinner(2);
@@ -56,16 +55,11 @@ int main(int argc, char **argv)
 	// Create the hardware interface specific to your robot
 	boost::shared_ptr<frcrobot_control::FRCRobotHWInterface> frcrobot_hw_interface
 	(new frcrobot_control::FRCRobotHWInterface(nh));
-    ROS_WARN("HJERE 2");
 	frcrobot_hw_interface->init();
-    ROS_WARN("HJERE 3");
 
 	// Start the control loop
 	ros_control_boilerplate::GenericHWControlLoop control_loop(nh, frcrobot_hw_interface);
-    ROS_WARN("HJERE 4");
-
 	control_loop.run(); // Blocks until shutdown signal recieved 
-    ROS_WARN("HJERE 5");
 
 	return 0;
 }

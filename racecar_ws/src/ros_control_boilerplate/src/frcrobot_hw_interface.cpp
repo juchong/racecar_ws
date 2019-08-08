@@ -89,6 +89,7 @@ copy of that data each time through the read/update/write loop
 #include <ctre/phoenix/motorcontrol/SensorCollection.h>
 #include <ctre/phoenix/platform/Platform.h>
 #include <ctre/phoenix/unmanaged/Unmanaged.h>
+#include <ctre/Phoenix.h>
 
 //
 // digital output, PWM, Pneumatics, compressor, nidec, talons
@@ -1886,8 +1887,11 @@ namespace frcrobot_control
 						can_talon_srx_names_[joint_id] <<" motion profile trajectories");
 			}
 
+			if(robot_enabled && ros::Time::now().toSec() - last_enable_message > 1) {
+				robot_enabled = false;
+			}
 			// Set new motor setpoint if either the mode or the setpoint has been changed
-			if (robot_enabled && ros::Time::now().toSec() - last_enable_message < .25)
+			if (robot_enabled)
 			{
 				double command;
 				hardware_interface::TalonMode in_mode;

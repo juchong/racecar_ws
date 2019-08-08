@@ -12,10 +12,10 @@ hardware_interface:
    run_hal_robot: false
    can_interface: "can0"
    joints:
-       #- {name: left_drive,     type: can_talon_srx, can_id: 1}
-       #- {name: left_follower,  type: can_talon_srx, can_id: 2}
-       #- {name: right_drive,    type: can_talon_srx, can_id: 3}
-       #- {name: right_follower, type: can_talon_srx, can_id: 4}
+       - {name: right_drive,    type: can_talon_srx, can_id: 1}
+       - {name: right_follower, type: can_talon_srx, can_id: 2}
+       - {name: left_drive,     type: can_talon_srx, can_id: 3}
+       - {name: left_follower,  type: can_talon_srx, can_id: 4}
        #- {name: adis16495, type: imu, frame_id: base_link, id: 1, device: "/dev/ADIS16XXX_BRD"}
 
    # Add more data for each joint here - intitial mode, encoder type
@@ -63,28 +63,29 @@ diff_drive_controller:
     # fix me
     wheel_separation: .3683
     wheel_radius: 0.0508
+    wheel_separation_multiplier: 1
 
     cmd_vel_timeout: 0.5 # we test this separately, give plenty for the other tests
     left_drive_joint:
         joint: left_drive
-        feedback_type: PulseWidthEncodedPosition
-        ticks_per_rotation: 7
-        conversion_factor: .0501
+        feedback_type: QuadEncoder
+        ticks_per_rotation: 1120
+        conversion_factor: .0508
         close_loop_values:
-            - {p: 0.3, i: 0, d: 0, f: 0.49, i_zone: 0}
+            - {p: 0.8, i: 0, d: 0.0, f: 4.2, i_zone: 0}
             - {p: 2, i: 0, d: 0, f: 0, i_zone: 0}
-        sensor_phase: True
+        sensor_phase: False
         dynamic_reconfigure: True
     right_drive_joint:
         joint: right_drive
-        feedback_type: PulseWidthEncodedPosition
-        ticks_per_rotation: 7
-        conversion_factor: .0501
+        feedback_type: QuadEncoder
+        ticks_per_rotation: 1120
+        conversion_factor: .0508
         close_loop_values:
-            - {p: 0.3, i: 0, d: 0, f: 0.49, i_zone: 0}
+            - {p: 0.8, i: 0, d: 0, f: 4.05, i_zone: 0}
             - {p: 2, i: 0, d: 0, f: 0, i_zone: 0}
         invert_output: True
-        sensor_phase: True
+        sensor_phase: False
         dynamic_reconfigure: True
 
 left_follower_controller:

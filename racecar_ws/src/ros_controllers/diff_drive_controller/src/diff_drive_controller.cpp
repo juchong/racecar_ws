@@ -166,6 +166,7 @@ namespace diff_drive_controller{
             ros::NodeHandle& root_nh,
             ros::NodeHandle &controller_nh)
   {
+    ROS_ERROR("DiffDriveController: Start of init");
     const std::string complete_ns = controller_nh.getNamespace();
     std::size_t id = complete_ns.find_last_of("/");
     name_ = complete_ns.substr(id + 1);
@@ -380,11 +381,15 @@ namespace diff_drive_controller{
     dyn_reconf_server_->updateConfig(config);
     dyn_reconf_server_->setCallback(boost::bind(&DiffDriveController::reconfCallback, this, _1, _2));
 
+    ROS_ERROR("DiffDriveController: init finished");
     return true;
   }
 
   void DiffDriveController::update(const ros::Time& time, const ros::Duration& period)
   {
+    if(wheel_joints_size_ <= 0) {
+	return;
+    }
     // update parameter from dynamic reconf
     updateDynamicParams();
 
@@ -484,10 +489,11 @@ namespace diff_drive_controller{
     }
 
     // Compute wheels velocities:
-    const double vel_left  = (curr_cmd.lin - curr_cmd.ang * ws / 2.0)/lwr;
-    const double vel_right = (curr_cmd.lin + curr_cmd.ang * ws / 2.0)/rwr;
+    const double vel_left  = (curr_cmd.lin - curr_cmd.ang * ws / 2.0);
+    const double vel_right = (curr_cmd.lin + curr_cmd.ang * ws / 2.0);
 
     // Set wheels velocities:
+    ROS_WARN_THROTTLE(0.5, "vel_left: %f", vel_left);
     for (size_t i = 0; i < wheel_joints_size_; ++i)
     {
       left_wheel_joints_[i].setMode(hardware_interface::TalonMode::TalonMode_Velocity);

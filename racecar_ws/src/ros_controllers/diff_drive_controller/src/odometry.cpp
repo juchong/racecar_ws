@@ -76,8 +76,8 @@ namespace diff_drive_controller
   bool Odometry::update(double left_pos, double right_pos, const ros::Time &time)
   {
     /// Get current wheel joint positions:
-    const double left_wheel_cur_pos  = left_pos  * left_wheel_radius_;
-    const double right_wheel_cur_pos = right_pos * right_wheel_radius_;
+    const double left_wheel_cur_pos  = left_pos;
+    const double right_wheel_cur_pos = right_pos;
 
     /// Estimate velocity of wheels using old and current position:
     const double left_wheel_est_vel  = left_wheel_cur_pos  - left_wheel_old_pos_;

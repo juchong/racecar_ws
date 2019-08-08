@@ -319,7 +319,7 @@ void TalonStateController::update(const ros::Time &time, const ros::Duration & /
 						m.feedback_sensor[i] = "Tachometer";
 						break;
 					case hardware_interface::FeedbackDevice_PulseWidthEncodedPosition:
-						m.feedback_sensor[i] = "PusleWidthEncodedPosition";
+						m.feedback_sensor[i] = "PulseWidthEncodedPosition";
 						break;
 					case hardware_interface::FeedbackDevice_SensorSum:
 						m.feedback_sensor[i] =  "SensorSum";

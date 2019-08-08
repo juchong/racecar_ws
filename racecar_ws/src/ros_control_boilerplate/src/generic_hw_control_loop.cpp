@@ -74,6 +74,7 @@ void GenericHWControlLoop::run(void)
 	}
 }
 
+
 void GenericHWControlLoop::update(void)
 {
 	// Get change in time
