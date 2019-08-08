@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="pico" pkg="adi_tof_melodic" type="publisher" output="screen">
+  </node>
+
+  <node name="point_cloud_thinner" pkg="adi_tof_melodic" type="point_cloud_thinner" output="screen">
+	  <param name="factor" value="0.1"/>
+  </node>
+</launch>

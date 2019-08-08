@@ -1,0 +1,19 @@
+<!-- -*- mode: XML -*- -->
+<launch>
+
+  <!-- Optionally launch in GDB, for debugging -->
+  <arg name="debug" default="false" />
+  <arg if="$(arg debug)" name="launch_prefix" value="xterm -e gdb --args" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+
+<param name="speed_to_erpm_gain" value="4.1"/>
+<param name="speed_to_erpm_offset" value="0"/>
+<param name="steering_angle_to_servo_gain" value="3.1"/>
+<param name="steering_angle_to_servo_offset" value="0"/>
+
+  <!-- Ackermann to VESC node -->
+  <node pkg="vesc_ackermann" type="ackermann_to_vesc_node" name="ackermann_to_vesc_node"
+        output="screen" launch-prefix="$(arg launch_prefix)" >
+  </node>
+
+</launch>

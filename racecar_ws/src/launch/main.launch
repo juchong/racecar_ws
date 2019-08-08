@@ -8,9 +8,12 @@
   <arg name="hw_or_sim" default="hw" />
   <arg name="with_rviz" default="false" />
 
+  <!-- load the robot model -->
   <include file="$(find launch)/robot_model.launch" />
 
+  <!-- run ros_control for communicating with hardware -->
   <group ns="ros_control" >
+      <!-- load config file defining hardware joints and controllers -->
       <!--rosparam file="$(find ros_control_boilerplate)/config/diff_drive.yaml" command="load"/-->
       
       <!-- Starting ros control node -->
@@ -19,11 +22,12 @@
       <!-- Load controller manager -->
       <!--node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false"
             output="screen" args="spawn talon_state_controller diff_drive_controller"/--> 
+
             <!--output="screen" args="spawn imu_sensor_controller joint_state_controller joint_state_listener_controller talon_state_controller pdp_state_controller robot_code_ready_controller" /--> 
-      <!-- Starting Remote control Node -->
   </group>
 
-  <group ns="racecar">
+  <!-- run teleop control nodes for the robot -->
+  <group ns="teleop">
     <!--include file="$(find racecar)/launch/racecar-v2/racecar-v2-teleop.launch.xml">
       <arg name="racecar_version" value="$(arg racecar_version)" />
       <arg name="imu_model" value="$(arg imu_model)" />
@@ -37,7 +41,7 @@
   <!--include file="$(find usb_cam)/launch/usb_cam.launch" /-->
 
   <!-- Starting Time of Flight Camera (Pico Zense) -->
-  <include file="$(find adi_tof_kinetic)/launch/PicoZenseDCAM710.launch" />
+  <include file="$(find adi_tof_melodic)/launch/PicoZenseDCAM710.launch" />
 
   <!-- Starting April Tag testing for position, orientation, and identity tracking relative to the camera -->
   <!-- <include file="$(find apriltags2_ros)/launch/continuous_detection.launch" /> -->

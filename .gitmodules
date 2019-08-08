@@ -1,17 +1,17 @@
-[submodule "racecar_ws/src/adi_lidar_kinetic"]
-	path = racecar_ws/src/adi_lidar_kinetic
+[submodule "racecar_ws/src/adi_lidar_melodic"]
+	path = racecar_ws/src/adi_lidar_melodic
 	url = git@github.com:FalconWarriorr/adi_lidar_kinetic.git
-[submodule "racecar_ws/src/adi_usb_cam_kinetic"]
-	path = racecar_ws/src/adi_usb_cam_kinetic
+[submodule "racecar_ws/src/adi_usb_cam_melodic"]
+	path = racecar_ws/src/adi_usb_cam_melodic
 	url = git@github.com:FalconWarriorr/adi_usb_cam_kinetic.git
-[submodule "racecar_ws/src/adi_vesc_kinetic"]
-	path = racecar_ws/src/adi_vesc_kinetic
+[submodule "racecar_ws/src/adi_vesc_melodic"]
+	path = racecar_ws/src/adi_vesc_melodic
 	url = git@github.com:FalconWarriorr/adi_vesc_kinetic.git
-[submodule "racecar_ws/src/adi_tof_kinetic"]
-	path = racecar_ws/src/adi_tof_kinetic
+[submodule "racecar_ws/src/adi_tof_melodic"]
+	path = racecar_ws/src/adi_tof_melodic
 	url = git@github.com:FalconWarriorr/adi_tof_kinetic.git
-[submodule "racecar_ws/src/adi_slam_gmapping_kinetic"]
-	path = racecar_ws/src/adi_slam_gmapping_kinetic
+[submodule "racecar_ws/src/adi_slam_gmapping_melodic"]
+	path = racecar_ws/src/adi_slam_gmapping_melodic
 	url = git@github.com:FalconWarriorr/adi_slam_gmapping_kinetic.git
 [submodule "racecar_ws/src/racecar"]
 	path = racecar_ws/src/racecar

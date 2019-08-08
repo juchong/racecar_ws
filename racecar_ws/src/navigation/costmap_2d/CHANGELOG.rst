@@ -76,7 +76,7 @@ Changelog for package costmap_2d
 * Fix CMake warnings
 * renamed targets for message generation (gencpp -> generate_messages_cpp) in order to avoid warnings for non-existing target dependencies
 * Fixed race condition with costmaps
-* Merge pull request `#491 <https://github.com/ros-planning/navigation/issues/491>`_ from alexhenning/kinetic-inflation-fix
+* Merge pull request `#491 <https://github.com/ros-planning/navigation/issues/491>`_ from alexhenning/melodic-inflation-fix
 * Fixed sign error in inflation layer
 * Adds warning when a layer shrinks the bounds
 * Fixed bug with inflation layer that caused underinflation

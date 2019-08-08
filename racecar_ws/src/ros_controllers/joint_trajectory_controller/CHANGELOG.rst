@@ -65,7 +65,7 @@ Changelog for package joint_trajectory_controller
 -------------------
 * Make rqt_plot optional
 * Added tests for issue `#275 <https://github.com/ros-controls/ros_controllers/issues/275>`_
-* Address Issue  `#275 <https://github.com/ros-controls/ros_controllers/issues/275>`_ for kinetic
+* Address Issue  `#275 <https://github.com/ros-controls/ros_controllers/issues/275>`_ for melodic
 * Address issue `#263 <https://github.com/ros-controls/ros_controllers/issues/263>`_, joint_trajectory_controller - wraparoundOffset
 * Added warning to indicate that the verbose flag is enabled
 * Set hold trajectory goal handle when empty trajectory received through action.
