@@ -76,6 +76,7 @@ diff_drive_controller:
             - {p: 2, i: 0, d: 0, f: 0, i_zone: 0}
         sensor_phase: False
         dynamic_reconfigure: True
+        invert_output: True
     right_drive_joint:
         joint: right_drive
         feedback_type: QuadEncoder
@@ -84,7 +85,6 @@ diff_drive_controller:
         close_loop_values:
             - {p: 0.8, i: 0, d: 0, f: 4.05, i_zone: 0}
             - {p: 2, i: 0, d: 0, f: 0, i_zone: 0}
-        invert_output: True
         sensor_phase: False
         dynamic_reconfigure: True
 
@@ -92,12 +92,12 @@ left_follower_controller:
     type: talon_controllers/TalonFollowerController
     joint: left_follower
     follow_joint: left_drive
+    invert_output: True # Same as left drive
 
 right_follower_controller:
     type: talon_controllers/TalonFollowerController
     joint: right_follower
     follow_joint: right_drive
-    invert_output: True # Same as right drive
 
     #imu_sensor_controller:
     #   type:         imu_sensor_controller/ImuSensorController

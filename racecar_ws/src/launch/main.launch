@@ -24,18 +24,18 @@
       <!-- Load controller manager -->
       <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false"
             output="screen" args="spawn talon_state_controller diff_drive_controller joint_state_controller left_follower_controller right_follower_controller"/> 
-
-            <!--output="screen" args="spawn imu_sensor_controller joint_state_controller joint_state_listener_controller talon_state_controller pdp_state_controller robot_code_ready_controller" /--> 
   </group>
 
   <!-- run teleop control nodes for the robot -->
   <group ns="teleop">
-    <!--include file="$(find racecar)/launch/racecar-v2/racecar-v2-teleop.launch.xml">
+    <include file="$(find racecar)/launch/racecar-v2/racecar-v2-teleop.launch.xml">
       <arg name="racecar_version" value="$(arg racecar_version)" />
       <arg name="imu_model" value="$(arg imu_model)" />
       <arg name="run_camera" value="$(arg run_camera)" />
-    </include-->
+    </include>
   </group>
+
+
   <!-- Starting Zed Camera -->
   <!--include file="$(find zed_wrapper)/launch/zed_camera.launch" /-->
 
