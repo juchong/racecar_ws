@@ -10,7 +10,6 @@ project(racecar_2dnav)
 find_package(catkin REQUIRED COMPONENTS
   adi_tof_melodic
   move_base
-  ros_controllers
   rplidar_ros
 )
 

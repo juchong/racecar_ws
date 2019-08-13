@@ -51,15 +51,12 @@
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>adi_tof_melodic</build_depend>
   <build_depend>move_base</build_depend>
-  <build_depend>ros_controllers</build_depend>
   <build_depend>rplidar_ros</build_depend>
   <build_export_depend>adi_tof_melodic</build_export_depend>
   <build_export_depend>move_base</build_export_depend>
-  <build_export_depend>ros_controllers</build_export_depend>
   <build_export_depend>rplidar_ros</build_export_depend>
   <exec_depend>adi_tof_melodic</exec_depend>
   <exec_depend>move_base</exec_depend>
-  <exec_depend>ros_controllers</exec_depend>
   <exec_depend>rplidar_ros</exec_depend>
 
 

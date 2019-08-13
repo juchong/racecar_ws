@@ -453,7 +453,13 @@ namespace diff_drive_controller{
         odom_frame.header.stamp = time;
         odom_frame.transform.translation.x = odometry_.getX();
         odom_frame.transform.translation.y = odometry_.getY();
-        odom_frame.transform.rotation = orientation;
+
+        geometry_msgs::Quaternion empty_quat;
+        empty_quat.x = 0;
+        empty_quat.y = 0;
+        empty_quat.z = 0;
+        empty_quat.w = 1;
+        odom_frame.transform.rotation = empty_quat;
         tf_odom_pub_->unlockAndPublish();
       }
     }

@@ -106,7 +106,9 @@ namespace diff_drive_controller
     angular_acc_(angular/dt);
 
     linear_ = bacc::rolling_mean(linear_acc_);
-    angular_ = bacc::rolling_mean(angular_acc_);
+    //TODO this is temporarily commented out to make base_link not have any orientation
+    //fix me pls
+    //angular_ = bacc::rolling_mean(angular_acc_);
 
     return true;
   }

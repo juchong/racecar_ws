@@ -23,7 +23,7 @@
       
       <!-- Load controller manager -->
       <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false"
-            output="screen" args="spawn talon_state_controller diff_drive_controller joint_state_controller left_follower_controller right_follower_controller"/> 
+            output="screen" args="spawn imu_sensor_controller talon_state_controller diff_drive_controller joint_state_controller left_follower_controller right_follower_controller"/> 
   </group>
 
   <!-- run teleop control nodes for the robot -->

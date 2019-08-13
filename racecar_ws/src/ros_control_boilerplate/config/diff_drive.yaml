@@ -16,7 +16,8 @@ hardware_interface:
        - {name: right_follower, type: can_talon_srx, can_id: 2}
        - {name: left_drive,     type: can_talon_srx, can_id: 3}
        - {name: left_follower,  type: can_talon_srx, can_id: 4}
-       #- {name: adis16495, type: imu, frame_id: base_link, id: 1, device: "/dev/ADIS16XXX_BRD"}
+       - {name: adis16495, type: imu, frame_id: base_link, id: 1, device: "/dev/ADIS16XXX_BRD"}
+       #- {name: adis16495, type: imu, frame_id: base_link, id: 1, device: "/dev/ttyACM0"}
 
    # Add more data for each joint here - intitial mode, encoder type
    #    PIDF settings, limit switch settings, etc
@@ -64,6 +65,7 @@ diff_drive_controller:
     wheel_separation: .3683
     wheel_radius: 0.0508
     wheel_separation_multiplier: 1
+    base_frame_id: "base_link_stabilized"
 
     cmd_vel_timeout: 0.5 # we test this separately, give plenty for the other tests
     left_drive_joint:
@@ -99,7 +101,7 @@ right_follower_controller:
     joint: right_follower
     follow_joint: right_drive
 
-    #imu_sensor_controller:
-    #   type:         imu_sensor_controller/ImuSensorController
-    #   publish_rate: 50
+imu_sensor_controller:
+   type: imu_sensor_controller/ImuSensorController
+   publish_rate: 50
 
