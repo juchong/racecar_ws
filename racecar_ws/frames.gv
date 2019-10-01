@@ -1,0 +1,11 @@
+digraph G {
+"base_link" -> "imu"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link_stabilized" -> "base_link"[label=" Broadcaster: /imu_filter\nAverage rate: 100.049\nBuffer length: 4.898\nMost recent transform: 1565711052.93\nOldest transform: 1565711048.03\n"];
+"base_link" -> "laser"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"map" -> "odom"[label=" Broadcaster: /slam_gmapping\nAverage rate: 20.203\nBuffer length: 4.851\nMost recent transform: 1565711052.95\nOldest transform: 1565711048.1\n"];
+"base_link" -> "pico"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1565711053.02"[ shape=plaintext ] ;
+}->"map";
+}

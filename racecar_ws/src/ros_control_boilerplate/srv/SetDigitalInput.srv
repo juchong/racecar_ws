@@ -1,0 +1,5 @@
+#srv for setting the value (value) of the jth digital input
+uint64 j
+bool value
+---
+

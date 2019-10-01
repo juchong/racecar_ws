@@ -1,0 +1,992 @@
+... logging to /home/analog/.ros/log/6acaeb2a-ba0f-11e9-9ca3-ec086b0b5af7/roslaunch-analog-desktop-2108.log
+Checking log directory for disk usage. This may take awhile.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+]2;/home/analog/racecar_ws/racecar_ws/src/launch/main.launch
+[1mstarted roslaunch server http://analog-desktop:37997/[0m
+
+SUMMARY
+========
+
+PARAMETERS
+ * /imu_filter/fixed_frame: base_link_stabilized
+ * /imu_filter/publish_tf: True
+ * /imu_filter/use_mag: False
+ * /point_cloud_thinner/factor: 0.1
+ * /robot_description: <?xml version="1....
+ * /ros_control/diff_drive_controller/cmd_vel_timeout: 0.5
+ * /ros_control/diff_drive_controller/left_drive_joint/close_loop_values: [{'i': 0, 'p': 0....
+ * /ros_control/diff_drive_controller/left_drive_joint/conversion_factor: 0.0501
+ * /ros_control/diff_drive_controller/left_drive_joint/dynamic_reconfigure: True
+ * /ros_control/diff_drive_controller/left_drive_joint/feedback_type: PulseWidthEncoded...
+ * /ros_control/diff_drive_controller/left_drive_joint/joint: left_drive
+ * /ros_control/diff_drive_controller/left_drive_joint/sensor_phase: True
+ * /ros_control/diff_drive_controller/left_drive_joint/ticks_per_rotation: 7
+ * /ros_control/diff_drive_controller/left_wheel: ['left_drive_joint']
+ * /ros_control/diff_drive_controller/pose_covariance_diagonal: [0.001, 0.001, 10...
+ * /ros_control/diff_drive_controller/publish_rate: 50
+ * /ros_control/diff_drive_controller/right_drive_joint/close_loop_values: [{'i': 0, 'p': 0....
+ * /ros_control/diff_drive_controller/right_drive_joint/conversion_factor: 0.0501
+ * /ros_control/diff_drive_controller/right_drive_joint/dynamic_reconfigure: True
+ * /ros_control/diff_drive_controller/right_drive_joint/feedback_type: PulseWidthEncoded...
+ * /ros_control/diff_drive_controller/right_drive_joint/invert_output: True
+ * /ros_control/diff_drive_controller/right_drive_joint/joint: right_drive
+ * /ros_control/diff_drive_controller/right_drive_joint/sensor_phase: True
+ * /ros_control/diff_drive_controller/right_drive_joint/ticks_per_rotation: 7
+ * /ros_control/diff_drive_controller/right_wheel: ['right_drive_joi...
+ * /ros_control/diff_drive_controller/twist_covariance_diagonal: [0.001, 0.001, 10...
+ * /ros_control/diff_drive_controller/type: diff_drive_contro...
+ * /ros_control/diff_drive_controller/wheel_radius: 0.0508
+ * /ros_control/diff_drive_controller/wheel_separation: 0.3683
+ * /ros_control/generic_hw_control_loop/cycle_time_error_threshold: 0.01
+ * /ros_control/generic_hw_control_loop/loop_hz: 50
+ * /ros_control/hardware_interface/can_interface: can0
+ * /ros_control/hardware_interface/joints: [{'can_id': 1, 't...
+ * /ros_control/hardware_interface/run_hal_robot: False
+ * /ros_control/hardware_interface/sim_control_mode: 1
+ * /ros_control/joint_state_controller/publish_rate: 50
+ * /ros_control/joint_state_controller/type: joint_state_contr...
+ * /ros_control/left_follower_controller/follow_joint: left_drive
+ * /ros_control/left_follower_controller/joint: left_follower
+ * /ros_control/left_follower_controller/type: talon_controllers...
+ * /ros_control/right_follower_controller/follow_joint: right_drive
+ * /ros_control/right_follower_controller/invert_output: True
+ * /ros_control/right_follower_controller/joint: right_follower
+ * /ros_control/right_follower_controller/type: talon_controllers...
+ * /ros_control/talon_state_controller/publish_rate: 50
+ * /ros_control/talon_state_controller/type: talon_state_contr...
+ * /rosdistro: melodic
+ * /rosversion: 1.14.3
+ * /rplidar_node/angle_compensate: True
+ * /rplidar_node/frame_id: laser
+ * /rplidar_node/inverted: False
+ * /rplidar_node/serial_baudrate: 115200
+ * /rplidar_node/serial_port: /dev/lidar
+ * /use_gui: False
+
+NODES
+  /
+    imu_filter (imu_filter_madgwick/imu_filter_node)
+    pico (adi_tof_melodic/publisher)
+    point_cloud_thinner (adi_tof_melodic/point_cloud_thinner)
+    robot_state_publisher (robot_state_publisher/state_publisher)
+    rplidar_node (rplidar_ros/rplidarNode)
+    rviz (rviz/rviz)
+  /ros_control/
+    ADI_racecar_hardware_interface (ros_co[32m[DEBUG] [1565291102.699448599]: remap: __name => ADI_racecar_hardware_interface[0m
+[32m[DEBUG] [1565291102.699581525]: remap: __log => /home/analog/.ros/log/6acaeb2a-ba0f-11e9-9ca3-ec086b0b5af7/ros_control-ADI_racecar_hardware_interface-4.log[0m
+[32m[DEBUG] [1565291102.707428675]: Adding tcp socket [7] to pollset[0m
+[32m[DEBUG] [1565291102.707751772]: UDPROS server listening on port [59624][0m
+[32m[DEBUG] [1565291102.717650377]: Started node [/ros_control/ADI_racecar_hardware_interface], pid [2146], bound on [analog-desktop], xmlrpc port [34567], tcpros port [45701], using [real] time[0m
+[33m[ WARN] [1565291102.721149597]: HJERE 1[0m
+[33m[ WARN] [1565291102.728230386]: HJERE 2[0m
+[0m[ INFO] [1565291102.728641876]: FRCRobotInterface: Registering Talon Interface for left_drive at hw ID 1[0m
+[0m[ INFO] [1565291102.728892207]: FRCRobotInterface: Registering Talon Interface for left_follower at hw ID 2[0m
+[0m[ INFO] [1565291102.729171655]: FRCRobotInterface: Registering Talon Interface for right_drive at hw ID 3[0m
+[0m[ INFO] [1565291102.729353543]: FRCRobotInterface: Registering Talon Interface for right_follower at hw ID 4[0m
+[0m[ INFO] [1565291102.729564132]: FRCRobotInterface: Registering interface for DummyVar: imu_zero[0m
+[0m[ INFO] [1565291102.730421696]: FRCRobotInterface Ready.[0m
+[32m[DEBUG] [1565291102.743010085]: Publisher update for [/ros_control/enable]:  already have these connections: [0m
+using interface: can0
+[33m[ WARN] [1565291102.743377300]: Set can interface[0m
+[0m[ INFO] [1565291102.743520696]: Loading joint 0=left_drive as CAN id 1[0m
+[0m[ INFO] [1565291102.744540044]: 	Talon SRX firmware version -1[0m
+[0m[ INFO] [1565291102.744746309]: Loading joint 1=left_follower as CAN id 2[0m
+[0m[ INFO] [1565291102.744860797]: 	Talon SRX firmware version -1[0m
+[0m[ INFO] [1565291102.745004401]: Loading joint 2=right_drive as CAN id 3[0m
+[0m[ INFO] [1565291102.745107794]: 	Talon SRX firmware version -1[0m
+[0m[ INFO] [1565291102.745242804]: Loading joint 3=right_follower as CAN id 4[0m
+[0m[ INFO] [1565291102.745341249]: 	Talon SRX firmware version -1[0m
+[33m[ WARN] [1565291102.745482041]: initialized talons[0m
+[33m[ WARN] [1565291102.745568245]: Initialized imus[0m
+[33m[ WARN] [1565291102.745636219]: bottom of init[0m
+[0m[ INFO] [1565291102.745705808]: FRCRobotHWInterface Ready.[0m
+[33m[ WARN] [1565291102.745796492]: HJERE 3[0m
+[32m[DEBUG] [1565291102.746005361]: Creating ClassLoader, base = controller_interface::ControllerBase, address = 0x5585efbaa0[0m
+[32m[DEBUG] [1565291102.832826385]: Entering determineAvailableClasses()...[0m
+[32m[DEBUG] [1565291102.832972281]: Processing xml file /opt/ros/melodic/share/position_controllers/position_controllers_plugins.xml...[0m
+[32m[DEBUG] [1565291102.833391687]: XML file specifies lookup name (i.e. magic name) = position_controllers/JointPositionController.[0m
+[32m[DEBUG] [1565291102.833515915]: XML file specifies lookup name (i.e. magic name) = position_controllers/JointGroupPositionController.[0m
+[32m[DEBUG] [1565291102.833605193]: Processing xml file /home/analog/racecar_ws/racecar_ws/src/ros_controllers/joint_state_controller/joint_state_plugin.xml...[0m
+[32m[DEBUG] [1565291102.833934801]: XML file specifies lookup name (i.e. magic name) = joint_state_controller/JointStateController.[0m
+[32m[DEBUG] [1565291102.834107522]: Processing xml file /home/analog/racecar_ws/racecar_ws/src/ros_controllers/diff_drive_controller/diff_drive_controller_plugins.xml...[0m
+[32m[DEBUG] [1565291102.834432703]: XML file specifies lookup name (i.e. magic name) = diff_drive_controller/DiffDriveController.[0m
+[32m[DEBUG] [1565291102.834591777]: Processing xml file /home/analog/racecar_ws/racecar_ws/src/ros_controllers/imu_sensor_controller/imu_sensor_plugin.xml...[0m
+[32m[DEBUG] [1565291102.834869663]: XML file specifies lookup name (i.e. magic name) = imu_sensor_controller/ImuSensorController.[0m
+[32m[DEBUG] [1565291102.835008319]: Processing xml file /home/analog/racecar_ws/racecar_ws/src/ros_controllers/joint_trajectory_controller/ros_control_plugins.xml...[0m
+[32m[DEBUG] [1565291102.835292663]: XML file specifies lookup name (i.e. magic name) = position_controllers/JointTrajectoryController.[0m
+[32m[DEBUG] [1565291102.835411995]: XML file specifies lookup name (i.e. magic name) = velocity_controllers/JointTrajectoryController.[0m
+[32m[DEBUG] [1565291102.835515648]: XML file specifies lookup name (i.e. magic name) = effort_controllers/JointTrajectoryController.[0m
+[32m[DEBUG] [1565291102.835617635]: XML file specifies lookup name (i.e. magic name) = pos_vel_controllers/JointTrajectoryController.[0m
+[32m[DEBUG] [1565291102.835716080]: XML file specifies lookup name (i.e. magic name) = pos_vel_acc_controllers/JointTrajectoryController.[0m
+[32m[DEBUG] [1565291102.835833901]: Processing xml file /home/analog/racecar_ws/racecar_ws/src/talon_controllers/talon_controllers_plugins.xml...[0m
+[32m[DEBUG] [1565291102.836105484]: XML file specifies lookup name (i.e. magic name) = talon_controllers/TalonPercentOutputController.[0m
+[32m[DEBUG] [1565291102.836220128]: XML file specifies lookup name (i.e. magic name) = talon_controllers/TalonFollowerController.[0m
+[32m[DEBUG] [1565291102.836307218]: XML file specifies lookup name (i.e. magic name) = talon_controllers/TalonPositionCloseLoopController.[0m
+[32m[DEBUG] [1565291102.836370348]: XML file specifies lookup name (i.e. magic name) = talon_controllers/TalonVelocityCloseLoopController.[0m
+[32m[DEBUG] [1565291102.836419726]: XML file specifies lookup name (i.e. magic name) = talon_controllers/TalonMotionMagicCloseLoopController.[0m
+[32m[DEBUG] [1565291102.836599844]: Processing xml file /home/analog/racecar_ws/racecar_ws/src/talon_state_controller/talon_state_plugin.xml...[0m
+[32m[DEBUG] [1565291102.836854863]: XML file specifies lookup name (i.e. magic name) = talon_state_controller/TalonStateController.[0m
+[32m[DEBUG] [1565291102.836980289]: Exiting determineAvailableClasses()...[0m
+[32m[DEBUG] [1565291102.837090401]: Finished constructring ClassLoader, base = controller_interface::ControllerBase, address = 0x5585efbaa0[0m
+[32m[DEBUG] [1565291102.851721756]: Loaded parameter '/ros_control/generic_hw_control_loop/loop_hz' with value 50[0m
+[32m[DEBUG] [1565291102.855291190]: Loaded parameter '/ros_control/generic_hw_control_loop/cycle_time_error_threshold' with value 0.01[0m
+[33m[ WARN] [1565291102.855589545]: HJERE 4[0m
+[33m[ WARN] [1565291102.856157452]: GenericHWControlLoop: start of run[0m
+[33m[ WARN] [1565291102.856549200]: GenericHWControlLoop: before read[0m
+[0m[ INFO] [1565291102.857024600]: /ros_control::read():
+	Check for ready = 1.094e-06
+	analog in = 5.21e-07
+	can talons = 6.563e-06
+	compressors = 6.77e-07
+	digital in = 5.73e-07
+	imu = 9.89e-07
+[0m
+[33m[ WARN] [1565291102.857430099]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291102.857875237]: GenericHWControlLoop: before write[0m
+[0m[ INFO] [1565291102.858335792]: Updated joint 0=left_drive invert = 0 phase = 0[0m
+[0m[ INFO] [1565291102.858921305]: Updated joint 0=left_drive output shaping[0m
+[0m[ INFO] [1565291102.861144492]: Updated joint 0=left_drive voltage compensation[0m
+[0m[ INFO] [1565291102.861626924]: Updated joint 0=left_drive velocity measurement period / window[0m
+[0m[ INFO] [1565291102.862153890]: Updated joint 0=left_drive limit switches[0m
+[0m[ INFO] [1565291102.864504274]: Updated joint 0=left_drive remote limit switches[0m
+[0m[ INFO] [1565291102.865058430]: Updated joint 0=left_drive soft limits 
+	forward enable=0 forward threshold=0
+	reverse enable=0 reverse threshold=0
+	override_enable=1[0m
+[0m[ INFO] [1565291102.865557113]: Updated joint 0=left_drive peak current[0m
+[0m[ INFO] [1565291102.866188671]: Updated joint 0=left_drive status_frame 0=10mSec[0m
+[0m[ INFO] [1565291102.866667509]: Updated joint 0=left_drive status_frame 1=20mSec[0m
+[0m[ INFO] [1565291102.866903047]: Updated joint 0=left_drive status_frame 2=160mSec[0m
+[0m[ INFO] [1565291102.867305265]: Updated joint 0=left_drive status_frame 3=160mSec[0m
+[0m[ INFO] [1565291102.867519031]: Updated joint 0=left_drive status_frame 6=160mSec[0m
+[0m[ INFO] [1565291102.867735870]: Updated joint 0=left_drive status_frame 7=50mSec[0m
+[0m[ INFO] [1565291102.867955626]: Updated joint 0=left_drive status_frame 8=160mSec[0m
+[0m[ INFO] [1565291102.868187310]: Updated joint 0=left_drive status_frame 9=250mSec[0m
+[0m[ INFO] [1565291102.868530513]: Updated joint 0=left_drive status_frame 10=250mSec[0m
+[0m[ INFO] [1565291102.868868038]: Updated joint 0=left_drive status_frame 12=250mSec[0m
+[0m[ INFO] [1565291102.869122276]: Updated joint 0=left_drive status_frame 13=160mSec[0m
+[0m[ INFO] [1565291102.869284371]: Updated joint 1=left_follower invert = 0 phase = 0[0m
+[0m[ INFO] [1565291102.869568038]: Updated joint 1=left_follower output shaping[0m
+[0m[ INFO] [1565291102.869809827]: Updated joint 1=left_follower voltage compensation[0m
+[0m[ INFO] [1565291102.870288874]: Updated joint 1=left_follower velocity measurement period / window[0m
+[0m[ INFO] [1565291102.870627909]: Updated joint 1=left_follower limit switches[0m
+[0m[ INFO] [1565291102.871015699]: Updated joint 1=left_follower remote limit switches[0m
+[0m[ INFO] [1565291102.871490057]: Updated joint 1=left_follower soft limits 
+	forward enable=0 forward threshold=0
+	reverse enable=0 reverse threshold=0
+	override_enable=1[0m
+[0m[ INFO] [1565291102.871722627]: Updated joint 1=left_follower peak current[0m
+[0m[ INFO] [1565291102.871935142]: Updated joint 1=left_follower status_frame 0=10mSec[0m
+[0m[ INFO] [1565291102.872260792]: Updated joint 1=left_follower status_frame 1=20mSec[0m
+[0m[ INFO] [1565291102.872467682]: Updated joint 1=left_follower status_frame 2=160mSec[0m
+[0m[ INFO] [1565291102.872679625]: Updated joint 1=left_follower status_frame 3=160mSec[0m
+[0m[ INFO] [1565291102.872896829]: Updated joint 1=left_follower status_frame 6=160mSec[0m
+[0m[ INFO] [1565291102.873098719]: Updated joint 1=left_follower status_frame 7=50mSec[0m
+[0m[ INFO] [1565291102.873260033]: Updated joint 1=left_follower status_frame 8=160mSec[0m
+[0m[ INFO] [1565291102.873409003]: Updated joint 1=left_follower status_frame 9=250mSec[0m
+[0m[ INFO] [1565291102.873554326]: Updated joint 1=left_follower status_frame 10=250mSec[0m
+[0m[ INFO] [1565291102.873696472]: Updated joint 1=left_follower status_frame 12=250mSec[0m
+[0m[ INFO] [1565291102.873942272]: Updated joint 1=left_follower status_frame 13=160mSec[0m
+[0m[ INFO] [1565291102.874128015]: Updated joint 2=right_drive invert = 0 phase = 0[0m
+[0m[ INFO] [1565291102.874362303]: Updated joint 2=right_drive output shaping[0m
+[0m[ INFO] [1565291102.874578048]: Updated joint 2=right_drive voltage compensation[0m
+[0m[ INFO] [1565291102.874806763]: Updated joint 2=right_drive velocity measurement period / window[0m
+[0m[ INFO] [1565291102.875102567]: Updated joint 2=right_drive limit switches[0m
+[0m[ INFO] [1565291102.875356336]: Updated joint 2=right_drive remote limit switches[0m
+[0m[ INFO] [1565291102.875616668]: Updated joint 2=right_drive soft limits 
+	forward enable=0 forward threshold=0
+	reverse enable=0 reverse threshold=0
+	override_enable=1[0m
+[0m[ INFO] [1565291102.875828142]: Updated joint 2=right_drive peak current[0m
+[0m[ INFO] [1565291102.876046179]: Updated joint 2=right_drive status_frame 0=10mSec[0m
+[0m[ INFO] [1565291102.876245621]: Updated joint 2=right_drive status_frame 1=20mSec[0m
+[0m[ INFO] [1565291102.876391153]: Updated joint 2=right_drive status_frame 2=160mSec[0m
+[0m[ INFO] [1565291102.876528976]: Updated joint 2=right_drive status_frame 3=160mSec[0m
+[0m[ INFO] [1565291102.876673622]: Updated joint 2=right_drive status_frame 6=160mSec[0m
+[0m[ INFO] [1565291102.876823893]: Updated joint 2=right_drive status_frame 7=50mSec[0m
+[0m[ INFO] [1565291102.876967758]: Updated joint 2=right_drive status_frame 8=160mSec[0m
+[0m[ INFO] [1565291102.877112717]: Updated joint 2=right_drive status_frame 9=250mSec[0m
+[0m[ INFO] [1565291102.877277417]: Updated joint 2=right_drive status_frame 10=250mSec[0m
+[0m[ INFO] [1565291102.877438627]: Updated joint 2=right_drive status_frame 12=250mSec[0m
+[0m[ INFO] [1565291102.877587023]: Updated joint 2=right_drive status_frame 13=160mSec[0m
+[0m[ INFO] [1565291102.877726513]: Updated joint 3=right_follower invert = 0 phase = 0[0m
+[0m[ INFO] [1565291102.877954499]: Updated joint 3=right_follower output shaping[0m
+[0m[ INFO] [1565291102.878128418]: Updated joint 3=right_follower voltage compensation[0m
+[0m[ INFO] [1565291102.878348487]: Updated joint 3=right_follower velocity measurement period / window[0m
+[0m[ INFO] [1565291102.878572305]: Updated joint 3=right_follower limit switches[0m
+[0m[ INFO] [1565291102.878781956]: Updated joint 3=right_follower remote limit switches[0m
+[0m[ INFO] [1565291102.878976242]: Updated joint 3=right_follower soft limits 
+	forward enable=0 forward threshold=0
+	reverse enable=0 reverse threshold=0
+	override_enable=1[0m
+[0m[ INFO] [1565291102.879181153]: Updated joint 3=right_follower peak current[0m
+[0m[ INFO] [1565291102.879407055]: Updated joint 3=right_follower status_frame 0=10mSec[0m
+[0m[ INFO] [1565291102.879596965]: Updated joint 3=right_follower status_frame 1=20mSec[0m
+[0m[ INFO] [1565291102.879777135]: Updated joint 3=right_follower status_frame 2=160mSec[0m
+[0m[ INFO] [1565291102.879959232]: Updated joint 3=right_follower status_frame 3=160mSec[0m
+[0m[ INFO] [1565291102.880145496]: Updated joint 3=right_follower status_frame 6=160mSec[0m
+[0m[ INFO] [1565291102.880316707]: Updated joint 3=right_follower status_frame 7=50mSec[0m
+[0m[ INFO] [1565291102.880608135]: Updated joint 3=right_follower status_frame 8=160mSec[0m
+[0m[ INFO] [1565291102.880804347]: Updated joint 3=right_follower status_frame 9=250mSec[0m
+[0m[ INFO] [1565291102.880991861]: Updated joint 3=right_follower status_frame 10=250mSec[0m
+[0m[ INFO] [1565291102.881201773]: Updated joint 3=right_follower status_frame 12=250mSec[0m
+[0m[ INFO] [1565291102.881372619]: Updated joint 3=right_follower status_frame 13=160mSec[0m
+[33m[ WARN] [1565291102.881601230]: GenericHWControlLoop: end update[0m
+[0m[ INFO] [1565291102.881824632]: GenericHWControlLoop /ros_control:
+	read = 0.000908245
+	update = 0.000442376
+	write = 0.0232962
+[0m
+[33m[ WARN] [1565291102.882031574]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291102.882190909]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291102.882357901]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291102.882498953]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291102.882712094]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291102.897169269]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291102.897362825]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291102.897503096]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291102.897637533]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291102.897861456]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291102.916646246]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291102.916794434]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291102.916913610]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291102.917004033]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291102.917070445]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291102.936649877]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291102.936756396]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291102.936822599]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291102.936880728]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291102.936940837]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291102.956634184]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291102.956777580]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291102.956854044]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291102.956926185]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291102.957001191]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291102.976631773]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291102.976750636]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291102.976815120]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291102.976868562]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291102.976938671]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291102.996660146]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291102.996782863]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291102.996874641]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291102.996927666]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291102.996979180]: GenericHWControlLoop: end update[0m
+[32m[DEBUG] [1565291102.998061240]: Accepted connection on socket [7], new socket [11][0m
+[32m[DEBUG] [1565291102.999337898]: Adding tcp socket [11] to pollset[0m
+[32m[DEBUG] [1565291102.999878095]: TCPROS received a connection from [127.0.0.1:56930][0m
+[32m[DEBUG] [1565291103.000565386]: Connection: Creating TransportSubscriberLink for topic [/rosout] connected to [callerid=[/rosout] address=[TCPROS connection on port 45701 to [127.0.0.1:56930 on socket 11]]][0m
+[33m[ WARN] [1565291103.016632941]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.016759929]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.016825611]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.017136520]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.017277155]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.036630059]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.036778143]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.036864973]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.036925082]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.036987742]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.056630304]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.056739270]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.056805785]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.056860425]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.056917929]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.076638934]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.076795612]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.076883066]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.076946873]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.077014587]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.096712569]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.097097493]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.099308544]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.099402613]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.099470431]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.116626765]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.117251290]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.118702180]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.119212583]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.119665429]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.136655136]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.136917760]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.138235827]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.138344012]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.138888532]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.156631055]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.156910607]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.157281260]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.157347567]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.157406582]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.176648280]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.177006952]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.177269889]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.177512146]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.177999526]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.197207159]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.197385141]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.198002271]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.198495589]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.198932809]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.216630433]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.216959572]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.217191100]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.217345226]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.217475132]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.237243431]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.237898584]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.238112611]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.238224129]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.238530611]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.256634776]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.257049077]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.257395978]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.257631204]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.257900443]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.276637780]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.276774822]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.276930823]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.277130682]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.277238606]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.297112018]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.297263488]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.297422875]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.297545332]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.297659976]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.316741453]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.316859483]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.316941989]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.317013088]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.317086896]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.336624866]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.336735811]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.336813317]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.336864415]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.336918377]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.356634069]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.356869503]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.356953728]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.357709982]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.358252002]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.376629312]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.376745206]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.376820525]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.376875893]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.376933398]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.396630129]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.396735814]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.396804361]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.396851813]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.396905671]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.416632196]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.416741580]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.416810335]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.416858724]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.416912686]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.436620721]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.436721458]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.436895012]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.437006583]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.437130082]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.456634716]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.456769205]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.457492384]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.458[32m[DEBUG] [1565291103.322323745]: remap: __name => pico[0m
+[32m[DEBUG] [1565291103.322517510]: remap: __log => /home/analog/.ros/log/6acaeb2a-ba0f-11e9-9ca3-ec086b0b5af7/pico-6.log[0m
+[32m[DEBUG] [1565291103.326935027]: Adding tcp socket [7] to pollset[0m
+[32m[DEBUG] [1565291103.327272761]: UDPROS server listening on port [50851][0m
+[32m[DEBUG] [1565291103.335748915]: Started node [/pico], pid [2164], bound on [analog-desktop], xmlrpc port [32797], tcpros port [49057], using [real] time[0m
+[32m[DEBUG] [1565291103.339263917]: Creating ClassLoader, base = image_transport::PublisherPlugin, address = 0x5587df9bd0[0m
+[32m[DEBUG] [1565291103.461380227]: Entering determineAvailableClasses()...[0m
+[32m[DEBUG] [1565291103.461499507]: Processing xml file /opt/ros/melodic/share/compressed_depth_image_transport/compressed_depth_plugins.xml...[0m
+[32m[DEBUG] [1565291103.461985532]: XML file specifies lookup name (i.e. magic name) = image_transport/compressedDepth_pub.[0m
+[32m[DEBUG] [1565291103.462231488]: XML file specifies lookup name (i.e. magic name) = image_transport/compressedDepth_sub.[0m
+[32m[DEBUG] [1565291103.462376916]: Processing xml file /opt/ros/melodic/share/theora_image_transport/theora_plugins.xml...[0m
+[32m[DEBUG] [1565291103.462678918]: XML file specifies lookup name (i.e. magic name) = image_transport/theora_pub.[0m
+[32m[DEBUG] [1565291103.462881016]: XML file specifies lookup name (i.e. magic name) = image_transport/theora_sub.[0m
+[32m[DEBUG] [1565291103.463066342]: Processing xml file /opt/ros/melodic/share/compressed_image_transport/compressed_plugins.xml...[0m
+[32m[DEBUG] [1565291103.463361208]: XML file specifies lookup name (i.e. magic name) = image_transport/compressed_pub.[0m
+[32m[DEBUG] [1565291103.463518772]: XML file specifies lookup name (i.e. magic name) = image_transport/compressed_sub.[0m
+[32m[DEBUG] [1565291103.463653626]: Processing xml file /opt/ros/melodic/share/image_transport/default_plugins.xml...[0m
+[32m[DEBUG] [1565291103.463939116]: XML file specifies lookup name (i.e. magic name) = image_transport/raw_pub.[0m
+[32m[DEBUG] [1565291103.464087877]: XML file specifies lookup name (i.e. magic name) = image_transport/raw_sub.[0m
+[32m[DEBUG] [1565291103.464230179]: Exiting determineAvailableClasses()...[0m
+[32m[DEBUG] [1565291103.464367533]: Finished constructring ClassLoader, base = image_transport::PublisherPlugin, address = 0x5587df9bd0[0m
+[32m[DEBUG] [1565291103.464508846]: Creating ClassLoader, base = image_transport::SubscriberPlugin, address = 0x5587f32d40[0m
+[32m[DEBUG] [1565291103.465383078]: Entering determineAvailableClasses()...[0m
+[32m[DEBUG] [1565291103.465959058]: Processing xml file /opt/ros/melodic/share/compressed_depth_image_transport/compressed_depth_plugins.xml...[0m
+[32m[DEBUG] [1565291103.466414457]: XML file specifies lookup name (i.e. magic name) = image_transport/compressedDepth_pub.[0m
+[32m[DEBUG] [1565291103.466581657]: XML file specifies lookup name (i.e. magic name) = image_transport/compressedDepth_sub.[0m
+[32m[DEBUG] [1565291103.466755316]: Processing xml file /opt/ros/melodic/share/theora_image_transport/theora_plugins.xml...[0m
+[32m[DEBUG] [1565291103.467106957]: XML file specifies lookup name (i.e. magic name) = image_transport/theora_pub.[0m
+[32m[DEBUG] [1565291103.467261916]: XML file specifies lookup name (i.e. magic name) = image_transport/theora_sub.[0m
+[32m[DEBUG] [1565291103.467398020]: Processing xml file /opt/ros/melodic/share/compressed_image_transport/compressed_plugins.xml...[0m
+[32m[DEBUG] [1565291103.467683146]: XML file specifies lookup name (i.e. magic name) = image_transport/compressed_pub.[0m
+[32m[DEBUG] [1565291103.467832271]: XML file specifies lookup name (i.e. magic name) = image_transport/compressed_sub.[0m
+[32m[DEBUG] [1565291103.468022338]: Processing xml file /opt/ros/melodic/share/image_transport/default_plugins.xml...[0m
+[32m[DEBUG] [1565291103.468439660]: XML file specifies lookup name (i.e. magic name) = image_transport/raw_pub.[0m
+[32m[DEBUG] [1565291103.468594464]: XML file specifies lookup name (i.e. magic name) = image_transport/raw_sub.[0m
+[32m[DEBUG] [1565291103.468977096]: Exiting determineAvailableClasses()...[0m
+[32m[DEBUG] [1565291103.469128774]: Finished constructring ClassLoader, base = image_transport::SubscriberPlugin, address = 0x5587f32d40[0m
+[32m[DEBUG] [1565291103.471127830]: XML-RPC call [getParam] returned an error (-1): [Parameter [/camera/image/disable_pub_plugins] is not set][0m
+[32m[DEBUG] [1565291103.471411237]: Attempting to create managed instance for class image_transport/compressedDepth_pub.[0m
+[32m[DEBUG] [1565291103.471618752]: Class image_transport/compressedDepth_pub maps to library lib/libcompressed_depth_image_transport in classes_available_.[0m
+[32m[DEBUG] [1565291103.472541217]: Iterating through all possible paths where lib/libcompressed_depth_image_transport could be located...[0m
+[32m[DEBUG] [1565291103.473111468]: Checking path /home/analog/racecar_ws/racecar_ws/devel/lib/lib/libcompressed_depth_image_transport.so [0m
+[32m[DEBUG] [1565291103.473325650]: Checking path /home/analog/racecar_ws/racecar_ws/devel/lib//libcompressed_depth_image_transport.so [0m
+[32m[DEBUG] [1565291103.473441388]: Checking path /opt/ros/melodic/lib/lib/libcompressed_depth_image_transport.so [0m
+[32m[DEBUG] [1565291103.473531499]: Checking path /opt/ros/melodic/lib//libcompressed_depth_image_transport.so [0m
+[32m[DEBUG] [1565291103.473687813]: Library lib/libcompressed_depth_image_transport found at explicit path /opt/ros/melodic/lib//libcompressed_depth_image_transport.so.[0m
+[32m[DEBUG] [1565291103.483309365]: image_transport/compressedDepth_pub maps to real class type compressed_depth_image_transport::CompressedDepthPublisher[0m
+[32m[DEBUG] [1565291103.483671111]: boost::shared_ptr to object of real type compressed_depth_image_transport::CompressedDepthPublisher created.[0m
+[32m[DEBUG] [1565291103.498776458]: XML-RPC call [getParam] returned an error (-1): [Parameter [/camera/image/compressedDepth/depth_max] is not set][0m
+[32m[DEBUG] [1565291103.501814393]: XML-RPC call [getParam] returned an error (-1): [Parameter [/camera/image/compressedDepth/depth_quantization] is not set][0m
+[32m[DEBUG] [1565291103.505474771]: Accepted connection on socket [7], new socket [10][0m
+[32m[DEBUG] [1565291103.506204721]: Adding tcp socket [10] to pollset[0m
+[32m[DEBUG] [1565291103.506299676]: TCPROS received a connection from [127.0.0.1:48986][0m
+[32m[DEBUG] [1565291103.506550684]: Connection: Creating TransportSubscriberLink for topic [/rosout] connected to [callerid=[/rosout] address=[TCPROS connection on port 49057 to [127.0.0.1:48986 on socket 10]]][0m
+[32m[DEBUG] [1565291103.511586634]: XML-RPC call [getParam] returned an error (-1): [Parameter [/camera/image/compressedDepth/png_level] is not set][0m
+[32m[DEBUG] [1565291103.521730933]: Attempting to create managed instance for class image_transport/compressed_pub.[0m
+[32m[DEBUG] [1565291103.522150235]: Class image_transport/compressed_pub maps to library lib/libcompressed_image_transport in classes_available_.[0m
+[32m[DEBUG] [1565291103.522578809]: Iterating through all possible paths where lib/libcompressed_image_transport could be located...[0m
+[32m[DEBUG] [1565291103.522842631]: Checking path /home/analog/racecar_ws/racecar_ws/devel/lib/lib/libcompressed_image_transport.so [0m
+[32m[DEBUG] [1565291103.523084159]: Checking path /home/analog/racecar_ws/racecar_ws/devel/lib//libcompressed_image_transport.so [0m
+[32m[DEBUG] [1565291103.523349908]: Checking path /opt/ros/melodic/lib/lib/libcompressed_image_transport.so [0m
+[32m[DEBUG] [1565291103.523620189]: Checking path /opt/ros/melodic/lib//libcompressed_image_transport.so [0m
+[32m[DEBUG] [1565291103.523836872]: Library lib/libcompressed_image_transport found at explicit path /opt/ros/melodic/lib//libcompressed_image_transport.so.[0m
+[32m[DEBUG] [1565291103.532337975]: image_transport/compressed_pub maps to real class type compressed_image_transport::CompressedPublisher[0m
+[32m[DEBUG] [1565291103.532744047]: boost190770]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.459484616]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.476624855]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.476761532]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.476860654]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.476934826]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.477013322]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.496740577]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.496922778]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.497238947]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.497320985]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.497434014]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.516621333]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.516760510]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.516905625]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.517016779]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.517079283]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.536627775]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.536805132]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.536968321]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.537023638]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.537074579]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.556631561]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.556746413]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.556973618]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.557194884]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.558485241]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.576630763]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.576736605]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.576800568]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.576843227]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.576890679]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.596623142]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.596795082]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.597614987]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.597682440]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.597819065]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.616634116]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.616766470]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.616856997]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.616922107]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.616993153]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.636627485]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.636738691]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.637089915]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.637150336]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.637207841]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.656667784]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.656837067]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.657388932]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.657537901]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.657609990]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.676621670]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.676751784]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.676892420]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291::shared_ptr to object of real type compressed_image_transport::CompressedPublisher created.[0m
+[32m[DEBUG] [1565291103.543108676]: XML-RPC call [getParam] returned an error (-1): [Parameter [/camera/image/compressed/format] is not set][0m
+[32m[DEBUG] [1565291103.544671605]: XML-RPC call [getParam] returned an error (-1): [Parameter [/camera/image/compressed/jpeg_quality] is not set][0m
+[32m[DEBUG] [1565291103.546128849]: XML-RPC call [getParam] returned an error (-1): [Parameter [/camera/image/compressed/png_level] is not set][0m
+[32m[DEBUG] [1565291103.560380279]: Attempting to create managed instance for class image_transport/raw_pub.[0m
+[32m[DEBUG] [1565291103.560501642]: Class image_transport/raw_pub maps to library lib/libimage_transport_plugins in classes_available_.[0m
+[32m[DEBUG] [1565291103.560752650]: Iterating through all possible paths where lib/libimage_transport_plugins could be located...[0m
+[32m[DEBUG] [1565291103.561165389]: Checking path /home/analog/racecar_ws/racecar_ws/devel/lib/lib/libimage_transport_plugins.so [0m
+[32m[DEBUG] [1565291103.561388479]: Checking path /home/analog/racecar_ws/racecar_ws/devel/lib//libimage_transport_plugins.so [0m
+[32m[DEBUG] [1565291103.561561252]: Checking path /opt/ros/melodic/lib/lib/libimage_transport_plugins.so [0m
+[32m[DEBUG] [1565291103.561885651]: Checking path /opt/ros/melodic/lib//libimage_transport_plugins.so [0m
+[32m[DEBUG] [1565291103.562319851]: Library lib/libimage_transport_plugins found at explicit path /opt/ros/melodic/lib//libimage_transport_plugins.so.[0m
+[32m[DEBUG] [1565291103.568709130]: image_transport/raw_pub maps to real class type image_transport::RawPublisher[0m
+[32m[DEBUG] [1565291103.569209480]: boost::shared_ptr to object of real type image_transport::RawPublisher created.[0m
+[32m[DEBUG] [1565291103.571348806]: Attempting to create managed instance for class image_transport/theora_pub.[0m
+[32m[DEBUG] [1565291103.571685654]: Class image_transport/theora_pub maps to library lib/libtheora_image_transport in classes_available_.[0m
+[32m[DEBUG] [1565291103.572147928]: Iterating through all possible paths where lib/libtheora_image_transport could be located...[0m
+[32m[DEBUG] [1565291103.572499726]: Checking path /home/analog/racecar_ws/racecar_ws/devel/lib/lib/libtheora_image_transport.so [0m
+[32m[DEBUG] [1565291103.572800790]: Checking path /home/analog/racecar_ws/racecar_ws/devel/lib//libtheora_image_transport.so [0m
+[32m[DEBUG] [1565291103.573062372]: Checking path /opt/ros/melodic/lib/lib/libtheora_image_transport.so [0m
+[32m[DEBUG] [1565291103.573395105]: Checking path /opt/ros/melodic/lib//libtheora_image_transport.so [0m
+[32m[DEBUG] [1565291103.573781332]: Library lib/libtheora_image_transport found at explicit path /opt/ros/melodic/lib//libtheora_image_transport.so.[0m
+[32m[DEBUG] [1565291103.585448766]: image_transport/theora_pub maps to real class type theora_image_transport::TheoraPublisher[0m
+[32m[DEBUG] [1565291103.586265077]: boost::shared_ptr to object of real type theora_image_transport::TheoraPublisher created.[0m
+[32m[DEBUG] [1565291103.602107562]: XML-RPC call [getParam] returned an error (-1): [Parameter [/camera/image/theora/optimize_for] is not set][0m
+[32m[DEBUG] [1565291103.603779718]: XML-RPC call [getParam] returned an error (-1): [Parameter [/camera/image/theora/target_bitrate] is not set][0m
+[32m[DEBUG] [1565291103.605206127]: XML-RPC call [getParam] returned an error (-1): [Parameter [/camera/image/theora/quality] is not set][0m
+[32m[DEBUG] [1565291103.610219106]: XML-RPC call [getParam] returned an error (-1): [Parameter [/camera/image/theora/keyframe_frequency] is not set][0m
+[0m[ INFO] [1565291103.762330729]: Init status: 0
+[0m
+[0m[ INFO] [1565291103.767591799]: Get device count status: 0 device count: 1
+[0m
+Set threshold status: 0
+103.676990969]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.677442513]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.696620352]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.696724526]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.696800782]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.696847973]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.696897664]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.716640493]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.716774149]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.717312470]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.717786464]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.718202277]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.736701992]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.736826168]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.736898829]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.736967012]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.737033631]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.757201700]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.757309417]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.757378328]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.757422081]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.757474377]: GenericHWControlLoop: end update[0m
+[33m[ WARN] [1565291103.780379265]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.780489221]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.780594125]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.780673558]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.780751585]: GenericHWControlLoop: end update[0m
+[32m[DEBUG] [1565291103.792664141]: Accepted connection on socket [7], new socket [12][0m
+[32m[DEBUG] [1565291103.793090215]: Adding tcp socket [12] to pollset[0m
+[32m[DEBUG] [1565291103.793194389]: TCPROS received a connection from [127.0.0.1:56976][0m
+[32m[DEBUG] [1565291103.793323305]: Connection: Creating ServiceClientLink for service [/ros_control/controller_manager/load_controller] connected to [callerid=[/ros_control/ros_control_controller_manager] address=[TCPROS connection on port 45701 to [127.0.0.1:56976 on socket 12]]][0m
+[32m[DEBUG] [1565291103.793401540]: Service client [/ros_control/ros_control_controller_manager] wants service [/ros_control/controller_manager/load_controller] with md5sum [*][0m
+[32m[DEBUG] [1565291103.793614420]: Socket [12] received 0/4 bytes, closing[0m
+[32m[DEBUG] [1565291103.793725627]: TCP socket [12] closed[0m
+[32m[DEBUG] [1565291103.793953196]: Connection::drop(0)[0m
+[32m[DEBUG] [1565291103.794037785]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.794186182]: Connection::drop(2)[0m
+[33m[ WARN] [1565291103.796632042]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.796742935]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.796902374]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.797013476]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.797074054]: GenericHWControlLoop: end update[0m
+[32m[DEBUG] [1565291103.801125815]: Accepted connection on socket [7], new socket [12][0m
+[32m[DEBUG] [1565291103.801549388]: Adding tcp socket [12] to pollset[0m
+[32m[DEBUG] [1565291103.801652156]: TCPROS received a connection from [127.0.0.1:56982][0m
+[32m[DEBUG] [1565291103.801923218]: Connection: Creating ServiceClientLink for service [/ros_control/controller_manager/load_controller] connected to [callerid=[/ros_control/ros_control_controller_manager] address=[TCPROS connection on port 45701 to [127.0.0.1:56982 on socket 12]]][0m
+[32m[DEBUG] [1565291103.802017340]: Service client [/ros_control/ros_control_controller_manager] wants service [/ros_control/controller_manager/load_controller] with md5sum [647e5c54b8d6468952d8d31f1efe96c0][0m
+[32m[DEBUG] [1565291103.802986996]: loading service called for controller 'talon_state_controller' [0m
+[32m[DEBUG] [1565291103.803083357]: loading service locked[0m
+[32m[DEBUG] [1565291103.803152945]: Will load controller 'talon_state_controller'[0m
+[32m[DEBUG] [1565291103.804663892]: Constructing controller 'talon_state_controller' of type 'talon_state_controller/TalonStateController'[0m
+[32m[DEBUG] [1565291103.804818955]: Attempting to create managed (unique) instance for class talon_state_controller/TalonStateController.[0m
+[32m[DEBUG] [1565291103.804915369]: Class talon_state_controller/TalonStateController maps to library lib/libtalon_state_controller in classes_available_.[0m
+[32m[DEBUG] [1565291103.805157679]: Iterating through all possible paths where lib/libtalon_state_controller could be located...[0m
+[32m[DEBUG] [1565291103.805217058]: Checking path /home/analog/racecar_ws/racecar_ws/devel/lib/lib/libtalon_state_controller.so [0m
+[32m[DEBUG] [1565291103.805283417]: Checking path /home/analog/racecar_ws/racecar_ws/devel/lib//libtalon_state_controller.so [0m
+[32m[DEBUG] [1565291103.805351078]: Library lib/libtalon_state_controller found at explicit path /home/analog/racecar_ws/racecar_ws/devel/lib//libtalon_state_controller.so.[0m
+[32m[DEBUG] [1565291103.806477360]: talon_state_controller/TalonStateController maps to real class type talon_state_controller::TalonStateController[0m
+[32m[DEBUG] [1565291103.806624403]: std::unique_ptr to object of real type talon_state_controller::TalonStateController created.[0m
+[32m[DEBUG] [1565291103.806690814]: Initializing controller 'talon_state_controller'[0m
+[32m[DEBUG] [1565291103.806789311]: Got joint left_drive[0m
+[32m[DEBUG] [1565291103.806834366]: Got joint left_follower[0m
+[32m[DEBUG] [1565291103.806876401]: Got joint right_drive[0m
+[32m[DEBUG] [1565291103.806919529]: Got joint right_follower[0m
+[33m[ WARN] [1565291103.816625566]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.816748180]: GenericHWControlLoop: before read[0m
+[32m[DEBUG] [1565291103.816841416]: XML-RPC call [getParam] returned an error (-1): [Parameter [/ros_control/talon_state_controller/extra_joints] is not set][0m
+[32m[DEBUG] [1565291103.816932829]: No extra joints specification found.[0m
+[32m[DEBUG] [1565291103.817015804]: Initialized controller 'talon_state_controller' successful[0m
+[33m[ WARN] [1565291103.817608348]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.817702626]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.817818416]: GenericHWControlLoop: end update[0m
+[32m[DEBUG] [1565291103.817919882]: Successfully load controller 'talon_state_controller'[0m
+[32m[DEBUG] [1565291103.818007336]: loading service finished for controller 'talon_state_controller' [0m
+[32m[DEBUG] [1565291103.818259543]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.818387104]: TCP socket [12] closed[0m
+[32m[DEBUG] [1565291103.818445859]: Connection::drop(0)[0m
+[32m[DEBUG] [1565291103.819741164]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.819818097]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.822178898]: Accepted connection on socket [7], new socket [12][0m
+[32m[DEBUG] [1565291103.822935361]: Adding tcp socket [12] to pollset[0m
+[32m[DEBUG] [1565291103.823034170]: TCPROS received a connection from [127.0.0.1:56988][0m
+[32m[DEBUG] [1565291103.823369768]: Connection: Creating ServiceClientLink for service [/ros_control/controller_manager/load_controller] connected to [callerid=[/ros_control/ros_control_controller_manager] address=[TCPROS connection on port 45701 to [127.0.0.1:56988 on socket 12]]][0m
+[32m[DEBUG] [1565291103.823504153]: Service client [/ros_control/ros_control_controller_manager] wants service [/ros_control/controller_manager/load_controller] with md5sum [*][0m
+[32m[DEBUG] [1565291103.823911371]: Socket [12] received 0/4 bytes, closing[0m
+[32m[DEBUG] [1565291103.824030443]: TCP socket [12] closed[0m
+[32m[DEBUG] [1565291103.824231187]: Connection::drop(0)[0m
+[32m[DEBUG] [1565291103.824308588]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.824564389]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.827461063]: Accepted connection on socket [7], new socket [12][0m
+[32m[DEBUG] [1565291103.828779287]: Adding tcp socket [12] to pollset[0m
+[32m[DEBUG] [1565291103.828992897]: TCPROS received a connection from [127.0.0.1:56992][0m
+[32m[DEBUG] [1565291103.829252708]: Connection: Creating ServiceClientLink for service [/ros_control/controller_manager/load_controller] connected to [callerid=[/ros_control/ros_control_controller_manager] address=[TCPROS connection on port 45701 to [127.0.0.1:56992 on socket 12]]][0m
+[32m[DEBUG] [1565291103.829365320]: Service client [/ros_control/ros_control_controller_manager] wants service [/ros_control/controller_manager/load_controller] with md5sum [647e5c54b8d6468952d8d31f1efe96c0][0m
+[32m[DEBUG] [1565291103.830156786]: loading service called for controller 'diff_drive_controller' [0m
+[32m[DEBUG] [1565291103.830292890]: loading service locked[0m
+[32m[DEBUG] [1565291103.830351436]: Will load controller 'diff_drive_controller'[0m
+[32m[DEBUG] [1565291103.831684504]: Constructing controller 'diff_drive_controller' of type 'diff_drive_controller/DiffDriveController'[0m
+[32m[DEBUG] [1565291103.831795710]: Attempting to create managed (unique) instance for class diff_drive_controller/DiffDriveController.[0m
+[32m[DEBUG] [1565291103.831876862]: Class diff_drive_controller/DiffDriveController maps to library lib/libdiff_drive_controller in classes_available_.[0m
+[32m[DEBUG] [1565291103.832070470]: Iterating through all possible paths where lib/libdiff_drive_controller could be located...[0m
+[32m[DEBUG] [1565291103.832130058]: Checking path /home/analog/racecar_ws/racecar_ws/devel/lib/lib/libdiff_drive_controller.so [0m
+[32m[DEBUG] [1565291103.832198709]: Checking path /home/analog/racecar_ws/racecar_ws/devel/lib//libdiff_drive_controller.so [0m
+[32m[DEBUG] [1565291103.832262464]: Library lib/libdiff_drive_controller found at explicit path /home/analog/racecar_ws/racecar_ws/devel/lib//libdiff_drive_controller.so.[0m
+[33m[ WARN] [1565291103.836615445]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.836738892]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.836831763]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.836897289]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.836965211]: GenericHWControlLoop: end update[0m
+[32m[DEBUG] [1565291103.838547829]: diff_drive_controller/DiffDriveController maps to real class type diff_drive_controller::DiffDriveController[0m
+[32m[DEBUG] [1565291103.843678577]: std::unique_ptr to object of real type diff_drive_controller::DiffDriveController created.[0m
+[32m[DEBUG] [1565291103.843867810]: Initializing controller 'diff_drive_controller'[0m
+[32m[DEBUG] [1565291103.844682350]: Initialized controller 'diff_drive_controller' successful[0m
+[33m[ WARN] [1565291103.856624127]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.856728875]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.856795286]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.856843519]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.856897898]: GenericHWControlLoop: end update[0m
+[32m[DEBUG] [1565291103.857055357]: Successfully load controller 'diff_drive_controller'[0m
+[32m[DEBUG] [1565291103.857273863]: loading service finished for controller 'diff_drive_controller' [0m
+[32m[DEBUG] [1565291103.858982741]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.859551377]: TCP socket [12] closed[0m
+[32m[DEBUG] [1565291103.859761966]: Connection::drop(0)[0m
+[32m[DEBUG] [1565291103.859971825]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.860168038]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.865352696]: Accepted connection on socket [7], new socket [12][0m
+[32m[DEBUG] [1565291103.865907790]: Adding tcp socket [12] to pollset[0m
+[32m[DEBUG] [1565291103.866090876]: TCPROS received a connection from [127.0.0.1:56996][0m
+[32m[DEBUG] [1565291103.866215000]: Connection: Creating ServiceClientLink for service [/ros_control/controller_manager/load_controller] connected to [callerid=[/ros_control/ros_control_controller_manager] address=[TCPROS connection on port 45701 to [127.0.0.1:56996 on socket 12]]][0m
+[32m[DEBUG] [1565291103.866282140]: Service client [/ros_control/ros_control_controller_manager] wants service [/ros_control/controller_manager/load_controller] with md5sum [*][0m
+[32m[DEBUG] [1565291103.866518721]: Socket [12] received 0/4 bytes, closing[0m
+[32m[DEBUG] [1565291103.866638105]: TCP socket [12] closed[0m
+[32m[DEBUG] [1565291103.866698474]: Connection::drop(0)[0m
+[32m[DEBUG] [1565291103.866757436]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.866844370]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.870608714]: Accepted connection on socket [7], new socket [12][0m
+[32m[DEBUG] [1565291103.871025099]: Adding tcp socket [12] to pollset[0m
+[32m[DEBUG] [1565291103.871121721]: TCPROS received a connection from [127.0.0.1:57000][0m
+[32m[DEBUG] [1565291103.871245115]: Connection: Creating ServiceClientLink for service [/ros_control/controller_manager/load_controller] connected to [callerid=[/ros_control/ros_control_controller_manager] address=[TCPROS connection on port 45701 to [127.0.0.1:57000 on socket 12]]][0m
+[32m[DEBUG] [1565291103.871309912]: Service client [/ros_control/ros_control_controller_manager] wants service [/ros_control/controller_manager/load_controller] with md5sum [647e5c54b8d6468952d8d31f1efe96c0][0m
+[32m[DEBUG] [1565291103.871832034]: loading service called for controller 'joint_state_controller' [0m
+[32m[DEBUG] [1565291103.871919020]: loading service locked[0m
+[32m[DEBUG] [1565291103.871976628]: Will load controller 'joint_state_controller'[0m
+[32m[DEBUG] [1565291103.873654514]: Constructing controller 'joint_state_controller' of type 'joint_state_controller/JointStateController'[0m
+[32m[DEBUG] [1565291103.873924795]: Attempting to create managed (unique) instance for class joint_state_controller/JointStateController.[0m
+[32m[DEBUG] [1565291103.874082150]: Class joint_state_controller/JointStateController maps to library lib/libjoint_state_controller in classes_available_.[0m
+[32m[DEBUG] [1565291103.874322793]: Iterating through all possible paths where lib/libjoint_state_controller could be located...[0m
+[32m[DEBUG] [1565291103.874391444]: Checking path /home/analog/racecar_ws/racecar_ws/devel/lib/lib/libjoint_state_controller.so [0m
+[32m[DEBUG] [1565291103.874480305]: Checking path /home/analog/racecar_ws/racecar_ws/devel/lib//libjoint_state_controller.so [0m
+[32m[DEBUG] [1565291103.874547758]: Library lib/libjoint_state_controller found at explicit path /home/analog/racecar_ws/racecar_ws/devel/lib//libjoint_state_controller.so.[0m
+[32m[DEBUG] [1565291103.875977292]: joint_state_controller/JointStateController maps to real class type joint_state_controller::JointStateController[0m
+[32m[DEBUG] [1565291103.876170275]: std::unique_ptr to object of real type joint_state_controller::JointStateController created.[0m
+[32m[DEBUG] [1565291103.876233717]: Initializing controller 'joint_state_controller'[0m
+[33m[ WARN] [1565291103.876595776]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.876677709]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.876743807]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.876798499]: GenericHWControlLoop: before write[0m
+[32m[DEBUG] [1565291103.876860639]: Got joint imu_zero[0m
+[33m[ WARN] [1565291103.876965907]: GenericHWControlLoop: end update[0m
+[32m[DEBUG] [1565291103.889468508]: XML-RPC call [getParam] returned an error (-1): [Parameter [/ros_control/joint_state_controller/extra_joints] is not set][0m
+[32m[DEBUG] [1565291103.890379618]: No extra joints specification found.[0m
+[32m[DEBUG] [1565291103.890713914]: Initialized controller 'joint_state_controller' successful[0m
+[33m[ WARN] [1565291103.896674880]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.896956567]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.897131737]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.897248568]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.897367796]: GenericHWControlLoop: end update[0m
+[32m[DEBUG] [1565291103.897504681]: Successfully load controller 'joint_state_controller'[0m
+[32m[DEBUG] [1565291103.897597344]: loading service finished for controller 'joint_state_controller' [0m
+[32m[DEBUG] [1565291103.897742199]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.902024290]: TCP socket [12] closed[0m
+[32m[DEBUG] [1565291103.902119036]: Connection::drop(0)[0m
+[32m[DEBUG] [1565291103.902231701]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.902298268]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.902383379]: Accepted connection on socket [7], new socket [12][0m
+[32m[DEBUG] [1565291103.902777471]: Adding tcp socket [12] to pollset[0m
+[32m[DEBUG] [1565291103.902872061]: TCPROS received a connection from [127.0.0.1:57004][0m
+[32m[DEBUG] [1565291103.902986237]: Connection: Creating ServiceClientLink for service [/ros_control/controller_manager/load_controller] connected to [callerid=[/ros_control/ros_control_controller_manager] address=[TCPROS connection on port 45701 to [127.0.0.1:57004 on socket 12]]][0m
+[32m[DEBUG] [1565291103.903067232]: Service client [/ros_control/ros_control_controller_manager] wants service [/ros_control/controller_manager/load_controller] with md5sum [*][0m
+[32m[DEBUG] [1565291103.903331992]: Socket [12] received 0/4 bytes, closing[0m
+[32m[DEBUG] [1565291103.903429707]: TCP socket [12] closed[0m
+[32m[DEBUG] [1565291103.903493149]: Connection::drop(0)[0m
+[32m[DEBUG] [1565291103.903552737]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.903629410]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.906142358]: Accepted connection on socket [7], new socket [12][0m
+[32m[DEBUG] [1565291103.907211656]: Adding tcp socket [12] to pollset[0m
+[32m[DEBUG] [1565291103.907333957]: TCPROS received a connection from [127.0.0.1:57008][0m
+[32m[DEBUG] [1565291103.907469592]: Connection: Creating ServiceClientLink for service [/ros_control/controller_manager/load_controller] connected to [callerid=[/ros_control/ros_control_controller_manager] address=[TCPROS connection on port 45701 to [127.0.0.1:57008 on socket 12]]][0m
+[32m[DEBUG] [1565291103.907537722]: Service client [/ros_control/ros_control_controller_manager] wants service [/ros_control/controller_manager/load_controller] with md5sum [647e5c54b8d6468952d8d31f1efe96c0][0m
+[32m[DEBUG] [1565291103.908108338]: loading service called for controller 'joint_state_listener_controller' [0m
+[32m[DEBUG] [1565291103.908183552]: loading service locked[0m
+[32m[DEBUG] [1565291103.908238504]: Will load controller 'joint_state_listener_controller'[0m
+[32m[DEBUG] [1565291103.909704395]: XML-RPC call [getParam] returned an error (-1): [Parameter [/ros_control/joint_state_listener_controller/type] is not set][0m
+[32m[DEBUG] [1565291103.910094424]: loading service finished for controller 'joint_state_listener_controller' [0m
+[32m[DEBUG] [1565291103.910287459]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.910423355]: TCP socket [12] closed[0m
+[32m[DEBUG] [1565291103.911301962]: Connection::drop(0)[0m
+[32m[DEBUG] [1565291103.911381812]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.911804031]: Connection::drop(2)[0m
+[33m[ WARN] [1565291103.916629964]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.916735180]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.916806436]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.916882327]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.916980511]: GenericHWControlLoop: end update[0m
+[32m[DEBUG] [1565291103.925218783]: Accepted connection on socket [7], new socket [12][0m
+[32m[DEBUG] [1565291103.925733040]: Adding tcp socket [12] to pollset[0m
+[32m[DEBUG] [1565291103.926015769]: TCPROS received a connection from [127.0.0.1:57014][0m
+[32m[DEBUG] [1565291103.926201408]: Connection: Creating ServiceClientLink for service [/ros_control/controller_manager/switch_controller] connected to [callerid=[/ros_control/ros_control_controller_manager] address=[TCPROS connection on port 45701 to [127.0.0.1:57014 on socket 12]]][0m
+[32m[DEBUG] [1565291103.926347252]: Service client [/ros_control/ros_control_controller_manager] wants service [/ros_control/controller_manager/switch_controller] with md5sum [*][0m
+[32m[DEBUG] [1565291103.926630138]: Socket [12] received 0/4 bytes, closing[0m
+[32m[DEBUG] [1565291103.926764263]: TCP socket [12] closed[0m
+[32m[DEBUG] [1565291103.926833539]: Connection::drop(0)[0m
+[32m[DEBUG] [1565291103.926896096]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.927004072]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.932924931]: Accepted connection on socket [7], new socket [12][0m
+[32m[DEBUG] [1565291103.933390956]: Adding tcp socket [12] to pollset[0m
+[32m[DEBUG] [1565291103.933498464]: TCPROS received a connection from [127.0.0.1:57018][0m
+[32m[DEBUG] [1565291103.933644360]: Connection: Creating ServiceClientLink for service [/ros_control/controller_manager/switch_controller] connected to [callerid=[/ros_control/ros_control_controller_manager] address=[TCPROS connection on port 45701 to [127.0.0.1:57018 on socket 12]]][0m
+[32m[DEBUG] [1565291103.933723376]: Service client [/ros_control/ros_control_controller_manager] wants service [/ros_control/controller_manager/switch_controller] with md5sum [5e857dedf71d6f337975e15a1e7cfdd8][0m
+[32m[DEBUG] [1565291103.934406657]: switching service called[0m
+[32m[DEBUG] [1565291103.934490465]: switching service locked[0m
+[32m[DEBUG] [1565291103.934550261]: switching controllers:[0m
+[32m[DEBUG] [1565291103.934604640]:  - starting controller 'talon_state_controller'[0m
+[32m[DEBUG] [1565291103.934652977]: Stop request vector has size 0[0m
+[32m[DEBUG] [1565291103.934705377]: Found controller 'talon_state_controller' that needs to be started in list of controllers[0m
+[32m[DEBUG] [1565291103.934757568]: Start request vector has size 1[0m
+[32m[DEBUG] [1565291103.934816271]: Request atomic controller switch from realtime loop[0m
+[33m[ WARN] [1565291103.936644168]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.936764176]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.936845641]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.936901426]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.936962160]: GenericHWControlLoop: end update[0m
+[32m[DEBUG] [1565291103.937032894]: Successfully switched controllers[0m
+[32m[DEBUG] [1565291103.937099410]: switching service finished[0m
+[32m[DEBUG] [1565291103.937259161]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.937375681]: TCP socket [12] closed[0m
+[32m[DEBUG] [1565291103.937435998]: Connection::drop(0)[0m
+[32m[DEBUG] [1565291103.937574966]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.937625230]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.944618982]: Accepted connection on socket [7], new socket [12][0m
+[32m[DEBUG] [1565291103.945124124]: Adding tcp socket [12] to pollset[0m
+[32m[DEBUG] [1565291103.945240591]: TCPROS received a connection from [127.0.0.1:57022][0m
+[32m[DEBUG] [1565291103.945368205]: Connection: Creating ServiceClientLink for service [/ros_control/controller_manager/switch_controller] connected to [callerid=[/ros_control/ros_control_controller_manager] address=[TCPROS connection on port 45701 to [127.0.0.1:57022 on socket 12]]][0m
+[32m[DEBUG] [1565291103.945439616]: Service client [/ros_control/ros_control_controller_manager] wants service [/ros_control/controller_manager/switch_controller] with md5sum [*][0m
+[32m[DEBUG] [1565291103.945703803]: Socket [12] received 0/4 bytes, closing[0m
+[32m[DEBUG] [1565291103.945847980]: TCP socket [12] closed[0m
+[32m[DEBUG] [1565291103.945910537]: Connection::drop(0)[0m
+[32m[DEBUG] [1565291103.945972104]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.946162743]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.950377433]: Accepted connection on socket [7], new socket [12][0m
+[32m[DEBUG] [1565291103.950821789]: Adding tcp socket [12] to pollset[0m
+[32m[DEBUG] [1565291103.950951799]: TCPROS received a connection from [127.0.0.1:57026][0m
+[32m[DEBUG] [1565291103.951118530]: Connection: Creating ServiceClientLink for service [/ros_control/controller_manager/switch_controller] connected to [callerid=[/ros_control/ros_control_controller_manager] address=[TCPROS connection on port 45701 to [127.0.0.1:57026 on socket 12]]][0m
+[32m[DEBUG] [1565291103.951203901]: Service client [/ros_control/ros_control_controller_manager] wants service [/ros_control/controller_manager/switch_controller] with md5sum [5e857dedf71d6f337975e15a1e7cfdd8][0m
+[32m[DEBUG] [1565291103.952276689]: switching service called[0m
+[32m[DEBUG] [1565291103.952401438]: switching service locked[0m
+[32m[DEBUG] [1565291103.952467745]: switching controllers:[0m
+[32m[DEBUG] [1565291103.952585983]:  - starting controller 'diff_drive_controller'[0m
+[32m[DEBUG] [1565291103.952634060]: Stop request vector has size 0[0m
+[32m[DEBUG] [1565291103.952681668]: Found controller 'diff_drive_controller' that needs to be started in list of controllers[0m
+[32m[DEBUG] [1565291103.952720785]: Start request vector has size 1[0m
+[32m[DEBUG] [1565291103.952783238]: Request atomic controller switch from realtime loop[0m
+[33m[ WARN] [1565291103.956656235]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.956775723]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.956848750]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.957583805]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.957694542]: GenericHWControlLoop: end update[0m
+[32m[DEBUG] [1565291103.957819551]: Successfully switched controllers[0m
+[32m[DEBUG] [1565291103.957878618]: switching service finished[0m
+[32m[DEBUG] [1565291103.958009722]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.958131502]: TCP socket [12] closed[0m
+[32m[DEBUG] [1565291103.958175307]: Connection::drop(0)[0m
+[32m[DEBUG] [1565291103.958220675]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.958446890]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.965835098]: Accepted connection on socket [7], new socket [12][0m
+[32m[DEBUG] [1565291103.966277840]: Adding tcp socket [12] to pollset[0m
+[32m[DEBUG] [1565291103.966381129]: TCPROS received a connection from [127.0.0.1:57030][0m
+[32m[DEBUG] [1565291103.966503325]: Connection: Creating ServiceClientLink for service [/ros_control/controller_manager/switch_controller] connected to [callerid=[/ros_control/ros_control_controller_manager] address=[TCPROS connection on port 45701 to [127.0.0.1:57030 on socket 12]]][0m
+[32m[DEBUG] [1565291103.966571820]: Service client [/ros_control/ros_control_controller_manager] wants service [/ros_control/controller_manager/switch_controller] with md5sum [*][0m
+[32m[DEBUG] [1565291103.966776418]: Socket [12] received 0/4 bytes, closing[0m
+[32m[DEBUG] [1565291103.966863196]: TCP socket [12] closed[0m
+[32m[DEBUG] [1565291103.966916846]: Connection::drop(0)[0m
+[32m[DEBUG] [1565291103.966975131]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.967076024]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.970392574]: Accepted connection on socket [7], new socket [12][0m
+[32m[DEBUG] [1565291103.970844952]: Adding tcp socket [12] to pollset[0m
+[32m[DEBUG] [1565291103.970965013]: TCPROS received a connection from [127.0.0.1:57034][0m
+[32m[DEBUG] [1565291103.971103044]: Connection: Creating ServiceClientLink for service [/ros_control/controller_manager/switch_controller] connected to [callerid=[/ros_control/ros_control_controller_manager] address=[TCPROS connection on port 45701 to [127.0.0.1:57034 on socket 12]]][0m
+[32m[DEBUG] [1565291103.971170132]: Service client [/ros_control/ros_control_controller_manager] wants service [/ros_control/controller_manager/switch_controller] with md5sum [5e857dedf71d6f337975e15a1e7cfdd8][0m
+[32m[DEBUG] [1565291103.972026342]: switching service called[0m
+[32m[DEBUG] [1565291103.972111817]: switching service locked[0m
+[32m[DEBUG] [1565291103.972169946]: switching controllers:[0m
+[32m[DEBUG] [1565291103.972216252]:  - starting controller 'joint_state_controller'[0m
+[32m[DEBUG] [1565291103.972280423]: Stop request vector has size 0[0m
+[32m[DEBUG] [1565291103.972332823]: Found controller 'joint_state_controller' that needs to be started in list of controllers[0m
+[32m[DEBUG] [1565291103.972376264]: Start request vector has size 1[0m
+[32m[DEBUG] [1565291103.972556017]: Request atomic controller switch from realtime loop[0m
+[33m[ WARN] [1565291103.976615643]: GenericHWControlLoop: running[0m
+[33m[ WARN] [1565291103.976739506]: GenericHWControlLoop: before read[0m
+[33m[ WARN] [1565291103.976809512]: GenericHWControlLoop: before update[0m
+[33m[ WARN] [1565291103.976904310]: DiffDriveController: Start of update[0m
+[33m[ WARN] [1565291103.977049061]: DiffDriveController: updated dynamic params[0m
+[33m[ WARN] [1565291103.977109326]: DiffDriveController: updating closed loop odometry[0m
+[33m[ WARN] [1565291103.977150683]: DiffDriveController: wheel_joints_size_ 0[0m
+[33m[ WARN] [1565291103.978024446]: DiffDriveController: updated odometry[0m
+[33m[ WARN] [1565291103.978144299]: DiffDriveController: computed and published cmd_vel_out[0m
+[33m[ WARN] [1565291103.978210866]: DiffDriveController: Set talon mode and command[0m
+[33m[ WARN] [1565291103.978265506]: GenericHWControlLoop: before write[0m
+[33m[ WARN] [1565291103.978333688]: GenericHWControlLoop: end update[0m
+[32m[DEBUG] [1565291103.978442707]: Successfully switched controllers[0m
+[32m[DEBUG] [1565291103.978652201]: switching service finished[0m
+[32m[DEBUG] [1565291103.978935400]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.979154218]: TCP socket [12] closed[0m
+[32m[DEBUG] [1565291103.979229432]: Connection::drop(0)[0m
+[32m[DEBUG] [1565291103.979292666]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.979415175]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.984547746]: Accepted connection on socket [7], new socket [12][0m
+[32m[DEBUG] [1565291103.985044189]: Adding tcp socket [12] to pollset[0m
+[32m[DEBUG] [1565291103.985167271]: TCPROS received a connection from [127.0.0.1:57038][0m
+[32m[DEBUG] [1565291103.985304834]: Connection: Creating ServiceClientLink for service [/ros_control/controller_manager/switch_controller] connected to [callerid=[/ros_control/ros_control_controller_manager] address=[TCPROS connection on port 45701 to [127.0.0.1:57038 on socket 12]]][0m
+[32m[DEBUG] [1565291103.985439219]: Service client [/ros_control/ros_control_controller_manager] wants service [/ros_control/controller_manager/switch_controller] with md5sum [*][0m
+[32m[DEBUG] [1565291103.985710541]: Socket [12] received 0/4 bytes, closing[0m
+[32m[DEBUG] [1565291103.985933735]: TCP socket [12] closed[0m
+[32m[DEBUG] [1565291103.986022440]: Connection::drop(0)[0m
+[32m[DEBUG] [1565291103.986512841]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.986725096]: Connection::drop(2)[0m
+[32m[DEBUG] [1565291103.992807738]: Accepted connection on socket [7], new socket [12][0m
+[32m[DEBUG] [1565291103.993297358]: Adding tcp socket [12] to pollset[0m
+[32m[DEBUG] [1565291103.993408773]: TCPROS received a connection from [127.0.0.1:57042][0m
+[32m[DEBUG] [1565291103.994229615]: Connection: Creating ServiceClientLink for service [/ros_control/controller_manager/switch_controller] connected to [callerid=[/ros_control/ros_control_controller_manager] address=[TCPROS connection on port 45701 to [127.0.0.1:57042 on socket 12]]][0m
+[32m[DEBUG] [1565291103.994331341]: Service client [/ros_control/ros_control_controller_manager] wants service [/ros_control/controller_manager/switch_controller] with md5sum [5e857dedf71d6f337975e15a1e7cfdd8][0m
+[32m[DEBUG] [1565291103.995192760]: switching service called[0m
+[32m[DEBUG] [1565291103.995466687]: swLoaded 'talon_state_controller'
+Loaded 'diff_drive_controller'
+Loaded 'joint_state_controller'
+Error when loading 'joint_state_listener_controller'
+Started ['talon_state_controller'] successfully
+Started ['diff_drive_controller'] successfully
+Started ['joint_state_controller'] successfully
+[32m[DEBUG] [1565291103.192871679]: remap: __name => rplidar_node[0m
+[32m[DEBUG] [1565291103.192994917]: remap: __log => /home/analog/.ros/log/6acaeb2a-ba0f-11e9-9ca3-ec086b0b5af7/rplidar_node-8.log[0m
+[32m[DEBUG] [1565291103.206977212]: Adding tcp socket [7] to pollset[0m
+[32m[DEBUG] [1565291103.207283172]: UDPROS server listening on port [52320][0m
+[32m[DEBUG] [1565291103.221321513]: Started node [/rplidar_node], pid [2167], bound on [analog-desktop], xmlrpc port [34003], tcpros port [45545], using [real] time[0m
+[0m[ INFO] [1565291103.309670717]: RPLIDAR running on ROS package rplidar_ros. SDK Version:1.10.0[0m
+[32m[DEBUG] [1565291103.504934210]: Accepted connection on socket [7], new socket [14][0m
+[32m[DEBUG] [1565291103.505327833]: Adding tcp socket [14] to pollset[0m
+[32m[DEBUG] [1565291103.505939805]: TCPROS received a connection from [127.0.0.1:48796][0m
+[32m[DEBUG] [1565291103.506357753]: Connection: Creating TransportSubscriberLink for topic [/rosout] connected to [callerid=[/rosout] address=[TCPROS connection on port 45545 to [127.0.0.1:48796 on socket 14]]][0m
+[32m[DEBUG] [1565291104.831687168]: Accepted connection on socket [7], new socket [15][0m
+[32m[DEBUG] [1565291104.832102355]: Adding tcp socket [15] to pollset[0m
+[32m[DEBUG] [1565291104.832271170]: TCPROS received a connection from [127.0.0.1:48908][0m
+[32m[DEBUG] [1565291104.833498136]: Connection: Creating TransportSubscriberLink for topic [/scan] connected to [callerid=[/rviz] address=[TCPROS connection on port 45545 to [127.0.0.1:48908 on socket 15]]][0m
+RPLIDAR S/N: ADCD9AF2C1EA9FC0BEEB9CF3221E3200
+[0m[ INFO] [1565291105.817940139]: Firmware Ver: 1.25[0m
+[0m[ INFO] [1565291105.818038845]: Hardware Rev: 5[0m
+[0m[ INFO] [1565291105.820157492]: RPLidar health status : 0[0m
+[0m[ INFO] [1565291106.372080490]: current scan mode: Express, max_distance: 12.0 m, Point number: 4.0K , angle_compensate: 1[0m
+[0m[ INFO] [1565291103.767957920]: Set depth range near[0m
+[32m[DEBUG] [1565291103.910385643]: Accepted connection on socket [7], new socket [14][0m
+[32m[DEBUG] [1565291103.911152992]: Adding tcp socket [14] to pollset[0m
+[32m[DEBUG] [1565291103.911536563]: TCPROS received a connection from [127.0.0.1:49038][0m
+[32m[DEBUG] [1565291103.912667897]: Connection: Creating TransportSubscriberLink for topic [/camera/point_cloud] connected to [callerid=[/point_cloud_thinner] address=[TCPROS connection on port 49057 to [127.0.0.1:49038 on socket 14]]][0m
+[0m[ INFO] [1565291106.382842177]: Get depth range status: -13 depth range: -1
+[0m
+[0m[ INFO] [1565291106.383859805]: Start Depth Frame status: 0
+[0m
+[0m[ INFO] [1565291106.385016975]: Start IR Frame status: 0
+[0m
+[0m[ INFO] [1565291106.386159299]: Get Depth Frame mode status: 0
+[0m
+[0m[ INFO] [1565291106.387015353]: depthFrameMode.pixelFormat: 0
+[0m
+[0m[ INFO] [1565291106.387463042]: depthFrameMode.resolutionWidth: 640
+[0m
+[0m[ INFO] [1565291106.387847237]: depthFrameMode.resolutionHeight: 480
+[0m
+[0m[ INFO] [1565291106.387932817]: depthFrameMode.fps: 30
+[0m
+[0m[ INFO] [1565291106.388306751]: Get IR Frame mode status: 0
+[0m
+[0m[ INFO] [1565291106.388687977]: irFrameMode.pixelFormat: 1
+[0m
+[0m[ INFO] [1565291106.389087642]: irFrameMode.resolutionWidth: 640
+[0m
+[0m[ INFO] [1565291106.389482672]: irFrameMode.resolutionHeight: 480
+[0m
+[0m[ INFO] [1565291106.390709378]: irFrameMode.fps: 30
+[0m
+[0m[ INFO] [1565291106.391513813]: Get PsGetCameraParameters status: 0
+[0m
+[0m[ INFO] [1565291106.391891810]: Camera Intinsic: 
+[0m
+[0m[ INFO] [1565291106.392525711]: Fx: 457.132
+[0m
+[0m[ INFO] [1565291106.392904437]: Cx: 329.629
+[0m
+[0m[ INFO] [1565291106.393379889]: Fy: 456.621
+[0m
+[0m[ INFO] [1565291106.394161822]: Cy: 234.645
+[0m
+[0m[ INFO] [1565291106.394656495]: Distortion Coefficient: 
+[0m
+[0m[ INFO] [1565291106.394921046]: K1: 0.332824
+[0m
+[0m[ INFO] [1565291106.395177158]: K2: -0.874103
+[0m
+[0m[ INFO] [1565291106.398126701]: K3: 0.505041
+[0m
+[0m[ INFO] [1565291106.398728621]: P1: 0.000418614
+[0m
+[0m[ INFO] [1565291106.399016194]: P2: -0.00101083
+[0m
+[0m[ INFO] [1565291106.485997934]: version number:R2
+[0m
+[32m[DEBUG] [1565291106.724444965]: Accepted connection on socket [7], new socket [19][0m
+[32m[DEBUG] [1565291106.725898615]: Adding tcp socket [19] to pollset[0m
+[32m[DEBUG] [1565291106.726293645]: TCPROS received a connection from [127.0.0.1:49108][0m
+[32m[DEBUG] [1565291106.726757637]: Connection: Creating TransportSubscriberLink for topic [/tf] connected to [callerid=[/rviz] address=[TCPROS connection on port 49057 to [127.0.0.1:49108 on socket 19]]][0m
+ntrol_boilerplate/frcrobot_hw_main)
+    ros_control_controller_manager (controller_manager/controller_manager)
+
+auto-starting new master
+[1mprocess[master]: started with pid [2121][0m
+[1mROS_MASTER_URI=http://localhost:11311[0m
+]2;/home/analog/racecar_ws/racecar_ws/src/launch/main.launch http://localhost:11311
+[1msetting /run_id to 6acaeb2a-ba0f-11e9-9ca3-ec086b0b5af7[0m
+[1mprocess[rosout-1]: started with pid [2132][0m
+started core service [/rosout]
+[1mprocess[robot_state_publisher-2]: started with pid [2139][0m
+[1mprocess[rviz-3]: started with pid [2140][0m
+[1mprocess[ros_control/ADI_racecar_hardware_interface-4]: started with pid [2146][0m
+[1mprocess[ros_control/ros_control_controller_manager-5]: started with pid [2148][0m
+[1mprocess[pico-6]: started with pid [2164][0m
+[1mprocess[point_cloud_thinner-7]: started with pid [2165][0m
+[1mprocess[rplidar_node-8]: started with pid [2167][0m
+[1mprocess[imu_filter-9]: started with pid [2174][0m
+[imu_filter-9] killing on exit
+[rplidar_node-8] killing on exit
+[point_cloud_thinner-7] killing on exit
+[rviz-3] killing on exit
+[pico-6] killing on exit
+[robot_state_publisher-2] killing on exit
+[rosout-1] killing on exit
+[master] killing on exit
+shutting down processing monitor...
+... shutting down processing monitor complete
+[1mdone[0m

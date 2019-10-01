@@ -1,0 +1,3 @@
+ACTION=="add", ATTRS{idVendor}=="2d40", ATTRS{idProduct}=="0101", SYMLINK+="picozense-imu", MODE="0660"
+ACTION=="add", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", SYMLINK+="ADIS16XXX_BRD", MODE="0777"
+ACTION=="add", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", SYMLINK+="lidar", MODE="0666"

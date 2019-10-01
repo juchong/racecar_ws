@@ -1,72 +1,90 @@
+<?xml version="1.0"?>
 <!-- -*- mode: XML -*- -->
 <launch>
 
-  <!-- Starting Remote control Node -->
-  <include file="$(find racecar)/launch/includes/racecar-v2-teleop.launch.xml" />
+  <env name="ROSCONSOLE_CONFIG_FILE"
+	  value="$(find launch)/rosconsole.conf" />
+  <arg name="racecar_version" value="racecar-v2" />
+  <arg name="imu_model" default="adis16495" doc="imu sensor types [adis16470, adis16495]" />
+  <arg name="run_camera" default="false"/>
+  <arg name="hw_or_sim" default="hw" />
+  <arg name="with_rviz" default="false" />
+
+  <!-- load the robot model -->
+  <include file="$(find launch)/robot_model.launch" />
+
+  <!-- run ros_control for communicating with hardware -->
+  <group ns="ros_control" >
+      <!-- load config file defining hardware joints and controllers -->
+      <rosparam file="$(find ros_control_boilerplate)/config/diff_drive.yaml" command="load"/>
+      
+      <!-- Starting ros control node -->
+      <node name="ADI_racecar_hardware_interface" pkg="ros_control_boilerplate" type="frcrobot_$(arg hw_or_sim)_main" output="screen" />
+      
+      <!-- Load controller manager -->
+      <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false"
+            output="screen" args="spawn imu_sensor_controller talon_state_controller diff_drive_controller joint_state_controller left_follower_controller right_follower_controller"/> 
+  </group>
+
+  <!-- run teleop control nodes for the robot -->
+  <group ns="teleop">
+    <include file="$(find racecar)/launch/racecar-v2/racecar-v2-teleop.launch.xml">
+      <arg name="racecar_version" value="$(arg racecar_version)" />
+      <arg name="imu_model" value="$(arg imu_model)" />
+      <arg name="run_camera" value="$(arg run_camera)" />
+    </include>
+  </group>
+
 
   <!-- Starting Zed Camera -->
-  <include file="$(find zed_wrapper)/launch/zed_camera.launch" />
+  <!--include file="$(find zed_wrapper)/launch/zed_camera.launch" /-->
 
   <!-- Starting USB Camera -->
-  <include file="$(find usb_cam)/launch/usb_cam.launch" />
+  <!--include file="$(find usb_cam)/launch/usb_cam.launch" /-->
 
   <!-- Starting Time of Flight Camera (Pico Zense) -->
-  <!--<include file="$(find adi_tof_kinetic)/launch/tof.launch" />-->
+  <include file="$(find adi_tof_melodic)/launch/PicoZenseDCAM710.launch" />
 
   <!-- Starting April Tag testing for position, orientation, and identity tracking relative to the camera -->
   <!-- <include file="$(find apriltags2_ros)/launch/continuous_detection.launch" /> -->
 
   <!-- Starting LaserScan Node -->
-  <include file="$(find hls_lfcd_lds_driver)/launch/hlds_laser.launch" />
+  <include file="$(find rplidar_ros)/launch/rplidar.launch" >
+    <arg name="name"  value="rplidar" />
+    <arg name="serial_port"  value="/dev/lidar"/>
+    <arg name="frame_id"  value="laser"/>
+  </include>
 
   <!-- Starting ADI Inertial measurement unit Node -->
-  <include file="$(find adi_driver)/launch/adis16470.launch"/>
+  <!--include file="$(find adi_driver)/launch/adis16495.launch"/-->
 
-  <!-- Starting Gmapping Node with paramters -->
- <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" >
-      <param name="maxUrange" value="3.0"/>
-      <param name="minimumScore" value="50"/>
-      <param name="map_update_interval" value="2.0"/>
+  <!-- Starting imu filter node -->
+  <node name="imu_filter" pkg="imu_filter_madgwick" type="imu_filter_node">
+    <param name="use_mag" value="false"/>
+    <param name="fixed_frame" value="base_link_stabilized"/>
+    <param name="publish_tf" value="True"/>
+    <remap from="imu/data_raw" to="/ros_control/adis16495" />
+  </node>
 
-      <param name="sigma" value="0.05"/>
-      <param name="kernelSize" value="1"/>
-      <param name="lstep" value="0.05"/>
-      <param name="astep" value="0.05"/>
-      <param name="iterations" value="5"/>
-      <param name="lsigma" value="0.075"/>
-      <param name="ogain" value="3.0"/>
-      <param name="lskip" value="0"/>
-      <param name="srr" value="0.1"/>
-      <param name="srt" value="0.2"/>
-      <param name="str" value="0.1"/>
-      <param name="stt" value="0.2"/>
-      <param name="linearUpdate" value="1.0"/>
-      <param name="angularUpdate" value="0.2"/>
-      <param name="temporalUpdate" value="0.2"/>
-      <param name="resampleThreshold" value="0.5"/>
-      <param name="particles" value="100"/>
-      <param name="xmin" value="-10.0"/>
-      <param name="ymin" value="-10.0"/>
-      <param name="xmax" value="10.0"/>
-      <param name="ymax" value="10.0"/>
-      <param name="delta" value="0.05"/>
-      <param name="llsamplerange" value="0.01"/>
-      <param name="llsamplestep" value="0.01"/>
-      <param name="lasamplerange" value="0.005"/>
-      <param name="lasamplestep" value="0.005"/>
-      <param name="delta" value="0.05"/>
-</node>
+
+    <include file="$(find racecar_2dnav)/launch/move_base.launch" />
+
+
+  <!-- launch rviz and static transforms -->
+  <node if="$(arg with_rviz)"
+        name="rviz" pkg="rviz" type="rviz" args=" -d imu.rviz"/>
+
 
   <!-- Starting Odometry VESC Node -->
-  <node name="listener"  pkg="vesc_ackermann" type="odom_node"/>
+  <!--node name="listener"  pkg="vesc_ackermann" type="odom_node"/-->
   
   <!-- Starting IMU VESC Node -->
-  <node name="imulistener"  pkg="vesc_ackermann" type="imu_node"/>
+  <!--node name="imulistener"  pkg="vesc_ackermann" type="imu_node"/-->
   
   <!-- Starting Angle VESC Node -->
-  <node name="Angle"  pkg="vesc_ackermann" type="angle_node" output="screen"/>
+  <!--node name="Angle"  pkg="vesc_ackermann" type="angle_node" output="screen"/-->
   
   <!-- Starting RVIZ configuration for SLAM demo -->
-  <node name="rvizMap" pkg="rviz" type="rviz" args="-d $(find launch)/main.rviz" />
+  <!--node name="rvizMap" pkg="rviz" type="rviz" args="-d $(find launch)/main.rviz" /-->
 
 </launch>

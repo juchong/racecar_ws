@@ -45,7 +45,7 @@ Changelog for package move_base
 
 1.15.0 (2017-08-07)
 -------------------
-* Add a max_planning_retries parameter to move_base [kinetic] (`#539 <https://github.com/ros-planning/navigation/issues/539>`_)
+* Add a max_planning_retries parameter to move_base [melodic] (`#539 <https://github.com/ros-planning/navigation/issues/539>`_)
 * Fix for `#517 <https://github.com/ros-planning/navigation/issues/517>`_: create a getRobotPose method on move_base instead of using that on the costmaps
 * Fixed deadlock when changing global planner
 * rebase fixups
